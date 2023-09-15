@@ -1,0 +1,799 @@
+2023-09-15T09:08:08.073+03:00  INFO 22848 --- [restartedMain] c.i.s.SelfAssessmentApplication          : Starting SelfAssessmentApplication using Java 17.0.6 with PID 22848 (D:\magistr\self_assessment\build\classes\java\main started by glumk in D:\magistr\self_assessment)
+2023-09-15T09:08:08.075+03:00  INFO 22848 --- [restartedMain] c.i.s.SelfAssessmentApplication          : The following 1 profile is active: "DEV"
+2023-09-15T09:08:08.122+03:00  INFO 22848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-15T09:08:08.123+03:00  INFO 22848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-15T09:08:08.144+03:00  INFO 22848 --- [restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file 'D:\magistr\self_assessment\compose.yaml'
+2023-09-15T09:08:13.162+03:00 ERROR 22848 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.boot.docker.compose.core.DockerNotRunningException: Docker is not running
+	at org.springframework.boot.docker.compose.core.DockerCli$DockerCommands.getDockerCommand(DockerCli.java:146) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCli$DockerCommands.<init>(DockerCli.java:129) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCli.lambda$new$0(DockerCli.java:65) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at java.base/java.util.HashMap.computeIfAbsent(HashMap.java:1220) ~[na:na]
+	at org.springframework.boot.docker.compose.core.DockerCli.<init>(DockerCli.java:64) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCompose.get(DockerCompose.java:92) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeLifecycleManager.getDockerCompose(DockerComposeLifecycleManager.java:147) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeLifecycleManager.start(DockerComposeLifecycleManager.java:110) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeListener.onApplicationEvent(DockerComposeListener.java:53) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeListener.onApplicationEvent(DockerComposeListener.java:35) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.context.event.EventPublishingRunListener.contextLoaded(EventPublishingRunListener.java:98) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$contextLoaded$4(SpringApplicationRunListeners.java:72) ~[spring-boot-3.1.3.jar:3.1.3]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplicationRunListeners.contextLoaded(SpringApplicationRunListeners.java:72) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:416) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.3.jar:3.1.3]
+	at com.ipze.self_assessment.SelfAssessmentApplication.main(SelfAssessmentApplication.java:23) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.3.jar:3.1.3]
+Caused by: org.springframework.boot.docker.compose.core.ProcessExitException: 'docker version --format {{.Client.Version}}' failed with exit code 1.
+
+Stdout:
+23.0.5
+
+
+Stderr:
+error during connect: this error may indicate that the docker daemon is not running: Get "http://%2F%2F.%2Fpipe%2Fdocker_engine/v1.24/version": open //./pipe/docker_engine: The system cannot find the file specified.
+
+	at org.springframework.boot.docker.compose.core.ProcessRunner.run(ProcessRunner.java:96) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.ProcessRunner.run(ProcessRunner.java:74) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCli$DockerCommands.getDockerCommand(DockerCli.java:135) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	... 30 common frames omitted
+
+2023-09-15T09:08:53.411+03:00  INFO 21144 --- [restartedMain] c.i.s.SelfAssessmentApplication          : Starting SelfAssessmentApplication using Java 17.0.6 with PID 21144 (D:\magistr\self_assessment\build\classes\java\main started by glumk in D:\magistr\self_assessment)
+2023-09-15T09:08:53.413+03:00  INFO 21144 --- [restartedMain] c.i.s.SelfAssessmentApplication          : The following 1 profile is active: "DEV"
+2023-09-15T09:08:53.460+03:00  INFO 21144 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-15T09:08:53.460+03:00  INFO 21144 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-15T09:08:53.482+03:00  INFO 21144 --- [restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file 'D:\magistr\self_assessment\compose.yaml'
+2023-09-15T09:08:53.730+03:00 ERROR 21144 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.boot.docker.compose.core.DockerNotRunningException: Docker is not running
+	at org.springframework.boot.docker.compose.core.DockerCli$DockerCommands.getDockerCommand(DockerCli.java:146) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCli$DockerCommands.<init>(DockerCli.java:129) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCli.lambda$new$0(DockerCli.java:65) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at java.base/java.util.HashMap.computeIfAbsent(HashMap.java:1220) ~[na:na]
+	at org.springframework.boot.docker.compose.core.DockerCli.<init>(DockerCli.java:64) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCompose.get(DockerCompose.java:92) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeLifecycleManager.getDockerCompose(DockerComposeLifecycleManager.java:147) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeLifecycleManager.start(DockerComposeLifecycleManager.java:110) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeListener.onApplicationEvent(DockerComposeListener.java:53) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.lifecycle.DockerComposeListener.onApplicationEvent(DockerComposeListener.java:35) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.context.event.EventPublishingRunListener.contextLoaded(EventPublishingRunListener.java:98) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$contextLoaded$4(SpringApplicationRunListeners.java:72) ~[spring-boot-3.1.3.jar:3.1.3]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplicationRunListeners.contextLoaded(SpringApplicationRunListeners.java:72) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:416) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.3.jar:3.1.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.3.jar:3.1.3]
+	at com.ipze.self_assessment.SelfAssessmentApplication.main(SelfAssessmentApplication.java:23) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.3.jar:3.1.3]
+Caused by: org.springframework.boot.docker.compose.core.ProcessExitException: 'docker version --format {{.Client.Version}}' failed with exit code 1.
+
+Stdout:
+23.0.5
+
+
+Stderr:
+error during connect: this error may indicate that the docker daemon is not running: Get "http://%2F%2F.%2Fpipe%2Fdocker_engine/v1.24/version": open //./pipe/docker_engine: The system cannot find the file specified.
+
+	at org.springframework.boot.docker.compose.core.ProcessRunner.run(ProcessRunner.java:96) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.ProcessRunner.run(ProcessRunner.java:74) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	at org.springframework.boot.docker.compose.core.DockerCli$DockerCommands.getDockerCommand(DockerCli.java:135) ~[spring-boot-docker-compose-3.1.3.jar:3.1.3]
+	... 30 common frames omitted
+
+2023-09-15T09:11:06.430+03:00  INFO 10944 --- [restartedMain] c.i.s.SelfAssessmentApplication          : Starting SelfAssessmentApplication using Java 17.0.6 with PID 10944 (D:\magistr\self_assessment\build\classes\java\main started by glumk in D:\magistr\self_assessment)
+2023-09-15T09:11:06.433+03:00  INFO 10944 --- [restartedMain] c.i.s.SelfAssessmentApplication          : The following 1 profile is active: "DEV"
+2023-09-15T09:11:06.491+03:00  INFO 10944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-15T09:11:06.491+03:00  INFO 10944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-15T09:11:06.516+03:00  INFO 10944 --- [restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file 'D:\magistr\self_assessment\compose.yaml'
+2023-09-15T09:11:10.195+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  postgres Pulling 
+2023-09-15T09:11:27.128+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  360eba32fa65 Already exists 
+2023-09-15T09:11:27.136+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6987678f9780 Already exists 
+2023-09-15T09:11:27.140+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  42299245e905 Already exists 
+2023-09-15T09:11:27.145+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  afcda32ad76a Already exists 
+2023-09-15T09:11:27.149+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  23d81c750666 Already exists 
+2023-09-15T09:11:27.153+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  c7813914a8b7 Already exists 
+2023-09-15T09:11:27.159+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  876fecb4c432 Already exists 
+2023-09-15T09:11:27.164+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  0a8727713246 Already exists 
+2023-09-15T09:11:27.169+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Pulling fs layer 
+2023-09-15T09:11:27.169+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e8a9c6f88b3a Pulling fs layer 
+2023-09-15T09:11:27.169+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4f8b906dc57f Pulling fs layer 
+2023-09-15T09:11:27.170+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Pulling fs layer 
+2023-09-15T09:11:27.170+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Pulling fs layer 
+2023-09-15T09:11:27.170+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Waiting 
+2023-09-15T09:11:27.170+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Waiting 
+2023-09-15T09:11:27.689+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e8a9c6f88b3a Downloading [===>                                               ]     720B/9.781kB
+2023-09-15T09:11:27.690+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e8a9c6f88b3a Download complete 
+2023-09-15T09:11:28.148+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Downloading [==================================================>]     200B/200B
+2023-09-15T09:11:28.149+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Verifying Checksum 
+2023-09-15T09:11:28.149+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Download complete 
+2023-09-15T09:11:28.196+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4f8b906dc57f Downloading [==================================================>]     130B/130B
+2023-09-15T09:11:28.196+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4f8b906dc57f Download complete 
+2023-09-15T09:11:28.633+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Downloading [=======>                                           ]     720B/4.785kB
+2023-09-15T09:11:28.634+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Downloading [==================================================>]  4.785kB/4.785kB
+2023-09-15T09:11:28.634+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Verifying Checksum 
+2023-09-15T09:11:28.634+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Download complete 
+2023-09-15T09:11:30.591+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [>                                                  ]    539kB/104.2MB
+2023-09-15T09:11:30.689+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [=>                                                 ]  2.669MB/104.2MB
+2023-09-15T09:11:30.798+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [===>                                               ]  7.486MB/104.2MB
+2023-09-15T09:11:30.921+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [=====>                                             ]   10.7MB/104.2MB
+2023-09-15T09:11:31.025+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [======>                                            ]   13.9MB/104.2MB
+2023-09-15T09:11:31.129+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [========>                                          ]   18.2MB/104.2MB
+2023-09-15T09:11:31.232+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [==========>                                        ]   22.5MB/104.2MB
+2023-09-15T09:11:31.333+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [============>                                      ]  26.78MB/104.2MB
+2023-09-15T09:11:31.436+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [===============>                                   ]  31.61MB/104.2MB
+2023-09-15T09:11:31.540+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [=================>                                 ]  36.96MB/104.2MB
+2023-09-15T09:11:31.657+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [====================>                              ]  41.78MB/104.2MB
+2023-09-15T09:11:31.757+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [======================>                            ]  46.57MB/104.2MB
+2023-09-15T09:11:31.858+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [========================>                          ]  50.31MB/104.2MB
+2023-09-15T09:11:31.966+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [==========================>                        ]  55.15MB/104.2MB
+2023-09-15T09:11:32.070+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [============================>                      ]  59.46MB/104.2MB
+2023-09-15T09:11:32.172+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [===============================>                   ]  64.82MB/104.2MB
+2023-09-15T09:11:32.293+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [=================================>                 ]  69.65MB/104.2MB
+2023-09-15T09:11:32.395+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [====================================>              ]  75.57MB/104.2MB
+2023-09-15T09:11:32.497+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [=======================================>           ]  81.46MB/104.2MB
+2023-09-15T09:11:32.598+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [=========================================>         ]  86.27MB/104.2MB
+2023-09-15T09:11:32.713+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [===========================================>       ]  90.55MB/104.2MB
+2023-09-15T09:11:32.826+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [=============================================>     ]  95.37MB/104.2MB
+2023-09-15T09:11:32.927+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Downloading [================================================>  ]  100.2MB/104.2MB
+2023-09-15T09:11:33.018+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Verifying Checksum 
+2023-09-15T09:11:33.019+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Download complete 
+2023-09-15T09:11:33.111+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [>                                                  ]  557.1kB/104.2MB
+2023-09-15T09:11:33.213+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [===>                                               ]  7.242MB/104.2MB
+2023-09-15T09:11:33.313+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [======>                                            ]  12.81MB/104.2MB
+2023-09-15T09:11:33.413+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [=========>                                         ]  18.94MB/104.2MB
+2023-09-15T09:11:33.533+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [============>                                      ]  25.07MB/104.2MB
+2023-09-15T09:11:33.634+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [===============>                                   ]  32.31MB/104.2MB
+2023-09-15T09:11:33.738+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [===================>                               ]  41.22MB/104.2MB
+2023-09-15T09:11:33.849+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [=======================>                           ]  49.58MB/104.2MB
+2023-09-15T09:11:33.960+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [=========================>                         ]  52.36MB/104.2MB
+2023-09-15T09:11:34.082+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [===========================>                       ]  56.82MB/104.2MB
+2023-09-15T09:11:34.187+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [===============================>                   ]  65.18MB/104.2MB
+2023-09-15T09:11:34.296+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [==================================>                ]  72.42MB/104.2MB
+2023-09-15T09:11:34.397+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [======================================>            ]  80.22MB/104.2MB
+2023-09-15T09:11:34.520+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [==========================================>        ]  88.57MB/104.2MB
+2023-09-15T09:11:34.621+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [============================================>      ]  91.91MB/104.2MB
+2023-09-15T09:11:34.723+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [=============================================>     ]  95.26MB/104.2MB
+2023-09-15T09:11:34.827+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [===============================================>   ]   98.6MB/104.2MB
+2023-09-15T09:11:34.952+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [================================================>  ]  101.4MB/104.2MB
+2023-09-15T09:11:35.081+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [=================================================> ]  103.1MB/104.2MB
+2023-09-15T09:11:35.143+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Extracting [==================================================>]  104.2MB/104.2MB
+2023-09-15T09:11:35.199+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bd55a69456f7 Pull complete 
+2023-09-15T09:11:35.203+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e8a9c6f88b3a Extracting [==================================================>]  9.781kB/9.781kB
+2023-09-15T09:11:35.203+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e8a9c6f88b3a Extracting [==================================================>]  9.781kB/9.781kB
+2023-09-15T09:11:35.269+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e8a9c6f88b3a Pull complete 
+2023-09-15T09:11:35.275+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4f8b906dc57f Extracting [==================================================>]     130B/130B
+2023-09-15T09:11:35.275+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4f8b906dc57f Extracting [==================================================>]     130B/130B
+2023-09-15T09:11:35.340+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4f8b906dc57f Pull complete 
+2023-09-15T09:11:35.343+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Extracting [==================================================>]     200B/200B
+2023-09-15T09:11:35.344+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Extracting [==================================================>]     200B/200B
+2023-09-15T09:11:35.406+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6fa3ed8d5047 Pull complete 
+2023-09-15T09:11:35.410+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Extracting [==================================================>]  4.785kB/4.785kB
+2023-09-15T09:11:35.410+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Extracting [==================================================>]  4.785kB/4.785kB
+2023-09-15T09:11:35.468+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  5ae8c52f2732 Pull complete 
+2023-09-15T09:11:35.488+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  postgres Pulled 
+2023-09-15T09:11:35.507+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Network self_assessment_default  Creating
+2023-09-15T09:11:35.563+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Network self_assessment_default  Created
+2023-09-15T09:11:35.567+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Creating
+2023-09-15T09:11:36.216+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Created
+2023-09-15T09:11:36.236+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Starting
+2023-09-15T09:11:36.880+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Started
+2023-09-15T09:11:36.880+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Waiting
+2023-09-15T09:11:37.410+03:00  INFO 10944 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Healthy
+2023-09-15T09:11:41.180+03:00  INFO 10944 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-15T09:11:41.250+03:00  INFO 10944 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 1 JPA repository interfaces.
+2023-09-15T09:11:41.943+03:00  INFO 10944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2023-09-15T09:11:41.956+03:00  INFO 10944 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-15T09:11:41.956+03:00  INFO 10944 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-15T09:11:42.030+03:00  INFO 10944 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-15T09:11:42.030+03:00  INFO 10944 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1746 ms
+2023-09-15T09:11:42.228+03:00  INFO 10944 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2023-09-15T09:11:42.228+03:00  INFO 10944 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2023-09-15T09:11:42.228+03:00  INFO 10944 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : 
+2023-09-15T09:11:42.405+03:00  INFO 10944 --- [restartedMain] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://127.0.0.1:14905/self_assessment_educational_programs_storage (PostgreSQL 15.4)
+2023-09-15T09:11:42.445+03:00  INFO 10944 --- [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2023-09-15T09:11:42.452+03:00  INFO 10944 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.021s)
+2023-09-15T09:11:42.475+03:00  INFO 10944 --- [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2023-09-15T09:11:42.584+03:00  INFO 10944 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2023-09-15T09:11:42.622+03:00  INFO 10944 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create db structure"
+2023-09-15T09:11:43.403+03:00  INFO 10944 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.829s)
+2023-09-15T09:11:43.492+03:00  INFO 10944 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-15T09:11:43.557+03:00  INFO 10944 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-09-15T09:11:43.559+03:00  INFO 10944 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-15T09:11:43.677+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BasicTypeReference@8926d88
+2023-09-15T09:11:43.677+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BasicTypeReference@8926d88
+2023-09-15T09:11:43.677+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BasicTypeReference@8926d88
+2023-09-15T09:11:43.677+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.BasicTypeReference@3925279a
+2023-09-15T09:11:43.677+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.NumericBooleanConverter -> org.hibernate.type.BasicTypeReference@3925279a
+2023-09-15T09:11:43.678+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.BasicTypeReference@255b1ccc
+2023-09-15T09:11:43.678+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.TrueFalseConverter -> org.hibernate.type.BasicTypeReference@255b1ccc
+2023-09-15T09:11:43.678+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.BasicTypeReference@3d5b7b34
+2023-09-15T09:11:43.678+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.YesNoConverter -> org.hibernate.type.BasicTypeReference@3d5b7b34
+2023-09-15T09:11:43.678+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.BasicTypeReference@26bebf3a
+2023-09-15T09:11:43.678+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.BasicTypeReference@26bebf3a
+2023-09-15T09:11:43.678+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.BasicTypeReference@26bebf3a
+2023-09-15T09:11:43.679+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BasicTypeReference@36b74580
+2023-09-15T09:11:43.679+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BasicTypeReference@36b74580
+2023-09-15T09:11:43.679+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BasicTypeReference@36b74580
+2023-09-15T09:11:43.679+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary_wrapper -> org.hibernate.type.BasicTypeReference@7e87ef80
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.BasicTypeReference@7e87ef80
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.BasicTypeReference@72102e95
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BasicTypeReference@5877293
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BasicTypeReference@5877293
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.BasicTypeReference@36b488ae
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob_wrapper -> org.hibernate.type.BasicTypeReference@778e8a17
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.BasicTypeReference@49966f5
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.BasicTypeReference@49966f5
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.BasicTypeReference@49966f5
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.BasicTypeReference@3a349f1f
+2023-09-15T09:11:43.680+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.BasicTypeReference@3a349f1f
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.BasicTypeReference@3a349f1f
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.BasicTypeReference@28d7810f
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.BasicTypeReference@28d7810f
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.BasicTypeReference@28d7810f
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.BasicTypeReference@2b0a7830
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.BasicTypeReference@2b0a7830
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.BasicTypeReference@2b0a7830
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.BasicTypeReference@646b0d6a
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.BasicTypeReference@646b0d6a
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.BasicTypeReference@646b0d6a
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BasicTypeReference@7ab9aa9f
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BasicTypeReference@7ab9aa9f
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BasicTypeReference@6e72833e
+2023-09-15T09:11:43.681+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BasicTypeReference@6e72833e
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.BasicTypeReference@1641bd38
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.BasicTypeReference@1641bd38
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.BasicTypeReference@1641bd38
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration character_nchar -> org.hibernate.type.BasicTypeReference@2a7df2c7
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.BasicTypeReference@1d275845
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.BasicTypeReference@1d275845
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.BasicTypeReference@67b643ac
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.BasicTypeReference@7c858a1f
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.BasicTypeReference@7c858a1f
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.BasicTypeReference@7c858a1f
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.BasicTypeReference@392ba482
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.BasicTypeReference@1ee93692
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.BasicTypeReference@4b17bdc0
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.BasicTypeReference@1b9213cf
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.BasicTypeReference@1b9213cf
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.BasicTypeReference@7ff9ab8b
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.BasicTypeReference@7ff9ab8b
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.BasicTypeReference@28f35f40
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob_char_array -> org.hibernate.type.BasicTypeReference@5efc1e23
+2023-09-15T09:11:43.682+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob_character_array -> org.hibernate.type.BasicTypeReference@557b6258
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.BasicTypeReference@676c3e8f
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob_character_array -> org.hibernate.type.BasicTypeReference@55d7747d
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob_char_array -> org.hibernate.type.BasicTypeReference@6be475e2
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.BasicTypeReference@6503b364
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.BasicTypeReference@6503b364
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.BasicTypeReference@631d710d
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.BasicTypeReference@631d710d
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.BasicTypeReference@d87958f
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.BasicTypeReference@d87958f
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.BasicTypeReference@4584aab8
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.BasicTypeReference@4584aab8
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.BasicTypeReference@3de4b9ff
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.BasicTypeReference@3de4b9ff
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTimeWithTimezone -> org.hibernate.type.BasicTypeReference@35f93257
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@463e28a
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.BasicTypeReference@645259d4
+2023-09-15T09:11:43.683+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.BasicTypeReference@645259d4
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeUtc -> org.hibernate.type.BasicTypeReference@7c612fe0
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeWithTimezone -> org.hibernate.type.BasicTypeReference@76d1b1
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@1b1a0487
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.BasicTypeReference@6df072c9
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.BasicTypeReference@6df072c9
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTimeWithTimezone -> org.hibernate.type.BasicTypeReference@181b5eb8
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@2ed6ff53
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.BasicTypeReference@65a3f832
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.BasicTypeReference@65a3f832
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.BasicTypeReference@baba875
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.BasicTypeReference@baba875
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.BasicTypeReference@4987d926
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.BasicTypeReference@4987d926
+2023-09-15T09:11:43.685+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.BasicTypeReference@4987d926
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.BasicTypeReference@50328b22
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.BasicTypeReference@50328b22
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.BasicTypeReference@50328b22
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.BasicTypeReference@2a2a8b7e
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.BasicTypeReference@7c94664e
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration instant -> org.hibernate.type.BasicTypeReference@b2dce13
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.BasicTypeReference@b2dce13
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid -> org.hibernate.type.BasicTypeReference@4f822fcf
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.BasicTypeReference@4f822fcf
+2023-09-15T09:11:43.686+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration pg-uuid -> org.hibernate.type.BasicTypeReference@4f822fcf
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.BasicTypeReference@318d2c3a
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.BasicTypeReference@6ef49a53
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.BasicTypeReference@b4c8cc8
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.BasicTypeReference@b4c8cc8
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.BasicTypeReference@55ee2639
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Currency -> org.hibernate.type.BasicTypeReference@55ee2639
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.BasicTypeReference@55ee2639
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.BasicTypeReference@d5a3c42
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.BasicTypeReference@d5a3c42
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.BasicTypeReference@473619b8
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.io.Serializable -> org.hibernate.type.BasicTypeReference@473619b8
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.BasicTypeReference@2873f75a
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.BasicTypeReference@2873f75a
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZoneOffset -> org.hibernate.type.BasicTypeReference@c88c383
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZoneOffset -> org.hibernate.type.BasicTypeReference@c88c383
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.BasicTypeReference@50ec567c
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.BasicTypeReference@50ec567c
+2023-09-15T09:11:43.687+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.BasicTypeReference@27e06e00
+2023-09-15T09:11:43.694+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.JavaObjectType@23f5d4b0
+2023-09-15T09:11:43.694+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.JavaObjectType@23f5d4b0
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration null -> org.hibernate.type.NullType@ac53de0
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.BasicTypeReference@527b15ad
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.BasicTypeReference@19821d80
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.BasicTypeReference@47bb012f
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.BasicTypeReference@64b20e05
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.BasicTypeReference@6e6eb943
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_time -> org.hibernate.type.BasicTypeReference@6709d713
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.BasicTypeReference@78a400a4
+2023-09-15T09:11:43.695+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.BasicTypeReference@c12fb93
+2023-09-15T09:11:43.727+03:00  INFO 10944 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-15T09:11:43.875+03:00  INFO 10944 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-15T09:11:43.896+03:00  INFO 10944 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-15T09:11:43.944+03:00  INFO 10944 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7bf2c785
+2023-09-15T09:11:43.947+03:00  INFO 10944 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-15T09:11:44.034+03:00 DEBUG 10944 --- [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@262342c0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@749ad1ab)
+2023-09-15T09:11:44.037+03:00 DEBUG 10944 --- [restartedMain] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2004, BlobTypeDescriptor(BLOB_BINDING)) replaced previous registration(BlobTypeDescriptor(DEFAULT))
+2023-09-15T09:11:44.037+03:00 DEBUG 10944 --- [restartedMain] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2005, ClobTypeDescriptor(CLOB_BINDING)) replaced previous registration(ClobTypeDescriptor(DEFAULT))
+2023-09-15T09:11:44.045+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration JAVA_OBJECT -> org.hibernate.type.JavaObjectType@72fde67e
+2023-09-15T09:11:44.045+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.JavaObjectType@72fde67e
+2023-09-15T09:11:44.045+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Type registration key [java.lang.Object] overrode previous entry : `org.hibernate.type.JavaObjectType@23f5d4b0`
+2023-09-15T09:11:44.046+03:00 DEBUG 10944 --- [restartedMain] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(3100, NumericTypeDescriptor) replaced previous registration(org.hibernate.dialect.PostgreSQLIntervalSecondJdbcType@6cf499bb)
+2023-09-15T09:11:44.053+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.OffsetDateTimeType -> basicType@1(java.time.OffsetDateTime,3003)
+2023-09-15T09:11:44.054+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> basicType@1(java.time.OffsetDateTime,3003)
+2023-09-15T09:11:44.054+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> basicType@1(java.time.OffsetDateTime,3003)
+2023-09-15T09:11:44.054+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.ZonedDateTimeType -> basicType@2(java.time.ZonedDateTime,3003)
+2023-09-15T09:11:44.054+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> basicType@2(java.time.ZonedDateTime,3003)
+2023-09-15T09:11:44.054+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> basicType@2(java.time.ZonedDateTime,3003)
+2023-09-15T09:11:44.055+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.OffsetTimeType -> basicType@3(java.time.OffsetTime,3007)
+2023-09-15T09:11:44.055+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> basicType@3(java.time.OffsetTime,3007)
+2023-09-15T09:11:44.055+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> basicType@3(java.time.OffsetTime,3007)
+2023-09-15T09:11:44.057+03:00 DEBUG 10944 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@2ac64c13] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@64a7566e]
+2023-09-15T09:11:44.518+03:00  INFO 10944 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-15T09:11:45.897+03:00  INFO 10944 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-15T09:11:45.898+03:00 DEBUG 10944 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@2ac64c13] to SessionFactoryImplementor [org.hibernate.internal.SessionFactoryImpl@1b551fb4]
+2023-09-15T09:11:45.954+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists public.user alter column date_joined set data type timestamp(6) with time zone
+2023-09-15T09:11:45.958+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists public.user alter column last_login set data type timestamp(6) with time zone
+2023-09-15T09:11:45.968+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists public.user drop constraint if exists user_username_key
+2023-09-15T09:11:45.973+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-09-15T09:11:45.973+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "user_username_key" of relation "user" does not exist, skipping
+2023-09-15T09:11:45.973+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists public.user add constraint user_username_key unique (username)
+2023-09-15T09:11:45.999+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists authtoken_token alter column created set data type timestamp(6) with time zone
+2023-09-15T09:11:46.003+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column accessibility_certification_procedure set data type TEXT
+2023-09-15T09:11:46.007+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column appeal_procedure_and_results_of_control_measures set data type TEXT
+2023-09-15T09:11:46.012+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column clarity_criteria set data type TEXT
+2023-09-15T09:11:46.018+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column combating_violations_of_academic_integrity_solutions set data type TEXT
+2023-09-15T09:11:46.021+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column compliance_requirements set data type TEXT
+2023-09-15T09:11:46.024+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column description set data type TEXT
+2023-09-15T09:11:46.028+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column information_provision set data type TEXT
+2023-09-15T09:11:46.031+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column objectivity_procedures set data type TEXT
+2023-09-15T09:11:46.035+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column policies_and_standards_documents set data type TEXT
+2023-09-15T09:11:46.038+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column promoting_academic_integrity set data type TEXT
+2023-09-15T09:11:46.041+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column repeating_control_measures_procedures set data type TEXT
+2023-09-15T09:11:46.044+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column responding_to_violations_of_academic_integrity set data type TEXT
+2023-09-15T09:11:46.049+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column domestic_and_foreign_programs_experience set data type TEXT
+2023-09-15T09:11:46.053+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column goals set data type TEXT
+2023-09-15T09:11:46.057+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column industry_and_regional_context set data type TEXT
+2023-09-15T09:11:46.060+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column learning_experience_achieve set data type TEXT
+2023-09-15T09:11:46.065+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column market_trends set data type TEXT
+2023-09-15T09:11:46.069+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column national_qualifications_level set data type TEXT
+2023-09-15T09:11:46.071+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_academic set data type TEXT
+2023-09-15T09:11:46.074+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_employer set data type TEXT
+2023-09-15T09:11:46.077+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_other set data type TEXT
+2023-09-15T09:11:46.080+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_student set data type TEXT
+2023-09-15T09:11:46.084+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column uniqueness set data type TEXT
+2023-09-15T09:11:46.088+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_general_information alter column history_and_development set data type TEXT
+2023-09-15T09:11:46.092+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column educational_environment set data type TEXT
+2023-09-15T09:11:46.096+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column financial_resources set data type TEXT
+2023-09-15T09:11:46.100+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column policy_and_procedures_for_conflict_resolution set data type TEXT
+2023-09-15T09:11:46.104+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column safety_measures set data type TEXT
+2023-09-15T09:11:46.107+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column special_needs_people_education set data type TEXT
+2023-09-15T09:11:46.110+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column support_services set data type TEXT
+2023-09-15T09:11:46.115+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column academic_integrity_practices set data type TEXT
+2023-09-15T09:11:46.119+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column academic_integrity_preventing_violations set data type TEXT
+2023-09-15T09:11:46.124+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column description set data type TEXT
+2023-09-15T09:11:46.128+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column international_participation set data type TEXT
+2023-09-15T09:11:46.133+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column research_preparation set data type TEXT
+2023-09-15T09:11:46.137+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column research_projects_supervisors_participation set data type TEXT
+2023-09-15T09:11:46.141+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column research_support set data type TEXT
+2023-09-15T09:11:46.144+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column supervisor_relevance set data type TEXT
+2023-09-15T09:11:46.149+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column teaching_preparation set data type TEXT
+2023-09-15T09:11:46.154+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column admission_requirements set data type TEXT
+2023-09-15T09:11:46.159+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column admission_requirements_applying_rules_practice set data type TEXT
+2023-09-15T09:11:46.162+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column education_results_doc_applying_rules_practice set data type TEXT
+2023-09-15T09:11:46.167+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column recognition_of_education_results_accessibility set data type TEXT
+2023-09-15T09:11:46.170+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column recognition_of_education_results_doc set data type TEXT
+2023-09-15T09:11:46.174+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column academic_freedom set data type TEXT
+2023-09-15T09:11:46.177+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column curriculum_update set data type TEXT
+2023-09-15T09:11:46.181+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column internationalization set data type TEXT
+2023-09-15T09:11:46.185+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column learning_and_research set data type TEXT
+2023-09-15T09:11:46.189+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column learning_and_teaching_methods set data type TEXT
+2023-09-15T09:11:46.193+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column learning_outcomes set data type TEXT
+2023-09-15T09:11:46.196+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column student_centered_approach set data type TEXT
+2023-09-15T09:11:46.200+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists flyway_schema_history alter column installed_on set data type timestamp(6) with time zone
+2023-09-15T09:11:46.219+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column components_scope_correlating_approach set data type TEXT
+2023-09-15T09:11:46.223+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column content_compliance set data type TEXT
+2023-09-15T09:11:46.228+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column dual_form_education_structure set data type TEXT
+2023-09-15T09:11:46.233+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column individual_learning_path set data type TEXT
+2023-09-15T09:11:46.238+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column relevant_professional_standard set data type TEXT
+2023-09-15T09:11:46.241+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column student_choice_right set data type TEXT
+2023-09-15T09:11:46.245+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column student_practical_training set data type TEXT
+2023-09-15T09:11:46.249+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column student_soft_skills set data type TEXT
+2023-09-15T09:11:46.254+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column competency_level set data type TEXT
+2023-09-15T09:11:46.258+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column employers_engagement set data type TEXT
+2023-09-15T09:11:46.261+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column expert_involvement set data type TEXT
+2023-09-15T09:11:46.264+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column teacher_development set data type TEXT
+2023-09-15T09:11:46.267+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column teaching_excellence set data type TEXT
+2023-09-15T09:11:46.271+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists op_development_perspectives alter column future_development set data type TEXT
+2023-09-15T09:11:46.275+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists op_development_perspectives alter column strong_weak_points set data type TEXT
+2023-09-15T09:11:46.278+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists program_educational_components_information alter column special_equipment_info set data type TEXT
+2023-09-15T09:11:46.287+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists program_learning_outcome_correspondence_matrix alter column name set data type TEXT
+2023-09-15T09:11:46.292+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column academic_community_members_engaging set data type TEXT
+2023-09-15T09:11:46.296+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column alumni_employment set data type TEXT
+2023-09-15T09:11:46.299+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column education_program_review set data type TEXT
+2023-09-15T09:11:46.303+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column educational_program_improvement set data type TEXT
+2023-09-15T09:11:46.307+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column involvement_of_employers set data type TEXT
+2023-09-15T09:11:46.310+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column involvement_of_students set data type TEXT
+2023-09-15T09:11:46.314+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column quality_issues set data type TEXT
+2023-09-15T09:11:46.318+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column regulatory_document set data type TEXT
+2023-09-15T09:11:46.322+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column structural_units_responsibilities_distribution set data type TEXT
+2023-09-15T09:11:46.328+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column student_self_government set data type TEXT
+2023-09-15T09:11:46.332+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column info_access_restriction_type set data type TEXT
+2023-09-15T09:11:46.336+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column info_description set data type TEXT
+2023-09-15T09:11:46.340+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column restricted_info_description set data type TEXT
+2023-09-15T09:11:46.344+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column restricting_access_grounds set data type TEXT
+2023-09-15T09:11:46.350+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists socialaccount_socialaccount alter column date_joined set data type timestamp(6) with time zone
+2023-09-15T09:11:46.355+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists socialaccount_socialaccount alter column extra_data set data type TEXT
+2023-09-15T09:11:46.358+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists socialaccount_socialaccount alter column last_login set data type timestamp(6) with time zone
+2023-09-15T09:11:46.363+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists teacher_summary_information alter column education_disciplines set data type TEXT
+2023-09-15T09:11:46.366+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists teacher_summary_information alter column rationale set data type TEXT
+2023-09-15T09:11:46.377+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists "teacher" drop constraint if exists Teacher_teacher_id_key
+2023-09-15T09:11:46.381+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-09-15T09:11:46.381+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "teacher_teacher_id_key" of relation "teacher" does not exist, skipping
+2023-09-15T09:11:46.382+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists "teacher" add constraint Teacher_teacher_id_key unique (teacher_id)
+2023-09-15T09:11:46.397+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists auth_group drop constraint if exists auth_group_name_key
+2023-09-15T09:11:46.401+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-09-15T09:11:46.402+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "auth_group_name_key" of relation "auth_group" does not exist, skipping
+2023-09-15T09:11:46.402+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists auth_group add constraint auth_group_name_key unique (name)
+2023-09-15T09:11:46.490+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists student drop constraint if exists student_student_id_key
+2023-09-15T09:11:46.494+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-09-15T09:11:46.494+03:00  WARN 10944 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "student_student_id_key" of relation "student" does not exist, skipping
+2023-09-15T09:11:46.494+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists student add constraint student_student_id_key unique (student_id)
+2023-09-15T09:11:46.735+03:00 DEBUG 10944 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_accreditation_information add constraint FKr837af4gkupkj7lpesu6i7vgh foreign key (structural_subdivision_id) references structural_subdivision
+2023-09-15T09:11:47.469+03:00 TRACE 10944 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@1b551fb4] for TypeConfiguration
+2023-09-15T09:11:47.469+03:00  INFO 10944 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-15T09:11:48.084+03:00  INFO 10944 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-09-15T09:11:48.599+03:00  WARN 10944 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-15T09:11:48.621+03:00  WARN 10944 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 15f0a694-c7fb-4de2-a825-470c9546a8e5
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-09-15T09:11:48.729+03:00  INFO 10944 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@272571eb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@c5eb65e, org.springframework.security.web.context.SecurityContextHolderFilter@3fe85826, org.springframework.security.web.header.HeaderWriterFilter@1a03683e, org.springframework.security.web.csrf.CsrfFilter@234634b6, org.springframework.security.web.authentication.logout.LogoutFilter@24e9f3dc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5bce13d2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21696d95, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f5d9597, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4916c672, org.springframework.security.web.access.ExceptionTranslationFilter@15f28cf6, org.springframework.security.web.access.intercept.AuthorizationFilter@702dd0b0]
+2023-09-15T09:11:49.163+03:00  INFO 10944 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-15T09:11:49.207+03:00  INFO 10944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2023-09-15T09:11:49.221+03:00  INFO 10944 --- [restartedMain] c.i.s.SelfAssessmentApplication          : Started SelfAssessmentApplication in 43.29 seconds (process running for 44.056)
+2023-09-15T09:16:55.380+03:00  INFO 10944 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-15T09:16:55.381+03:00  INFO 10944 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-15T09:16:55.383+03:00  INFO 10944 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-09-15T09:17:49.828+03:00  INFO 10944 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-15T09:17:49.828+03:00 TRACE 10944 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@1b551fb4] for TypeConfiguration
+2023-09-15T09:17:49.828+03:00 DEBUG 10944 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@7747bff6] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@1b551fb4]
+2023-09-15T09:17:49.833+03:00  INFO 10944 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-15T09:17:49.838+03:00  INFO 10944 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-15T09:18:21.910+03:00  INFO 31620 --- [restartedMain] c.i.s.SelfAssessmentApplication          : Starting SelfAssessmentApplication using Java 17.0.6 with PID 31620 (D:\magistr\self_assessment\build\classes\java\main started by glumk in D:\magistr\self_assessment)
+2023-09-15T09:18:21.914+03:00  INFO 31620 --- [restartedMain] c.i.s.SelfAssessmentApplication          : The following 1 profile is active: "DEV"
+2023-09-15T09:18:21.960+03:00  INFO 31620 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-15T09:18:21.960+03:00  INFO 31620 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-15T09:18:21.982+03:00  INFO 31620 --- [restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file 'D:\magistr\self_assessment\compose.yaml'
+2023-09-15T09:18:23.825+03:00  INFO 31620 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Created
+2023-09-15T09:18:23.833+03:00  INFO 31620 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Starting
+2023-09-15T09:18:24.335+03:00  INFO 31620 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Started
+2023-09-15T09:18:24.335+03:00  INFO 31620 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Waiting
+2023-09-15T09:18:24.857+03:00  INFO 31620 --- [OutputReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container self_assessment-postgres-1  Healthy
+2023-09-15T09:18:26.288+03:00  INFO 31620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-15T09:18:26.344+03:00  INFO 31620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interfaces.
+2023-09-15T09:18:26.917+03:00  INFO 31620 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2023-09-15T09:18:26.930+03:00  INFO 31620 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-15T09:18:26.930+03:00  INFO 31620 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-15T09:18:26.993+03:00  INFO 31620 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-15T09:18:26.993+03:00  INFO 31620 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1312 ms
+2023-09-15T09:18:27.162+03:00  INFO 31620 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2023-09-15T09:18:27.163+03:00  INFO 31620 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2023-09-15T09:18:27.163+03:00  INFO 31620 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : 
+2023-09-15T09:18:27.355+03:00  INFO 31620 --- [restartedMain] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://127.0.0.1:15155/self_assessment_educational_programs_storage (PostgreSQL 15.4)
+2023-09-15T09:18:27.409+03:00  INFO 31620 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.028s)
+2023-09-15T09:18:27.449+03:00  INFO 31620 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2023-09-15T09:18:27.451+03:00  INFO 31620 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2023-09-15T09:18:27.524+03:00  INFO 31620 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-15T09:18:27.590+03:00  INFO 31620 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-09-15T09:18:27.592+03:00  INFO 31620 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-15T09:18:27.698+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BasicTypeReference@2e458dad
+2023-09-15T09:18:27.698+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BasicTypeReference@2e458dad
+2023-09-15T09:18:27.698+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BasicTypeReference@2e458dad
+2023-09-15T09:18:27.698+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.BasicTypeReference@4896ddaa
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.NumericBooleanConverter -> org.hibernate.type.BasicTypeReference@4896ddaa
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.BasicTypeReference@7051ca2e
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.TrueFalseConverter -> org.hibernate.type.BasicTypeReference@7051ca2e
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.BasicTypeReference@58c00b5a
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.YesNoConverter -> org.hibernate.type.BasicTypeReference@58c00b5a
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.BasicTypeReference@5a6add0a
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.BasicTypeReference@5a6add0a
+2023-09-15T09:18:27.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.BasicTypeReference@5a6add0a
+2023-09-15T09:18:27.700+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BasicTypeReference@24ef2060
+2023-09-15T09:18:27.700+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BasicTypeReference@24ef2060
+2023-09-15T09:18:27.700+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BasicTypeReference@24ef2060
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary_wrapper -> org.hibernate.type.BasicTypeReference@e5ddb67
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.BasicTypeReference@e5ddb67
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.BasicTypeReference@536c16ec
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BasicTypeReference@5d8282e
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BasicTypeReference@5d8282e
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.BasicTypeReference@19324a2b
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob_wrapper -> org.hibernate.type.BasicTypeReference@79542c89
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.BasicTypeReference@4a3c9e39
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.BasicTypeReference@4a3c9e39
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.BasicTypeReference@4a3c9e39
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.BasicTypeReference@ee15608
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.BasicTypeReference@ee15608
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.BasicTypeReference@ee15608
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.BasicTypeReference@50926ed
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.BasicTypeReference@50926ed
+2023-09-15T09:18:27.701+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.BasicTypeReference@50926ed
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.BasicTypeReference@5d6162a1
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.BasicTypeReference@5d6162a1
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.BasicTypeReference@5d6162a1
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.BasicTypeReference@7302e262
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.BasicTypeReference@7302e262
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.BasicTypeReference@7302e262
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BasicTypeReference@7757ab1c
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BasicTypeReference@7757ab1c
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BasicTypeReference@3ba5d555
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BasicTypeReference@3ba5d555
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.BasicTypeReference@6d07dcea
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.BasicTypeReference@6d07dcea
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.BasicTypeReference@6d07dcea
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration character_nchar -> org.hibernate.type.BasicTypeReference@97232da
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.BasicTypeReference@43b777a3
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.BasicTypeReference@43b777a3
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.BasicTypeReference@562d1dfd
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.BasicTypeReference@59e7b5e
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.BasicTypeReference@59e7b5e
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.BasicTypeReference@59e7b5e
+2023-09-15T09:18:27.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.BasicTypeReference@1de27dd5
+2023-09-15T09:18:27.703+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.BasicTypeReference@65900ba5
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.BasicTypeReference@5b6c201f
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.BasicTypeReference@2ddef4a7
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.BasicTypeReference@2ddef4a7
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.BasicTypeReference@235c281c
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.BasicTypeReference@235c281c
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.BasicTypeReference@46f4d2f1
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob_char_array -> org.hibernate.type.BasicTypeReference@7c227ee8
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob_character_array -> org.hibernate.type.BasicTypeReference@2683c607
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.BasicTypeReference@64dd0603
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob_character_array -> org.hibernate.type.BasicTypeReference@4de2333
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob_char_array -> org.hibernate.type.BasicTypeReference@6b64d87e
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.BasicTypeReference@536f88eb
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.BasicTypeReference@536f88eb
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.BasicTypeReference@5f8e719b
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.BasicTypeReference@5f8e719b
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.BasicTypeReference@2a3c06e2
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.BasicTypeReference@2a3c06e2
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.BasicTypeReference@67568cf3
+2023-09-15T09:18:27.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.BasicTypeReference@67568cf3
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.BasicTypeReference@48516822
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.BasicTypeReference@48516822
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTimeWithTimezone -> org.hibernate.type.BasicTypeReference@647fda1a
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@2ebedb61
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.BasicTypeReference@7ddcfb51
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.BasicTypeReference@7ddcfb51
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeUtc -> org.hibernate.type.BasicTypeReference@3e8f9cb0
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeWithTimezone -> org.hibernate.type.BasicTypeReference@243a3e71
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@7c878c44
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.BasicTypeReference@661be6f6
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.BasicTypeReference@661be6f6
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTimeWithTimezone -> org.hibernate.type.BasicTypeReference@24339c99
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@510fe7d8
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.BasicTypeReference@112ab411
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.BasicTypeReference@112ab411
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.BasicTypeReference@28bfcc94
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.BasicTypeReference@28bfcc94
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.BasicTypeReference@10d05a4e
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.BasicTypeReference@10d05a4e
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.BasicTypeReference@10d05a4e
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.BasicTypeReference@3e4f4eab
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.BasicTypeReference@3e4f4eab
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.BasicTypeReference@3e4f4eab
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.BasicTypeReference@7a81ef4f
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.BasicTypeReference@2c0c47e7
+2023-09-15T09:18:27.705+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration instant -> org.hibernate.type.BasicTypeReference@3e9c7a02
+2023-09-15T09:18:27.706+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.BasicTypeReference@3e9c7a02
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid -> org.hibernate.type.BasicTypeReference@7a62516c
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.BasicTypeReference@7a62516c
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration pg-uuid -> org.hibernate.type.BasicTypeReference@7a62516c
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.BasicTypeReference@f6c22f8
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.BasicTypeReference@41916f8d
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.BasicTypeReference@1c0051d7
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.BasicTypeReference@1c0051d7
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.BasicTypeReference@74018a0a
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Currency -> org.hibernate.type.BasicTypeReference@74018a0a
+2023-09-15T09:18:27.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.BasicTypeReference@74018a0a
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.BasicTypeReference@1a140d90
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.BasicTypeReference@1a140d90
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.BasicTypeReference@50b3f458
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.io.Serializable -> org.hibernate.type.BasicTypeReference@50b3f458
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.BasicTypeReference@4e238970
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.BasicTypeReference@4e238970
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZoneOffset -> org.hibernate.type.BasicTypeReference@368a1b64
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZoneOffset -> org.hibernate.type.BasicTypeReference@368a1b64
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.BasicTypeReference@cc8e8a8
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.BasicTypeReference@cc8e8a8
+2023-09-15T09:18:27.708+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.BasicTypeReference@4396cc5d
+2023-09-15T09:18:27.712+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.JavaObjectType@5fc59518
+2023-09-15T09:18:27.712+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.JavaObjectType@5fc59518
+2023-09-15T09:18:27.713+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration null -> org.hibernate.type.NullType@78a3d13d
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.BasicTypeReference@1fc013bc
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.BasicTypeReference@5b518373
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.BasicTypeReference@317fd3de
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.BasicTypeReference@5733d6f5
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.BasicTypeReference@48f1625c
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_time -> org.hibernate.type.BasicTypeReference@1fec3a2a
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.BasicTypeReference@5042fb2a
+2023-09-15T09:18:27.714+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.BasicTypeReference@198f0ba9
+2023-09-15T09:18:27.739+03:00  INFO 31620 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-15T09:18:27.884+03:00  INFO 31620 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-15T09:18:27.903+03:00  INFO 31620 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-15T09:18:27.940+03:00  INFO 31620 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3d58ee9
+2023-09-15T09:18:27.941+03:00  INFO 31620 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-15T09:18:28.014+03:00 DEBUG 31620 --- [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@6a30fb79) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@34bdaacf)
+2023-09-15T09:18:28.015+03:00 DEBUG 31620 --- [restartedMain] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2004, BlobTypeDescriptor(BLOB_BINDING)) replaced previous registration(BlobTypeDescriptor(DEFAULT))
+2023-09-15T09:18:28.015+03:00 DEBUG 31620 --- [restartedMain] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2005, ClobTypeDescriptor(CLOB_BINDING)) replaced previous registration(ClobTypeDescriptor(DEFAULT))
+2023-09-15T09:18:28.025+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration JAVA_OBJECT -> org.hibernate.type.JavaObjectType@4f92584a
+2023-09-15T09:18:28.025+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.JavaObjectType@4f92584a
+2023-09-15T09:18:28.025+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Type registration key [java.lang.Object] overrode previous entry : `org.hibernate.type.JavaObjectType@5fc59518`
+2023-09-15T09:18:28.025+03:00 DEBUG 31620 --- [restartedMain] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(3100, NumericTypeDescriptor) replaced previous registration(org.hibernate.dialect.PostgreSQLIntervalSecondJdbcType@6753a3f7)
+2023-09-15T09:18:28.029+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.OffsetDateTimeType -> basicType@1(java.time.OffsetDateTime,3003)
+2023-09-15T09:18:28.029+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> basicType@1(java.time.OffsetDateTime,3003)
+2023-09-15T09:18:28.029+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> basicType@1(java.time.OffsetDateTime,3003)
+2023-09-15T09:18:28.029+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.ZonedDateTimeType -> basicType@2(java.time.ZonedDateTime,3003)
+2023-09-15T09:18:28.029+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> basicType@2(java.time.ZonedDateTime,3003)
+2023-09-15T09:18:28.029+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> basicType@2(java.time.ZonedDateTime,3003)
+2023-09-15T09:18:28.030+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.OffsetTimeType -> basicType@3(java.time.OffsetTime,3007)
+2023-09-15T09:18:28.030+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> basicType@3(java.time.OffsetTime,3007)
+2023-09-15T09:18:28.030+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> basicType@3(java.time.OffsetTime,3007)
+2023-09-15T09:18:28.031+03:00 DEBUG 31620 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6c2efd4a] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@427e6277]
+2023-09-15T09:18:28.400+03:00  INFO 31620 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-15T09:18:29.577+03:00  INFO 31620 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-15T09:18:29.577+03:00 DEBUG 31620 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6c2efd4a] to SessionFactoryImplementor [org.hibernate.internal.SessionFactoryImpl@7361bb8a]
+2023-09-15T09:18:29.636+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists public.user alter column date_joined set data type timestamp(6) with time zone
+2023-09-15T09:18:29.640+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists public.user alter column last_login set data type timestamp(6) with time zone
+2023-09-15T09:18:29.659+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists authtoken_token alter column created set data type timestamp(6) with time zone
+2023-09-15T09:18:29.662+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column accessibility_certification_procedure set data type TEXT
+2023-09-15T09:18:29.666+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column appeal_procedure_and_results_of_control_measures set data type TEXT
+2023-09-15T09:18:29.669+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column clarity_criteria set data type TEXT
+2023-09-15T09:18:29.672+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column combating_violations_of_academic_integrity_solutions set data type TEXT
+2023-09-15T09:18:29.674+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column compliance_requirements set data type TEXT
+2023-09-15T09:18:29.675+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column description set data type TEXT
+2023-09-15T09:18:29.678+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column information_provision set data type TEXT
+2023-09-15T09:18:29.680+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column objectivity_procedures set data type TEXT
+2023-09-15T09:18:29.682+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column policies_and_standards_documents set data type TEXT
+2023-09-15T09:18:29.684+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column promoting_academic_integrity set data type TEXT
+2023-09-15T09:18:29.686+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column repeating_control_measures_procedures set data type TEXT
+2023-09-15T09:18:29.688+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists control_measures_and_academic_integrity alter column responding_to_violations_of_academic_integrity set data type TEXT
+2023-09-15T09:18:29.690+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column domestic_and_foreign_programs_experience set data type TEXT
+2023-09-15T09:18:29.693+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column goals set data type TEXT
+2023-09-15T09:18:29.695+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column industry_and_regional_context set data type TEXT
+2023-09-15T09:18:29.697+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column learning_experience_achieve set data type TEXT
+2023-09-15T09:18:29.699+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column market_trends set data type TEXT
+2023-09-15T09:18:29.702+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column national_qualifications_level set data type TEXT
+2023-09-15T09:18:29.704+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_academic set data type TEXT
+2023-09-15T09:18:29.707+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_employer set data type TEXT
+2023-09-15T09:18:29.709+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_other set data type TEXT
+2023-09-15T09:18:29.710+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column stakeholder_student set data type TEXT
+2023-09-15T09:18:29.713+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_design alter column uniqueness set data type TEXT
+2023-09-15T09:18:29.715+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists education_program_general_information alter column history_and_development set data type TEXT
+2023-09-15T09:18:29.717+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column educational_environment set data type TEXT
+2023-09-15T09:18:29.719+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column financial_resources set data type TEXT
+2023-09-15T09:18:29.722+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column policy_and_procedures_for_conflict_resolution set data type TEXT
+2023-09-15T09:18:29.724+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column safety_measures set data type TEXT
+2023-09-15T09:18:29.727+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column special_needs_people_education set data type TEXT
+2023-09-15T09:18:29.730+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_environment_and_material_resources alter column support_services set data type TEXT
+2023-09-15T09:18:29.734+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column academic_integrity_practices set data type TEXT
+2023-09-15T09:18:29.736+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column academic_integrity_preventing_violations set data type TEXT
+2023-09-15T09:18:29.738+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column description set data type TEXT
+2023-09-15T09:18:29.740+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column international_participation set data type TEXT
+2023-09-15T09:18:29.742+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column research_preparation set data type TEXT
+2023-09-15T09:18:29.744+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column research_projects_supervisors_participation set data type TEXT
+2023-09-15T09:18:29.746+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column research_support set data type TEXT
+2023-09-15T09:18:29.748+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column supervisor_relevance set data type TEXT
+2023-09-15T09:18:29.750+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program alter column teaching_preparation set data type TEXT
+2023-09-15T09:18:29.752+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column admission_requirements set data type TEXT
+2023-09-15T09:18:29.753+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column admission_requirements_applying_rules_practice set data type TEXT
+2023-09-15T09:18:29.755+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column education_results_doc_applying_rules_practice set data type TEXT
+2023-09-15T09:18:29.758+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column recognition_of_education_results_accessibility set data type TEXT
+2023-09-15T09:18:29.759+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_access alter column recognition_of_education_results_doc set data type TEXT
+2023-09-15T09:18:29.762+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column academic_freedom set data type TEXT
+2023-09-15T09:18:29.765+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column curriculum_update set data type TEXT
+2023-09-15T09:18:29.767+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column internationalization set data type TEXT
+2023-09-15T09:18:29.770+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column learning_and_research set data type TEXT
+2023-09-15T09:18:29.772+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column learning_and_teaching_methods set data type TEXT
+2023-09-15T09:18:29.775+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column learning_outcomes set data type TEXT
+2023-09-15T09:18:29.777+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists educational_program_learning_and_teaching alter column student_centered_approach set data type TEXT
+2023-09-15T09:18:29.779+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists flyway_schema_history alter column installed_on set data type timestamp(6) with time zone
+2023-09-15T09:18:29.782+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column components_scope_correlating_approach set data type TEXT
+2023-09-15T09:18:29.784+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column content_compliance set data type TEXT
+2023-09-15T09:18:29.786+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column dual_form_education_structure set data type TEXT
+2023-09-15T09:18:29.788+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column individual_learning_path set data type TEXT
+2023-09-15T09:18:29.791+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column relevant_professional_standard set data type TEXT
+2023-09-15T09:18:29.794+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column student_choice_right set data type TEXT
+2023-09-15T09:18:29.798+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column student_practical_training set data type TEXT
+2023-09-15T09:18:29.800+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists general_question_answer_educational_program_structure_n_content alter column student_soft_skills set data type TEXT
+2023-09-15T09:18:29.804+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column competency_level set data type TEXT
+2023-09-15T09:18:29.807+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column employers_engagement set data type TEXT
+2023-09-15T09:18:29.810+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column expert_involvement set data type TEXT
+2023-09-15T09:18:29.812+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column teacher_development set data type TEXT
+2023-09-15T09:18:29.814+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists human_resources alter column teaching_excellence set data type TEXT
+2023-09-15T09:18:29.817+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists op_development_perspectives alter column future_development set data type TEXT
+2023-09-15T09:18:29.819+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists op_development_perspectives alter column strong_weak_points set data type TEXT
+2023-09-15T09:18:29.821+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists program_educational_components_information alter column special_equipment_info set data type TEXT
+2023-09-15T09:18:29.823+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists program_learning_outcome_correspondence_matrix alter column name set data type TEXT
+2023-09-15T09:18:29.826+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column academic_community_members_engaging set data type TEXT
+2023-09-15T09:18:29.828+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column alumni_employment set data type TEXT
+2023-09-15T09:18:29.832+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column education_program_review set data type TEXT
+2023-09-15T09:18:29.835+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column educational_program_improvement set data type TEXT
+2023-09-15T09:18:29.838+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column involvement_of_employers set data type TEXT
+2023-09-15T09:18:29.841+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column involvement_of_students set data type TEXT
+2023-09-15T09:18:29.843+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column quality_issues set data type TEXT
+2023-09-15T09:18:29.845+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column regulatory_document set data type TEXT
+2023-09-15T09:18:29.848+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column structural_units_responsibilities_distribution set data type TEXT
+2023-09-15T09:18:29.850+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists quality_assurance alter column student_self_government set data type TEXT
+2023-09-15T09:18:29.852+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column info_access_restriction_type set data type TEXT
+2023-09-15T09:18:29.854+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column info_description set data type TEXT
+2023-09-15T09:18:29.856+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column restricted_info_description set data type TEXT
+2023-09-15T09:18:29.858+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists self_assessment_educational_program_restricted_info alter column restricting_access_grounds set data type TEXT
+2023-09-15T09:18:29.861+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists socialaccount_socialaccount alter column date_joined set data type timestamp(6) with time zone
+2023-09-15T09:18:29.863+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists socialaccount_socialaccount alter column extra_data set data type TEXT
+2023-09-15T09:18:29.866+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists socialaccount_socialaccount alter column last_login set data type timestamp(6) with time zone
+2023-09-15T09:18:29.869+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists teacher_summary_information alter column education_disciplines set data type TEXT
+2023-09-15T09:18:29.871+03:00 DEBUG 31620 --- [restartedMain] org.hibernate.SQL                        : alter table if exists teacher_summary_information alter column rationale set data type TEXT
+2023-09-15T09:18:30.443+03:00 TRACE 31620 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@7361bb8a] for TypeConfiguration
+2023-09-15T09:18:30.443+03:00  INFO 31620 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-15T09:18:30.773+03:00  INFO 31620 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-09-15T09:18:31.132+03:00  WARN 31620 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-15T09:18:31.149+03:00  WARN 31620 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e8b033f8-f49a-4111-b837-59f51f2ec589
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-09-15T09:18:31.237+03:00  INFO 31620 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6699851e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@597c04cb, org.springframework.security.web.context.SecurityContextHolderFilter@8ee2bb7, org.springframework.security.web.header.HeaderWriterFilter@7c74ee9e, org.springframework.security.web.csrf.CsrfFilter@d6ad1a1, org.springframework.security.web.authentication.logout.LogoutFilter@6832712a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1924cfc1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44a0f664, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69662f56, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2dbff43b, org.springframework.security.web.access.ExceptionTranslationFilter@23f9f2ea, org.springframework.security.web.access.intercept.AuthorizationFilter@5778e97b]
+2023-09-15T09:18:31.564+03:00  INFO 31620 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-15T09:18:31.609+03:00  INFO 31620 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2023-09-15T09:18:31.621+03:00  INFO 31620 --- [restartedMain] c.i.s.SelfAssessmentApplication          : Started SelfAssessmentApplication in 10.152 seconds (process running for 11.339)

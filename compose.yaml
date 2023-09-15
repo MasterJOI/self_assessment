@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=self_assessment_educational_programs_storage'
+      - 'POSTGRES_PASSWORD=debug'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5432'
