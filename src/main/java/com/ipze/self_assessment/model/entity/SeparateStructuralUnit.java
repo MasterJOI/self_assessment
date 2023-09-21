@@ -1,11 +1,12 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -15,11 +16,7 @@ import java.util.Set;
 @Table(name = "separate_structural_unit", indexes = {
         @Index(name = "separate_structural_unit_head_full_name_id_491f206d", columnList = "head_full_name_id")
 })
-public class SeparateStructuralUnit {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class SeparateStructuralUnit extends BaseAuditableEntity {
 
     @NotNull
     @Column(name = "ssu_id", nullable = false)

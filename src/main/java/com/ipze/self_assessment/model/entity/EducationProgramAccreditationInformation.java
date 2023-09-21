@@ -3,9 +3,9 @@ package com.ipze.self_assessment.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -17,7 +17,7 @@ import java.util.Set;
         @Index(name = "education_program_accredit_field_of_study_id_af2c4c0b", columnList = "field_of_study_id"),
         @Index(name = "education_program_accredit_guarantee_full_name_id_f721fbaf", columnList = "guarantee_full_name_id"),
         @Index(name = "education_program_accredit_specialty_id_9c56be99", columnList = "specialty_id"),
-        @Index(name = "education_program_accredit_structural_subdivision_id_18eebbfe", columnList = "structural_subdivision_id")
+        @Index(name = "education_program_accredit_subdivision_id_18eebbfe", columnList = "subdivision_id")
 })
 public class EducationProgramAccreditationInformation {
     @Id
@@ -117,14 +117,20 @@ public class EducationProgramAccreditationInformation {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "structural_subdivision_id", nullable = false)
-    private StructuralSubdivision structuralSubdivision;
+    @JoinColumn(name = "subdivision_id", nullable = false)
+    private Subdivision subdivision;
 
-    @OneToMany(mappedBy = "educationProgramAccreditationInformation")
-    private Set<EducationProgramAccreditationInformationLanguageOf> educationProgramAccreditationInformationLanguageOf = new LinkedHashSet<>();
+    @ManyToMany
+    @JoinTable(name = "education_program_accreditation_information_languages",
+            joinColumns = @JoinColumn(name = "educationProgramAccreditationInformation_id"),
+            inverseJoinColumns = @JoinColumn(name = "languages_id"))
+    private Set<Language> languages = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "educationProgramAccreditationInformation")
-    private Set<EducationProgramAccreditationInformationOtherEducation> educationProgramAccreditationInformationOtherEducations = new LinkedHashSet<>();
+    @ManyToMany
+    @JoinTable(name = "education_program_accreditation_information_subdivisions",
+            joinColumns = @JoinColumn(name = "educationProgramAccreditationInformation_id"),
+            inverseJoinColumns = @JoinColumn(name = "subdivisions_id"))
+    private Set<Subdivision> otherSubdivisions = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "educationProgramAccreditationInformation")
     private Set<GeneralInformation> generalInformations = new LinkedHashSet<>();
