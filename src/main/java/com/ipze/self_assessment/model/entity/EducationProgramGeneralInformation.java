@@ -1,11 +1,12 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -13,11 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "education_program_general_information")
-public class EducationProgramGeneralInformation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class EducationProgramGeneralInformation extends BaseAuditableEntity {
 
     @NotNull
     @Column(name = "history_and_development", nullable = false, columnDefinition = "TEXT")

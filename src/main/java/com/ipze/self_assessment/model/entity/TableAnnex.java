@@ -1,10 +1,11 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -15,11 +16,7 @@ import java.util.Set;
         @Index(name = "table_annex_program_educational_compon_b4ce18d9", columnList = "program_educational_components_information_id"),
         @Index(name = "table_annex_teacher_summary_information_id_ab7699df", columnList = "teacher_summary_information_id")
 })
-public class TableAnnex {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class TableAnnex extends BaseAuditableEntity {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -34,7 +31,10 @@ public class TableAnnex {
     @OneToMany(mappedBy = "tablesAnnex")
     private Set<InformationOnSelfAssessmentOfEducationalProgram> informationOnSelfAssessmentOfEducationalPrograms = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "tablesannex")
-    private Set<TableAnnexProgramLearningOutcomeCorrespondenceMatrix> tableAnnexProgramLearningOutcomeCorrespondenceMatrices = new LinkedHashSet<>();
+    @ManyToMany
+    @JoinTable(name = "table_annex_programLearningOutcomeCorrespondenceMatrixes",
+            joinColumns = @JoinColumn(name = "tableAnnex_id"),
+            inverseJoinColumns = @JoinColumn(name = "programLearningOutcomeCorrespondenceMatrixes_id"))
+    private Set<ProgramLearningOutcomeCorrespondenceMatrix> programLearningOutcomeCorrespondenceMatrixes = new LinkedHashSet<>();
 
 }

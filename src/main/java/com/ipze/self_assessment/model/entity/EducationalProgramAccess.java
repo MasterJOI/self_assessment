@@ -1,8 +1,10 @@
 package com.ipze.self_assessment.model.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,11 +15,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "educational_program_access")
-public class EducationalProgramAccess {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class EducationalProgramAccess extends BaseAuditableEntity {
 
     @Size(max = 200)
     @NotNull

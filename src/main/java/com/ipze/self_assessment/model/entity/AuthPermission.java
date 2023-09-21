@@ -1,11 +1,12 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -15,11 +16,7 @@ import java.util.Set;
 @Table(name = "auth_permission", indexes = {
         @Index(name = "auth_permission_codename_01ab375a_uniq", columnList = "codename", unique = true),
 })
-public class AuthPermission {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+public class AuthPermission extends BaseAuditableEntity {
 
     @Size(max = 255)
     @NotNull
@@ -31,10 +28,10 @@ public class AuthPermission {
     @Column(name = "codename", nullable = false, length = 100)
     private String codename;
 
-    @OneToMany(mappedBy = "permission")
-    private Set<AuthGroupPermission> authGroupPermissions = new LinkedHashSet<>();
+    @ManyToMany(mappedBy = "authPermissions")
+    private Set<User> users = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "permission")
-    private Set<UserPermission> userPermissions = new LinkedHashSet<>();
+    @ManyToMany(mappedBy = "authPermissions")
+    private Set<AuthGroup> authGroups = new LinkedHashSet<>();
 
 }

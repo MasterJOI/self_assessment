@@ -1,12 +1,13 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import java.time.LocalDate;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -16,14 +17,10 @@ import java.time.LocalDate;
         @Index(name = "student_user_id_key", columnList = "user_id", unique = true),
         @Index(name = "student_student_id_53c349bf_like", columnList = "student_id")
 })
-public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class Student extends BaseAuditableEntity {
 
     @Column(name = "birthdate")
-    private LocalDate birthdate;
+    private Date birthdate;
 
     @Size(max = 15)
     @NotNull
@@ -42,7 +39,7 @@ public class Student {
 
     @NotNull
     @Column(name = "enrollment_date", nullable = false)
-    private LocalDate enrollmentDate;
+    private Date enrollmentDate;
 
     @NotNull
     @Column(name = "student_type", nullable = false)

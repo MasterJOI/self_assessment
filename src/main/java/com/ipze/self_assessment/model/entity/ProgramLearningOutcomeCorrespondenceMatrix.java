@@ -1,12 +1,13 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,11 +17,7 @@ import java.util.Set;
 @Table(name = "program_learning_outcome_correspondence_matrix", indexes = {
         @Index(name = "program_learning_outcome_c_educational_component_id_0475d371", columnList = "educational_component_id")
 })
-public class ProgramLearningOutcomeCorrespondenceMatrix {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class ProgramLearningOutcomeCorrespondenceMatrix extends BaseAuditableEntity {
 
     @NotNull
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
@@ -41,7 +38,7 @@ public class ProgramLearningOutcomeCorrespondenceMatrix {
     @JoinColumn(name = "educational_component_id", nullable = false)
     private ProgramEducationalComponentsInformation educationalComponent;
 
-    @OneToMany(mappedBy = "programlearningoutcomecorrespondencematrix")
-    private Set<TableAnnexProgramLearningOutcomeCorrespondenceMatrix> tableAnnexProgramLearningOutcomeCorrespondenceMatrices = new LinkedHashSet<>();
+    @ManyToMany(mappedBy = "programLearningOutcomeCorrespondenceMatrixes")
+    private Set<TableAnnex> tableAnnexes = new LinkedHashSet<>();
 
 }

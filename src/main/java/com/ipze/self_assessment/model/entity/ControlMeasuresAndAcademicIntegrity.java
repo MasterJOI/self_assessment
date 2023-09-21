@@ -1,7 +1,9 @@
 package com.ipze.self_assessment.model.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,11 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "control_measures_and_academic_integrity")
-public class ControlMeasuresAndAcademicIntegrity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class ControlMeasuresAndAcademicIntegrity extends BaseAuditableEntity {
 
     @NotNull
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
