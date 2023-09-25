@@ -1,6 +1,6 @@
 
 CREATE TABLE auth_group
-
+(
     id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
@@ -803,16 +803,6 @@ ALTER TABLE student
     ADD CONSTRAINT FK_STUDENT_ON_USER FOREIGN KEY (user_id) REFERENCES public."user" (id);
 
 CREATE UNIQUE INDEX student_user_id_key ON student (user_id);
-
-ALTER TABLE teacher
-    ADD CONSTRAINT FK_TEACHER_ON_USER FOREIGN KEY (user_id) REFERENCES public."user" (id);
-
-CREATE INDEX Teacher_department_structural_subdivision_id_7c546132 ON teacher_department (structural_subdivision_id);
-
-ALTER TABLE teacher_department
-    ADD CONSTRAINT FK_TEACHER_DEPARTMENT_ON_TEACHER FOREIGN KEY (teacher_id) REFERENCES teacher (id);
-
-CREATE INDEX Teacher_department_teacher_id_f4d2f436 ON teacher_department (teacher_id);
 
 ALTER TABLE teacher
     ADD CONSTRAINT FK_TEACHER_ON_USER FOREIGN KEY (user_id) REFERENCES public."user" (id);
