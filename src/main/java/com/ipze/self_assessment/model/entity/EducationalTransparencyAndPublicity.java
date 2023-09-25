@@ -19,19 +19,16 @@ public class EducationalTransparencyAndPublicity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Size(max = 1500)
-    @NotNull
-    @Column(name = "regulatory_documents", nullable = false, length = 1500)
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "regulatory_documents")
     private String regulatoryDocuments;
 
-    @Size(max = 200)
-    @NotNull
-    @Column(name = "stakeholder_feedback_link", nullable = false, length = 200)
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "stakeholder_feedback_link")
     private String stakeholderFeedbackLink;
 
-    @Size(max = 200)
-    @NotNull
-    @Column(name = "educational_program_link", nullable = false, length = 200)
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "educational_program_link")
     private String educationalProgramLink;
 
     @OneToMany(mappedBy = "educationalTransparencyAndPublicity")

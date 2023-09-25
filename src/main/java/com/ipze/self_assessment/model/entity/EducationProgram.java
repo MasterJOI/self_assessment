@@ -28,10 +28,16 @@ public class EducationProgram {
     @Column(name = "name", nullable = false, length = 250)
     private String name;
 
+	@Size(max = 20)
+	@NotNull
+	@Column(name = "level", nullable = false, length = 20)
+	@Enumerated(EnumType.STRING)
+	private EducationLevel level;
+
     @OneToMany(mappedBy = "educationProgram")
     private Set<EducationProgramAccreditationInformation> educationProgramAccreditationInformations = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "educationprogram")
-    private Set<OtherHigherEducationProgramEducationProgram> otherHigherEducationProgramEducationPrograms = new LinkedHashSet<>();
+	@ManyToMany(mappedBy = "otherEducationPrograms")
+	private Set<GeneralInformation> generalInformations = new LinkedHashSet<>();
 
 }

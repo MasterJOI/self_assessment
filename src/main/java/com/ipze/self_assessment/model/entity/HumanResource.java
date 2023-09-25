@@ -3,9 +3,9 @@ package com.ipze.self_assessment.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -19,24 +19,24 @@ public class HumanResource {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "competency_level", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "competency_level")
     private String competencyLevel;
 
-    @NotNull
-    @Column(name = "employers_engagement", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "employers_engagement")
     private String employersEngagement;
 
-    @NotNull
-    @Column(name = "expert_involvement", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "expert_involvement")
     private String expertInvolvement;
 
-    @NotNull
-    @Column(name = "teacher_development", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "teacher_development")
     private String teacherDevelopment;
 
-    @NotNull
-    @Column(name = "teaching_excellence", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "teaching_excellence")
     private String teachingExcellence;
 
     @OneToMany(mappedBy = "humanResources")

@@ -1,7 +1,10 @@
 package com.ipze.self_assessment.model.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,40 +21,40 @@ public class EducationalProgram {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "description", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "description")
     private String description;
 
-    @NotNull
-    @Column(name = "research_preparation", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "research_preparation")
     private String researchPreparation;
 
-    @NotNull
-    @Column(name = "teaching_preparation", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "teaching_preparation")
     private String teachingPreparation;
 
-    @NotNull
-    @Column(name = "supervisor_relevance", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "supervisor_relevance")
     private String supervisorRelevance;
 
-    @NotNull
-    @Column(name = "research_support", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "research_support")
     private String researchSupport;
 
-    @NotNull
-    @Column(name = "international_participation", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "international_participation")
     private String internationalParticipation;
 
-    @NotNull
-    @Column(name = "research_projects_supervisors_participation", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "research_projects_supervisors_participation")
     private String researchProjectsSupervisorsParticipation;
 
-    @NotNull
-    @Column(name = "academic_integrity_practices", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "academic_integrity_practices")
     private String academicIntegrityPractices;
 
-    @NotNull
-    @Column(name = "academic_integrity_preventing_violations", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "academic_integrity_preventing_violations")
     private String academicIntegrityPreventingViolations;
 
     @OneToMany(mappedBy = "educationalProgram")

@@ -1,7 +1,10 @@
 package com.ipze.self_assessment.model.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,28 +21,28 @@ public class EducationalEnvironmentAndMaterialResource {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "financial_resources", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "financial_resources")
     private String financialResources;
 
-    @NotNull
-    @Column(name = "educational_environment", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "educational_environment")
     private String educationalEnvironment;
 
-    @NotNull
-    @Column(name = "safety_measures", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "safety_measures")
     private String safetyMeasures;
 
-    @NotNull
-    @Column(name = "support_services", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "support_services")
     private String supportServices;
 
-    @NotNull
-    @Column(name = "special_needs_people_education", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "special_needs_people_education")
     private String specialNeedsPeopleEducation;
 
-    @NotNull
-    @Column(name = "policy_and_procedures_for_conflict_resolution", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "policy_and_procedures_for_conflict_resolution")
     private String policyAndProceduresForConflictResolution;
 
     @OneToMany(mappedBy = "educationalEnvironmentAndMaterialResources")

@@ -1,5 +1,7 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
+import com.ipze.self_assessment.model.dto.enums.StudentType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,7 +48,8 @@ public class Student {
 
     @NotNull
     @Column(name = "student_type", nullable = false)
-    private Integer studentType;
+    @Enumerated(EnumType.STRING)
+    private StudentType studentType;
 
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)

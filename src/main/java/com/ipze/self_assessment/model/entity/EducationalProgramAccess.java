@@ -19,29 +19,28 @@ public class EducationalProgramAccess {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Size(max = 200)
-    @NotNull
-    @Column(name = "admission_rules_link", nullable = false, length = 200)
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "admission_rules_link")
     private String admissionRulesLink;
 
-    @NotNull
-    @Column(name = "admission_requirements", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "admission_requirements")
     private String admissionRequirements;
 
-    @NotNull
-    @Column(name = "recognition_of_education_results_accessibility", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "recognition_of_education_results_accessibility")
     private String recognitionOfEducationResultsAccessibility;
 
-    @NotNull
-    @Column(name = "admission_requirements_applying_rules_practice", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "admission_requirements_applying_rules_practice")
     private String admissionRequirementsApplyingRulesPractice;
 
-    @NotNull
-    @Column(name = "recognition_of_education_results_doc", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "recognition_of_education_results_doc")
     private String recognitionOfEducationResultsDoc;
 
-    @NotNull
-    @Column(name = "education_results_doc_applying_rules_practice", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "education_results_doc_applying_rules_practice")
     private String educationResultsDocApplyingRulesPractice;
 
     @OneToMany(mappedBy = "educationalProgramAccess")

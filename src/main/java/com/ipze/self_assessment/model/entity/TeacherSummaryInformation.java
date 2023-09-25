@@ -23,18 +23,13 @@ public class TeacherSummaryInformation {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Size(max = 200)
     @NotNull
-    @Column(name = "teacher_qualification", nullable = false, length = 200)
+    @Column(name = "teacher_qualification", nullable = false, columnDefinition = "TEXT")
     private String teacherQualification;
 
     @NotNull
     @Column(name = "teacher_experience", nullable = false)
     private Integer teacherExperience;
-
-    @NotNull
-    @Column(name = "education_disciplines", nullable = false, columnDefinition = "TEXT")
-    private String educationDisciplines;
 
     @NotNull
     @Column(name = "rationale", nullable = false, columnDefinition = "TEXT")
@@ -50,7 +45,14 @@ public class TeacherSummaryInformation {
     @JoinColumn(name = "teacher_full_name_id", nullable = false)
     private Teacher teacherFullName;
 
-    @OneToMany(mappedBy = "teacherSummaryInformation")
-    private Set<TableAnnex> tableAnnexes = new LinkedHashSet<>();
+
+	@ManyToMany(mappedBy = "teacherSummaryInformations")
+	private Set<TableAnnex> tableAnnexes = new LinkedHashSet<>();
+
+	@ManyToMany
+	@JoinTable(name = "teacher_summary_information_educational_components_informations",
+		joinColumns = @JoinColumn(name = "teacherSummaryInformation_id"),
+		inverseJoinColumns = @JoinColumn(name = "programEducationalComponentsInformations_id"))
+	private Set<ProgramEducationalComponentsInformation> programEducationalComponentsInformations = new LinkedHashSet<>();
 
 }

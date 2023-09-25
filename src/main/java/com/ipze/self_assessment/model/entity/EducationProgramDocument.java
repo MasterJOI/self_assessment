@@ -1,5 +1,8 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
+import com.ipze.self_assessment.model.dto.enums.DocumentType;
+import com.ipze.self_assessment.model.dto.enums.EducationLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,21 +22,30 @@ public class EducationProgramDocument {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Size(max = 100)
-    @NotNull
-    @Column(name = "education_program_doc", nullable = false, length = 100)
-    private String educationProgramDoc;
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "general_information_id", nullable = false)
+	private GeneralInformation generalInformation;
+
+	@NotNull
+	@Column(name = "type", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private DocumentType type;
 
     @Size(max = 100)
     @NotNull
-    @Column(name = "curriculum_doc", nullable = false, length = 100)
-    private String curriculumDoc;
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
 
     @Size(max = 100)
-    @Column(name = "reviews", length = 100)
-    private String reviews;
+    @NotNull
+    @Column(name = "content", nullable = false, length = 100)
+    private String content;
 
-    @OneToMany(mappedBy = "educationProgramDocument")
-    private Set<GeneralInformation> generalInformations = new LinkedHashSet<>();
+    @Size(max = 100)
+    @Column(name = "path", length = 100)
+    private String path;
 
+	@OneToMany(mappedBy = "educationProgramDocument")
+	private Set<ProgramEducationalComponentsInformation> educationalComponentsInformations = new LinkedHashSet<>();
 }

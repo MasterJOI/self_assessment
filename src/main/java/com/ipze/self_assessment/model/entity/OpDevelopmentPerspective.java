@@ -3,9 +3,9 @@ package com.ipze.self_assessment.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -19,12 +19,12 @@ public class OpDevelopmentPerspective {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "strong_weak_points", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "strong_weak_points")
     private String strongWeakPoints;
 
-    @NotNull
-    @Column(name = "future_development", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "future_development")
     private String futureDevelopment;
 
     @OneToMany(mappedBy = "educationalProgramDevelopmentPerspectives")

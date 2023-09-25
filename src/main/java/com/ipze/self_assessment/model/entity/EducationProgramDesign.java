@@ -3,9 +3,12 @@ package com.ipze.self_assessment.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -19,51 +22,62 @@ public class EducationProgramDesign {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "goals", nullable = false, columnDefinition = "TEXT")
-    private String goals;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "goals")
+	private String goals;
 
-    @NotNull
-    @Column(name = "uniqueness", nullable = false, columnDefinition = "TEXT")
-    private String uniqueness;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+	@NotNull
+	@Column(name = "uniqueness")
+	private String uniqueness;
 
-    @NotNull
-    @Column(name = "stakeholder_student", nullable = false, columnDefinition = "TEXT")
-    private String stakeholderStudent;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "stakeholder_student")
+	private String stakeholderStudent;
 
-    @NotNull
-    @Column(name = "stakeholder_employer", nullable = false, columnDefinition = "TEXT")
-    private String stakeholderEmployer;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "stakeholder_employer")
+	private String stakeholderEmployer;
 
-    @NotNull
-    @Column(name = "stakeholder_academic", nullable = false, columnDefinition = "TEXT")
-    private String stakeholderAcademic;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "stakeholder_academic")
+	private String stakeholderAcademic;
 
-    @NotNull
-    @Column(name = "stakeholder_other", nullable = false, columnDefinition = "TEXT")
-    private String stakeholderOther;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "stakeholder_other")
+	private String stakeholderOther;
 
-    @NotNull
-    @Column(name = "market_trends", nullable = false, columnDefinition = "TEXT")
-    private String marketTrends;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "market_trends")
+	private String marketTrends;
 
-    @NotNull
-    @Column(name = "industry_and_regional_context", nullable = false, columnDefinition = "TEXT")
-    private String industryAndRegionalContext;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "industry_and_regional_context")
+	private String industryAndRegionalContext;
 
-    @NotNull
-    @Column(name = "domestic_and_foreign_programs_experience", nullable = false, columnDefinition = "TEXT")
-    private String domesticAndForeignProgramsExperience;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+	@NotNull
+	@Column(name = "domestic_and_foreign_programs_experience")
+	private String domesticAndForeignProgramsExperience;
 
-    @NotNull
-    @Column(name = "learning_experience_achieve", nullable = false, columnDefinition = "TEXT")
-    private String learningExperienceAchieve;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+	@NotNull
+	@Column(name = "learning_experience_achieve")
+	private String learningExperienceAchieve;
 
-    @NotNull
-    @Column(name = "national_qualifications_level", nullable = false, columnDefinition = "TEXT")
-    private String nationalQualificationsLevel;
+	@Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+	@NotNull
+	@Column(name = "national_qualifications_level")
+	private String nationalQualificationsLevel;
 
-    @OneToMany(mappedBy = "educationalProgramDesign")
-    private Set<GeneralQuestionAnswer> generalQuestionAnswers = new LinkedHashSet<>();
+	@OneToMany(mappedBy = "educationalProgramDesign")
+	private Set<GeneralQuestionAnswer> generalQuestionAnswers = new LinkedHashSet<>();
 
 }

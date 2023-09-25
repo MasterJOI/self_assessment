@@ -1,7 +1,9 @@
 package com.ipze.self_assessment.model.entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,52 +20,52 @@ public class ControlMeasuresAndAcademicIntegrity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "description", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "description")
     private String description;
 
-    @NotNull
-    @Column(name = "clarity_criteria", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "clarity_criteria")
     private String clarityCriteria;
 
-    @NotNull
-    @Column(name = "information_provision", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "information_provision")
     private String informationProvision;
 
-    @NotNull
-    @Column(name = "compliance_requirements", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "compliance_requirements")
     private String complianceRequirements;
 
-    @NotNull
-    @Column(name = "accessibility_certification_procedure", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "accessibility_certification_procedure")
     private String accessibilityCertificationProcedure;
 
-    @NotNull
-    @Column(name = "objectivity_procedures", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "objectivity_procedures")
     private String objectivityProcedures;
 
-    @NotNull
-    @Column(name = "repeating_control_measures_procedures", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "repeating_control_measures_procedures")
     private String repeatingControlMeasuresProcedures;
 
-    @NotNull
-    @Column(name = "appeal_procedure_and_results_of_control_measures", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "appeal_procedure_and_results_of_control_measures")
     private String appealProcedureAndResultsOfControlMeasures;
 
-    @NotNull
-    @Column(name = "policies_and_standards_documents", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "policies_and_standards_documents")
     private String policiesAndStandardsDocuments;
 
-    @NotNull
-    @Column(name = "combating_violations_of_academic_integrity_solutions", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "combating_violations_of_academic_integrity_solutions")
     private String combatingViolationsOfAcademicIntegritySolutions;
 
-    @NotNull
-    @Column(name = "promoting_academic_integrity", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "promoting_academic_integrity")
     private String promotingAcademicIntegrity;
 
-    @NotNull
-    @Column(name = "responding_to_violations_of_academic_integrity", nullable = false, columnDefinition = "TEXT")
+    @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "responding_to_violations_of_academic_integrity")
     private String respondingToViolationsOfAcademicIntegrity;
 
     @OneToMany(mappedBy = "controlMeasuresAndAcademicIntegrity")

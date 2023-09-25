@@ -4,8 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -19,48 +20,45 @@ public class GeneralQuestionAnswerEducationalProgramStructureAndContent {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "ep_credits_amount", nullable = false)
+    @Column(name = "ep_credits_amount")
     private Integer epCreditsAmount;
 
-    @NotNull
-    @Column(name = "components_credits_amount", nullable = false)
+    @Column(name = "components_credits_amount")
     private Short componentsCreditsAmount;
 
-    @NotNull
-    @Column(name = "student_electives_credits_amount", nullable = false)
+    @Column(name = "student_electives_credits_amount")
     private Short studentElectivesCreditsAmount;
 
-    @NotNull
-    @Column(name = "content_compliance", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "content_compliance", columnDefinition = "TEXT")
     private String contentCompliance;
 
-    @NotNull
-    @Column(name = "individual_learning_path", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "individual_learning_path", columnDefinition = "TEXT")
     private String individualLearningPath;
 
-    @NotNull
-    @Column(name = "student_choice_right", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 3000)
+    @Column(name = "student_choice_right", columnDefinition = "TEXT")
     private String studentChoiceRight;
 
-    @NotNull
-    @Column(name = "student_practical_training", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "student_practical_training", columnDefinition = "TEXT")
     private String studentPracticalTraining;
 
-    @NotNull
-    @Column(name = "student_soft_skills", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "student_soft_skills", columnDefinition = "TEXT")
     private String studentSoftSkills;
 
-    @NotNull
-    @Column(name = "relevant_professional_standard", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "relevant_professional_standard", columnDefinition = "TEXT")
     private String relevantProfessionalStandard;
 
-    @NotNull
-    @Column(name = "components_scope_correlating_approach", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "components_scope_correlating_approach", columnDefinition = "TEXT")
     private String componentsScopeCorrelatingApproach;
 
-    @NotNull
-    @Column(name = "dual_form_education_structure", nullable = false, columnDefinition = "TEXT")
+	@Size(message = "Перевищено максимальну довжину поля.", max = 1600)
+    @Column(name = "dual_form_education_structure", columnDefinition = "TEXT")
     private String dualFormEducationStructure;
 
     @OneToMany(mappedBy = "educationalProgramStructureAndContent")
