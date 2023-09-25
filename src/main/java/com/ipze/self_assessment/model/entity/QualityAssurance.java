@@ -1,5 +1,6 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,11 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "quality_assurance")
-public class QualityAssurance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class QualityAssurance extends BaseAuditableEntity {
 
     @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
     @Column(name = "regulatory_document")

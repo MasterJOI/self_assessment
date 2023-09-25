@@ -5,9 +5,9 @@ import com.ipze.self_assessment.model.dto.enums.StudyCourseYear;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -15,11 +15,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "education_statistics")
-public class EducationStatistic {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class EducationStatistic extends BaseAuditableEntity {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

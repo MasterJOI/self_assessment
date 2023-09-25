@@ -1,5 +1,6 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 

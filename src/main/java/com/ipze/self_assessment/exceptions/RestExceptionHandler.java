@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.NoSuchElementException;
 
 @RestControllerAdvice
@@ -17,7 +17,7 @@ public class RestExceptionHandler extends AbstractExceptionHandler {
 
 	@ExceptionHandler(ResponseStatusException.class)
 	public ApiError handleResponseStatusException(ResponseStatusException exception, HttpServletRequest request, HttpServletResponse response) {
-		return setResponseStatusAndReturnError(exception, exception.getReason(), HttpStatus.valueOf(exception.getStatusCode().value()), request, response);
+		return setResponseStatusAndReturnError(exception, exception.getReason(), exception.getStatus(), request, response);
 	}
 
 	@ExceptionHandler(NoSuchElementException.class)

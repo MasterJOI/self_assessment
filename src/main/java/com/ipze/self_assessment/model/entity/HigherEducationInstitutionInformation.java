@@ -1,10 +1,11 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -15,11 +16,7 @@ import java.util.Set;
         @Index(name = "higher_education_institution_information_hei_id_b8abf83f", columnList = "hei_id"),
         @Index(name = "higher_education_institution_information_ssu_id_c2d84df8", columnList = "ssu_id")
 })
-public class HigherEducationInstitutionInformation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class HigherEducationInstitutionInformation extends BaseAuditableEntity {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -1,5 +1,6 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,11 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "op_development_perspectives")
-public class OpDevelopmentPerspective {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class OpDevelopmentPerspective extends BaseAuditableEntity {
 
     @Size(message = "Перевищено максимальну довжину поля.", max = 3000)
     @Column(name = "strong_weak_points")

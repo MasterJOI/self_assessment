@@ -1,12 +1,13 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -14,14 +15,10 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "teacher_summary_information", indexes = {
-        @Index(name = "teacher_summary_information_structural_subdivision_id_80909189", columnList = "structural_subdivision_id"),
+        @Index(name = "teacher_summary_information_subdivision_id_80909189", columnList = "subdivision_id"),
         @Index(name = "teacher_summary_information_teacher_full_name_id_6fd5f70f", columnList = "teacher_full_name_id")
 })
-public class TeacherSummaryInformation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class TeacherSummaryInformation extends BaseAuditableEntity {
 
     @NotNull
     @Column(name = "teacher_qualification", nullable = false, columnDefinition = "TEXT")
@@ -37,8 +34,8 @@ public class TeacherSummaryInformation {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "structural_subdivision_id", nullable = false)
-    private StructuralSubdivision structuralSubdivision;
+    @JoinColumn(name = "subdivision_id", nullable = false)
+    private Subdivision subdivision;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

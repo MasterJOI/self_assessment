@@ -15,11 +15,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "educational_program")
-public class EducationalProgram {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class EducationalProgram extends BaseAuditableEntity {
 
     @Size(message = "Перевищено максимальну довжину поля.", max = 1600)
     @Column(name = "description")

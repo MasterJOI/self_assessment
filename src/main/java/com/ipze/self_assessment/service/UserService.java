@@ -5,20 +5,25 @@ import com.ipze.self_assessment.model.dto.enums.StudentType;
 import com.ipze.self_assessment.model.entity.Student;
 import com.ipze.self_assessment.model.entity.Teacher;
 import com.ipze.self_assessment.model.entity.User;
+import com.ipze.self_assessment.repo.StudentRepository;
+import com.ipze.self_assessment.repo.SubdivisionRepository;
+import com.ipze.self_assessment.repo.TeacherRepository;
 import com.ipze.self_assessment.repo.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public User loadUserByEmail(String email) throws UsernameNotFoundException {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new EmailNotFoundException("User with email : " + email + " not found."));
+    private final StudentRepository studentRepository;
+    private final TeacherRepository teacherRepository;
+    private final SubdivisionRepository subdivisionRepository;
 
     public void registerNewUserAccount(RegistrationRequest registrationRequest) {
         String role = registrationRequest.getRole();

@@ -1,11 +1,12 @@
 package com.ipze.self_assessment.model.entity;
 
+import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -13,11 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "other_higher_education_program")
-public class OtherHigherEducationProgram {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class OtherHigherEducationProgram extends BaseAuditableEntity {
 
     @Size(max = 20)
     @NotNull
@@ -27,7 +24,10 @@ public class OtherHigherEducationProgram {
     @OneToMany(mappedBy = "otherHigherEducationProgram")
     private Set<GeneralInformation> generalInformations = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "otherhighereducationprogram")
-    private Set<OtherHigherEducationProgramEducationProgram> otherHigherEducationProgramEducationPrograms = new LinkedHashSet<>();
+    @ManyToMany
+    @JoinTable(name = "other_higher_education_program_educationPrograms",
+            joinColumns = @JoinColumn(name = "otherHigherEducationProgram_id"),
+            inverseJoinColumns = @JoinColumn(name = "educationPrograms_id"))
+    private Set<EducationProgram> educationPrograms = new LinkedHashSet<>();
 
 }
