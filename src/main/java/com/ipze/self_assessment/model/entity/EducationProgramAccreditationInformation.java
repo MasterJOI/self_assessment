@@ -1,7 +1,7 @@
 package com.ipze.self_assessment.model.entity;
 
 import com.ipze.self_assessment.model.BaseAuditableEntity;
-import com.ipze.self_assessment.model.dto.enums.GrantsProfessionalQualification;
+import com.ipze.self_assessment.model.enums.GrantsProfessionalQualification;
 import lombok.Getter;
 import lombok.Setter;
 

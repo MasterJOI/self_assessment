@@ -1,9 +1,9 @@
 package com.ipze.self_assessment.model.entity;
 
 import com.ipze.self_assessment.model.BaseAuditableEntity;
+import com.ipze.self_assessment.model.enums.EducationComponentType;
 import lombok.Getter;
 import lombok.Setter;
-
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,31 +17,30 @@ import java.util.Set;
 @Table(name = "program_educational_components_information")
 public class ProgramEducationalComponentsInformation extends BaseAuditableEntity {
 
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "component_name", nullable = false)
-    private String componentName;
+	@Column(name = "deleted", nullable = false)
+	private boolean deleted;
 
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "component_type", nullable = false)
-    private String componentType;
+	@Size(max = 255)
+	@NotNull
+	@Column(name = "component_name", nullable = false)
+	private String componentName;
 
-    @Size(max = 255)
-    @Column(name = "syllabus")
-    private String syllabus;
+	@NotNull
+	@Column(name = "component_type", nullable = false)
+	@Enumerated(EnumType.ORDINAL)
+	private EducationComponentType componentType;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "education_program_document_id", nullable = false)
 	private EducationProgramDocument educationProgramDocument;
 
-    @NotNull
-    @Column(name = "special_equipment_info", nullable = false, columnDefinition = "TEXT")
-    private String specialEquipmentInfo;
+	@NotNull
+	@Column(name = "special_equipment_info", nullable = false, columnDefinition = "TEXT")
+	private String specialEquipmentInfo;
 
-    @OneToMany(mappedBy = "educationalComponent")
-    private Set<ProgramLearningOutcomeCorrespondenceMatrix> programLearningOutcomeCorrespondenceMatrices = new LinkedHashSet<>();
+	@OneToMany(mappedBy = "educationalComponent")
+	private Set<EducationComponentCorrespondence> correspondences = new LinkedHashSet<>();
 
 	@ManyToMany(mappedBy = "programEducationalComponentsInformations")
 	private Set<TableAnnex> tableAnnexes = new LinkedHashSet<>();

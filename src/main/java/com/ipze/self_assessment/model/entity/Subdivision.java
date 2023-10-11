@@ -24,13 +24,11 @@ public class Subdivision extends BaseAuditableEntity {
     @OneToMany(mappedBy = "subdivision")
     private Set<EducationProgramAccreditationInformation> educationProgramAccreditationInformations = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "subdivision")
-    private Set<TeacherSummaryInformation> teacherSummaryInformations = new LinkedHashSet<>();
-
-    @ManyToMany(mappedBy = "subdivisions")
-    private Set<Teacher> teachers = new LinkedHashSet<>();
 
     @ManyToMany(mappedBy = "otherSubdivisions")
     private Set<EducationProgramAccreditationInformation> otherEducationProgramAccreditationInformations = new LinkedHashSet<>();
+
+	@OneToMany(mappedBy = "subdivision", orphanRemoval = true)
+	private Set<Teacher> teachers = new LinkedHashSet<>();
 
 }

@@ -43,16 +43,22 @@ public class Teacher extends BaseAuditableEntity {
     @Column(name = "hire_date", nullable = false)
     private Date hireDate;
 
+	@Column(name = "teacher_qualification", columnDefinition = "TEXT")
+	private String teacherQualification;
+
+	@Column(name = "teacher_position")
+	private String teacherPosition;
+
+	@Column(name = "teacher_experience")
+	private Integer teacherExperience;
+
+	@Column(name = "rationale", columnDefinition = "TEXT")
+	private String rationale;
+
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    @ManyToMany
-    @JoinTable(name = "teacher_subdivisions",
-            joinColumns = @JoinColumn(name = "teacher_id"),
-            inverseJoinColumns = @JoinColumn(name = "subdivisions_id"))
-    private Set<Subdivision> subdivisions = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "guaranteeFullName")
     private Set<EducationProgramAccreditationInformation> educationProgramAccreditationInformations = new LinkedHashSet<>();
@@ -63,7 +69,11 @@ public class Teacher extends BaseAuditableEntity {
     @OneToMany(mappedBy = "headFullName")
     private Set<SeparateStructuralUnit> separateStructuralUnits = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "teacherFullName")
+    @OneToMany(mappedBy = "teacher")
     private Set<TeacherSummaryInformation> teacherSummaryInformations = new LinkedHashSet<>();
+
+	@ManyToOne
+	@JoinColumn(name = "subdivision_id")
+	private Subdivision subdivision;
 
 }

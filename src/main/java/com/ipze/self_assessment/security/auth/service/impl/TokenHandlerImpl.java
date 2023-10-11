@@ -6,7 +6,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.ipze.self_assessment.exceptions.custom.NoSuchEntityException;
 import com.ipze.self_assessment.model.entity.User;
-import com.ipze.self_assessment.repo.UserRepository;
+import com.ipze.self_assessment.domains.user.repo.UserRepository;
 import com.ipze.self_assessment.security.auth.JwtUserFactory;
 import com.ipze.self_assessment.security.auth.service.TokenHandler;
 import lombok.RequiredArgsConstructor;

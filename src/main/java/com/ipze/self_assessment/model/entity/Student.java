@@ -1,7 +1,7 @@
 package com.ipze.self_assessment.model.entity;
 
 import com.ipze.self_assessment.model.BaseAuditableEntity;
-import com.ipze.self_assessment.model.dto.enums.StudentType;
+import com.ipze.self_assessment.model.enums.StudentType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,8 +15,7 @@ import java.util.Date;
 @Entity
 @Table(name = "student", indexes = {
         @Index(name = "student_student_id_key", columnList = "student_id", unique = true),
-        @Index(name = "student_user_id_key", columnList = "user_id", unique = true),
-        @Index(name = "student_student_id_53c349bf_like", columnList = "student_id")
+        @Index(name = "student_user_id_key", columnList = "user_id", unique = true)
 })
 public class Student extends BaseAuditableEntity {
 

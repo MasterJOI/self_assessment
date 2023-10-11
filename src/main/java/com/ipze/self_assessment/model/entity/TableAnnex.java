@@ -24,12 +24,12 @@ public class TableAnnex extends BaseAuditableEntity {
 	private Set<ProgramEducationalComponentsInformation> programEducationalComponentsInformations = new LinkedHashSet<>();
 
 	@ManyToMany
-	@JoinTable(name = "table_annex_programLearningOutcomeCorrespondenceMatrixes",
+	@JoinTable(name = "table_annex_study_result",
 		joinColumns = @JoinColumn(name = "tableAnnex_id"),
-		inverseJoinColumns = @JoinColumn(name = "programLearningOutcomeCorrespondenceMatrixes_id"))
-	private Set<ProgramLearningOutcomeCorrespondenceMatrix> programLearningOutcomeCorrespondenceMatrixes = new LinkedHashSet<>();
+		inverseJoinColumns = @JoinColumn(name = "study_result_id"))
+	private Set<StudyResult> studyResults = new LinkedHashSet<>();
 
-	@ManyToMany
+	@ManyToMany()
 	@JoinTable(name = "table_annex_teacherSummaryInformations",
 		joinColumns = @JoinColumn(name = "tableAnnex_id"),
 		inverseJoinColumns = @JoinColumn(name = "teacherSummaryInformations_id"))

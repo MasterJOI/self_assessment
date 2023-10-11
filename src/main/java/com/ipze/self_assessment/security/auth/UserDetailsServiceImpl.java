@@ -1,7 +1,7 @@
 package com.ipze.self_assessment.security.auth;
 
 import com.ipze.self_assessment.model.entity.User;
-import com.ipze.self_assessment.repo.UserRepository;
+import com.ipze.self_assessment.domains.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AccountStatusUserDetailsChecker;
 import org.springframework.security.core.userdetails.UserDetails;

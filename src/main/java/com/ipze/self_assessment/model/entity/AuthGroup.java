@@ -14,8 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "auth_group", indexes = {
-        @Index(name = "auth_group_name_key", columnList = "name", unique = true),
-        @Index(name = "auth_group_name_a6ea08ec_like", columnList = "name")
+        @Index(name = "auth_group_name_key", columnList = "name", unique = true)
 })
 public class AuthGroup extends BaseAuditableEntity {
 

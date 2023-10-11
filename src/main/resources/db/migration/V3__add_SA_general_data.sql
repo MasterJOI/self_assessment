@@ -28,8 +28,8 @@ VALUES ('d97d731a-c1e0-4a34-b10d-b5467dd6c028', 'https://registry.edbo.gov.ua/un
 
 /*Інформація про освітні програми ЗВО за відповідною спеціальністю*/
 INSERT INTO education_program (id, education_program_id, name, level)
-VALUES ('9f1902c4-f2f0-4c9e-81b2-d10b164860c9', 46344, 'Інженерія програмного забезпечення', 'first'),
-	   ('653bca5e-7866-4cd0-bba0-a8d546cf1d57', 4858, 'Програмне забезпечення розподілених систем', 'first');
+VALUES ('9f1902c4-f2f0-4c9e-81b2-d10b164860c9', 46344, 'Інженерія програмного забезпечення', 'FIRST'),
+	   ('653bca5e-7866-4cd0-bba0-a8d546cf1d57', 4858, 'Програмне забезпечення розподілених систем', 'FIRST');
 
 /*Галузь знань*/
 INSERT INTO field_of_study (id, field_of_study_code, field_of_study)
@@ -57,7 +57,7 @@ VALUES ('6d6fb063-8675-4f11-8521-e03c0e438bc6', 'Сертифікат про а�
 вулиця Політехнічна, 14а, корпус №14;
 вулиця Політехнічна, 41, корпус №18;
 вулиця Політехнічна, 6, корпус №5;
-проспект Перемоги, 37 к , корпус № 7.', '0', 184552, 'Декан', 'dychka@pzks.fpm.kpi.ua', '+38(044)-204-81-15', '+38(044)-204-91-13',
+проспект Перемоги, 37 к , корпус № 7.', 'UNKNOWN', 184552, 'Декан', 'dychka@pzks.fpm.kpi.ua', '+38(044)-204-81-15', '+38(044)-204-91-13',
 		'9f1902c4-f2f0-4c9e-81b2-d10b164860c9', '24b29589-5db8-4918-a872-784e5495e6e9',
 		'fe017aa6-9d3d-4ecc-865f-9d097cb7577a', '4959d5fb-95af-4356-b626-8ebdd1b186f0',
 		'b6c68abb-c09b-4d8d-a280-9fc84a7f2b3a');
@@ -113,13 +113,19 @@ VALUES ('653bca5e-7866-4cd0-bba0-a8d546cf1d57', '0c1ad6fd-c1d3-4ace-bcef-34251a1
 /*Інформація про контингент здобувачів вищої освіти на ОП станом на 1 жовтня поточного навчального року та набір на ОП*/
 INSERT INTO education_statistics (id, general_information_id, study_course_year, academic_year, enrollment, full_time,
 								  evening, part_time, foreign_full_time, foreign_evening, foreign_part_time)
-VALUES ('18fc0570-d87a-4026-aff3-19265ca30dca', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', '1', '2020', 16, 14, 1, 0, 1, 0, 0),
-	   ('05f856a3-955d-4aba-8398-75597983edcc', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', '2', '2019', 20, 12, 1, 5, 0, 0, 1),
-	   ('2c77153b-4425-4b6b-b68f-20bdb24a82d8', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', '3', '2018', 12, 7, 0, 0, 0, 0, 0),
-	   ('37fb74aa-5adb-11ee-8c99-0242ac120002', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', '4', '2017', 4, 5, 0, 2, 0, 0, 0);
+VALUES ('18fc0570-d87a-4026-aff3-19265ca30dca', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 0, '2020', 16, 14, 1, 0, 1, 0, 0),
+	   ('05f856a3-955d-4aba-8398-75597983edcc', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 1, '2019', 20, 12, 1, 5, 0, 0, 1),
+	   ('2c77153b-4425-4b6b-b68f-20bdb24a82d8', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 2, '2018', 12, 7, 0, 0, 0, 0, 0),
+	   ('37fb74aa-5adb-11ee-8c99-0242ac120002', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 3, '2017', 4, 5, 0, 2, 0, 0, 0);
 
 /*Поля для завантаження загальних документів*/
-INSERT INTO education_program_document (id, general_information_id, type, name, content)
-VALUES ('a79134d5-f54e-4d5c-9299-5d081a5ce10c', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'curriculum','121_NP_IPZ_2020.pdf', ''),
-	   ('e8f95e52-5aea-11ee-8c99-0242ac120002', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'education_program','121_ONPD_IPZ_2020.pdf', ''),
-	   ('ed47482a-5aea-11ee-8c99-0242ac120002', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'review','Рецензія PhD НАН.pdf', '');
+INSERT INTO education_program_document (id, type, name)
+VALUES ('a79134d5-f54e-4d5c-9299-5d081a5ce10c', 'CURRICULUM','121_NP_IPZ_2020.pdf'),
+	   ('e8f95e52-5aea-11ee-8c99-0242ac120002', 'EDUCATION_PROGRAM','121_ONPD_IPZ_2020.pdf'),
+	   ('ed47482a-5aea-11ee-8c99-0242ac120002', 'REVIEW','Рецензія PhD НАН.pdf');
+
+/*Додати документи до загальної інформації*/
+INSERT INTO general_information_education_program_documents (general_information_id, education_program_documents_id)
+VALUES ('0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'a79134d5-f54e-4d5c-9299-5d081a5ce10c'),
+	   ('0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'e8f95e52-5aea-11ee-8c99-0242ac120002'),
+	   ('0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'ed47482a-5aea-11ee-8c99-0242ac120002');

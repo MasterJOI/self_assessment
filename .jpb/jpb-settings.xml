@@ -7,7 +7,7 @@
   </component>
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit moduleName="self_assessment.main" name="Default" defaultSearchScope="Selected Entities">
+      <persistence-unit moduleName="self_assessment.main" name="Default">
         <packages>
           <package value="com.ipze.self_assessment" />
         </packages>

@@ -1,9 +1,9 @@
 package com.ipze.self_assessment.security.auth.controller;
 
-import com.ipze.self_assessment.model.dto.auth.AuthRequest;
-import com.ipze.self_assessment.model.dto.auth.RegistrationRequest;
+import com.ipze.self_assessment.security.auth.dto.AuthRequest;
+import com.ipze.self_assessment.security.auth.dto.RegistrationRequest;
 import com.ipze.self_assessment.security.auth.service.impl.AuthService;
-import com.ipze.self_assessment.util.ApiResponse;
+import com.ipze.self_assessment.model.dto.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;

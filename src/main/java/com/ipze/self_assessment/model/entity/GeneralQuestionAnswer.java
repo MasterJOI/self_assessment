@@ -65,7 +65,7 @@ public class GeneralQuestionAnswer extends BaseAuditableEntity {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "educational_program_structure_and_content_id", nullable = false)
-    private GeneralQuestionAnswerEducationalProgramStructureAndContent educationalProgramStructureAndContent;
+    private EducationalProgramStructureAndContent educationalProgramStructureAndContent;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

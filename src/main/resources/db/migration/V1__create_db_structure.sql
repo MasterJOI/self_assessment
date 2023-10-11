@@ -4,7 +4,6 @@ CREATE TABLE auth_group
     id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted    BOOLEAN                     NOT NULL DEFAULT FALSE,
     name       VARCHAR(150)                NOT NULL,
     CONSTRAINT pk_auth_group PRIMARY KEY (id)
 );
@@ -21,7 +20,6 @@ CREATE TABLE auth_permission
     id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted    BOOLEAN                     NOT NULL DEFAULT FALSE,
     name       VARCHAR(255)                NOT NULL,
     codename   VARCHAR(100)                NOT NULL,
     CONSTRAINT pk_auth_permission PRIMARY KEY (id)
@@ -32,20 +30,31 @@ CREATE TABLE control_measures_and_academic_integrity
     id                                                   UUID                        NOT NULL,
     created_at                                           TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                                           TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                              BOOLEAN                     NOT NULL DEFAULT FALSE,
-    description                                          TEXT                        NOT NULL,
-    clarity_criteria                                     TEXT                        NOT NULL,
-    information_provision                                TEXT                        NOT NULL,
-    compliance_requirements                              TEXT                        NOT NULL,
-    accessibility_certification_procedure                TEXT                        NOT NULL,
-    objectivity_procedures                               TEXT                        NOT NULL,
-    repeating_control_measures_procedures                TEXT                        NOT NULL,
-    appeal_procedure_and_results_of_control_measures     TEXT                        NOT NULL,
-    policies_and_standards_documents                     TEXT                        NOT NULL,
-    combating_violations_of_academic_integrity_solutions TEXT                        NOT NULL,
-    promoting_academic_integrity                         TEXT                        NOT NULL,
-    responding_to_violations_of_academic_integrity       TEXT                        NOT NULL,
+    description                                          VARCHAR(3000),
+    clarity_criteria                                     VARCHAR(1600),
+    information_provision                                VARCHAR(1600),
+    compliance_requirements                              VARCHAR(1600),
+    accessibility_certification_procedure                VARCHAR(1600),
+    objectivity_procedures                               VARCHAR(1600),
+    repeating_control_measures_procedures                VARCHAR(1600),
+    appeal_procedure_and_results_of_control_measures     VARCHAR(1600),
+    policies_and_standards_documents                     VARCHAR(1600),
+    combating_violations_of_academic_integrity_solutions VARCHAR(1600),
+    promoting_academic_integrity                         VARCHAR(1600),
+    responding_to_violations_of_academic_integrity       VARCHAR(1600),
     CONSTRAINT pk_control_measures_and_academic_integrity PRIMARY KEY (id)
+);
+
+CREATE TABLE education_component_correspondence
+(
+    id                       UUID                        NOT NULL,
+    created_at               TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    updated_at               TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    teaching_method          VARCHAR(1000)               NOT NULL,
+    assessment_form          VARCHAR(200)                NOT NULL,
+    educational_component_id UUID                        NOT NULL,
+    study_result_id          UUID,
+    CONSTRAINT pk_education_component_correspondence PRIMARY KEY (id)
 );
 
 CREATE TABLE education_program
@@ -53,7 +62,6 @@ CREATE TABLE education_program
     id                   UUID                        NOT NULL,
     created_at           TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at           TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted              BOOLEAN                     NOT NULL DEFAULT FALSE,
     education_program_id BIGINT                      NOT NULL,
     name                 VARCHAR(250)                NOT NULL,
     level                VARCHAR(20)                 NOT NULL,
@@ -65,7 +73,6 @@ CREATE TABLE education_program_accreditation_information
     id                                UUID                        NOT NULL,
     created_at                        TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                        TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                           BOOLEAN                     NOT NULL DEFAULT FALSE,
     specialty_licensing_info          VARCHAR(250)                NOT NULL,
     cycle                             VARCHAR(250)                NOT NULL,
     specialization                    VARCHAR(250),
@@ -108,32 +115,28 @@ CREATE TABLE education_program_design
     id                                       UUID                        NOT NULL,
     created_at                               TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                               TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                  BOOLEAN                     NOT NULL DEFAULT FALSE,
-    goals                                    TEXT                        NOT NULL,
-    uniqueness                               TEXT                        NOT NULL,
-    stakeholder_student                      TEXT                        NOT NULL,
-    stakeholder_employer                     TEXT                        NOT NULL,
-    stakeholder_academic                     TEXT                        NOT NULL,
-    stakeholder_other                        TEXT                        NOT NULL,
-    market_trends                            TEXT                        NOT NULL,
-    industry_and_regional_context            TEXT                        NOT NULL,
-    domestic_and_foreign_programs_experience TEXT                        NOT NULL,
-    learning_experience_achieve              TEXT                        NOT NULL,
-    national_qualifications_level            TEXT                        NOT NULL,
+    goals                                    VARCHAR(1600)               NOT NULL,
+    uniqueness                               VARCHAR(3000)               NOT NULL,
+    stakeholder_student                      VARCHAR(1600)               NOT NULL,
+    stakeholder_employer                     VARCHAR(1600)               NOT NULL,
+    stakeholder_academic                     VARCHAR(1600)               NOT NULL,
+    stakeholder_other                        VARCHAR(1600)               NOT NULL,
+    market_trends                            VARCHAR(1600)               NOT NULL,
+    industry_and_regional_context            VARCHAR(1600)               NOT NULL,
+    domestic_and_foreign_programs_experience VARCHAR(1600)               NOT NULL,
+    learning_experience_achieve              VARCHAR(3000)               NOT NULL,
+    national_qualifications_level            VARCHAR(3000)               NOT NULL,
     CONSTRAINT pk_education_program_design PRIMARY KEY (id)
 );
 
 CREATE TABLE education_program_document
 (
-    id                     UUID                        NOT NULL,
-    created_at             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    updated_at             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                BOOLEAN                     NOT NULL DEFAULT FALSE,
-    general_information_id UUID                        NOT NULL,
-    type                   VARCHAR(255)                NOT NULL,
-    name                   VARCHAR(100)                NOT NULL,
-    content                VARCHAR(100)                NOT NULL,
-    path                   VARCHAR(100),
+    id         UUID                        NOT NULL,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    type       VARCHAR(255)                NOT NULL,
+    name       VARCHAR(255)                NOT NULL,
+    path       VARCHAR(255),
     CONSTRAINT pk_education_program_document PRIMARY KEY (id)
 );
 
@@ -142,7 +145,6 @@ CREATE TABLE education_program_general_information
     id                      UUID                        NOT NULL,
     created_at              TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at              TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                 BOOLEAN                     NOT NULL DEFAULT FALSE,
     history_and_development TEXT                        NOT NULL,
     CONSTRAINT pk_education_program_general_information PRIMARY KEY (id)
 );
@@ -152,9 +154,8 @@ CREATE TABLE education_statistics
     id                     UUID                        NOT NULL,
     created_at             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                BOOLEAN                     NOT NULL DEFAULT FALSE,
     general_information_id UUID                        NOT NULL,
-    study_course_year      VARCHAR(255)                NOT NULL,
+    study_course_year      SMALLINT                    NOT NULL,
     academic_year          VARCHAR(11)                 NOT NULL,
     enrollment             INTEGER                     NOT NULL,
     full_time              INTEGER                     NOT NULL,
@@ -171,13 +172,12 @@ CREATE TABLE educational_environment_and_material_resources
     id                                            UUID                        NOT NULL,
     created_at                                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                       BOOLEAN                     NOT NULL DEFAULT FALSE,
-    financial_resources                           TEXT                        NOT NULL,
-    educational_environment                       TEXT                        NOT NULL,
-    safety_measures                               TEXT                        NOT NULL,
-    support_services                              TEXT                        NOT NULL,
-    special_needs_people_education                TEXT                        NOT NULL,
-    policy_and_procedures_for_conflict_resolution TEXT                        NOT NULL,
+    financial_resources                           VARCHAR(1600),
+    educational_environment                       VARCHAR(1600),
+    safety_measures                               VARCHAR(1600),
+    support_services                              VARCHAR(3000),
+    special_needs_people_education                VARCHAR(1600),
+    policy_and_procedures_for_conflict_resolution VARCHAR(3000),
     CONSTRAINT pk_educational_environment_and_material_resources PRIMARY KEY (id)
 );
 
@@ -186,16 +186,15 @@ CREATE TABLE educational_program
     id                                          UUID                        NOT NULL,
     created_at                                  TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                                  TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                     BOOLEAN                     NOT NULL DEFAULT FALSE,
-    description                                 TEXT                        NOT NULL,
-    research_preparation                        TEXT                        NOT NULL,
-    teaching_preparation                        TEXT                        NOT NULL,
-    supervisor_relevance                        TEXT                        NOT NULL,
-    research_support                            TEXT                        NOT NULL,
-    international_participation                 TEXT                        NOT NULL,
-    research_projects_supervisors_participation TEXT                        NOT NULL,
-    academic_integrity_practices                TEXT                        NOT NULL,
-    academic_integrity_preventing_violations    TEXT                        NOT NULL,
+    description                                 VARCHAR(1600),
+    research_preparation                        VARCHAR(3000),
+    teaching_preparation                        VARCHAR(3000),
+    supervisor_relevance                        VARCHAR(1600),
+    research_support                            VARCHAR(1600),
+    international_participation                 VARCHAR(1600),
+    research_projects_supervisors_participation VARCHAR(1600),
+    academic_integrity_practices                VARCHAR(1600),
+    academic_integrity_preventing_violations    VARCHAR(1600),
     CONSTRAINT pk_educational_program PRIMARY KEY (id)
 );
 
@@ -204,13 +203,12 @@ CREATE TABLE educational_program_access
     id                                             UUID                        NOT NULL,
     created_at                                     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                                     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                        BOOLEAN                     NOT NULL DEFAULT FALSE,
-    admission_rules_link                           VARCHAR(200)                NOT NULL,
-    admission_requirements                         TEXT                        NOT NULL,
-    recognition_of_education_results_accessibility TEXT                        NOT NULL,
-    admission_requirements_applying_rules_practice TEXT                        NOT NULL,
-    recognition_of_education_results_doc           TEXT                        NOT NULL,
-    education_results_doc_applying_rules_practice  TEXT                        NOT NULL,
+    admission_rules_link                           VARCHAR(1600),
+    admission_requirements                         VARCHAR(1600),
+    recognition_of_education_results_accessibility VARCHAR(1600),
+    admission_requirements_applying_rules_practice VARCHAR(1600),
+    recognition_of_education_results_doc           VARCHAR(1600),
+    education_results_doc_applying_rules_practice  VARCHAR(1600),
     CONSTRAINT pk_educational_program_access PRIMARY KEY (id)
 );
 
@@ -219,15 +217,33 @@ CREATE TABLE educational_program_learning_and_teaching
     id                            UUID                        NOT NULL,
     created_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                       BOOLEAN                     NOT NULL DEFAULT FALSE,
-    learning_and_teaching_methods TEXT                        NOT NULL,
-    student_centered_approach     TEXT                        NOT NULL,
-    academic_freedom              TEXT                        NOT NULL,
-    learning_outcomes             TEXT                        NOT NULL,
-    learning_and_research         TEXT                        NOT NULL,
-    curriculum_update             TEXT                        NOT NULL,
-    internationalization          TEXT                        NOT NULL,
+    learning_and_teaching_methods VARCHAR(1600),
+    student_centered_approach     VARCHAR(1600),
+    academic_freedom              VARCHAR(1600),
+    learning_outcomes             VARCHAR(1600),
+    learning_and_research         VARCHAR(3000),
+    curriculum_update             VARCHAR(3000),
+    internationalization          VARCHAR(1600),
     CONSTRAINT pk_educational_program_learning_and_teaching PRIMARY KEY (id)
+);
+
+CREATE TABLE educational_program_structure_n_content
+(
+    id                                    UUID                        NOT NULL,
+    created_at                            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    updated_at                            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    ep_credits_amount                     INTEGER,
+    components_credits_amount             SMALLINT,
+    student_electives_credits_amount      SMALLINT,
+    content_compliance                    TEXT,
+    individual_learning_path              TEXT,
+    student_choice_right                  TEXT,
+    student_practical_training            TEXT,
+    student_soft_skills                   TEXT,
+    relevant_professional_standard        TEXT,
+    components_scope_correlating_approach TEXT,
+    dual_form_education_structure         TEXT,
+    CONSTRAINT pk_educational_program_structure_n_content PRIMARY KEY (id)
 );
 
 CREATE TABLE educational_transparency_and_publicity
@@ -235,10 +251,9 @@ CREATE TABLE educational_transparency_and_publicity
     id                        UUID                        NOT NULL,
     created_at                TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                   BOOLEAN                     NOT NULL DEFAULT FALSE,
-    regulatory_documents      VARCHAR(1500)               NOT NULL,
-    stakeholder_feedback_link VARCHAR(200)                NOT NULL,
-    educational_program_link  VARCHAR(200)                NOT NULL,
+    regulatory_documents      VARCHAR(1600),
+    stakeholder_feedback_link VARCHAR(1600),
+    educational_program_link  VARCHAR(1600),
     CONSTRAINT pk_educational_transparency_and_publicity PRIMARY KEY (id)
 );
 
@@ -247,7 +262,6 @@ CREATE TABLE field_of_study
     id                  UUID                        NOT NULL,
     created_at          TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at          TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted             BOOLEAN                     NOT NULL DEFAULT FALSE,
     field_of_study_code INTEGER                     NOT NULL,
     field_of_study      VARCHAR(250)                NOT NULL,
     CONSTRAINT pk_field_of_study PRIMARY KEY (id)
@@ -258,7 +272,6 @@ CREATE TABLE general_information
     id                                                     UUID                        NOT NULL,
     created_at                                             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                                             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                                BOOLEAN                     NOT NULL DEFAULT FALSE,
     education_program_accreditation_information_id         UUID                        NOT NULL,
     education_program_general_information_id               UUID                        NOT NULL,
     hei_links_in_edebo_id                                  UUID                        NOT NULL,
@@ -266,6 +279,13 @@ CREATE TABLE general_information
     higher_education_institution_information_id            UUID                        NOT NULL,
     self_assessment_educational_program_restricted_info_id UUID                        NOT NULL,
     CONSTRAINT pk_general_information PRIMARY KEY (id)
+);
+
+CREATE TABLE general_information_education_program_documents
+(
+    education_program_documents_id UUID NOT NULL,
+    general_information_id         UUID NOT NULL,
+    CONSTRAINT pk_general_information_educationprogramdocuments PRIMARY KEY (education_program_documents_id, general_information_id)
 );
 
 CREATE TABLE general_information_education_programs
@@ -280,7 +300,6 @@ CREATE TABLE general_question_answer
     id                                                UUID                        NOT NULL,
     created_at                                        TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                                        TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                           BOOLEAN                     NOT NULL DEFAULT FALSE,
     control_measures_and_academic_integrity_id        UUID                        NOT NULL,
     educational_environment_and_material_resources_id UUID                        NOT NULL,
     educational_program_id                            UUID                        NOT NULL,
@@ -295,32 +314,11 @@ CREATE TABLE general_question_answer
     CONSTRAINT pk_general_question_answer PRIMARY KEY (id)
 );
 
-CREATE TABLE general_question_answer_educational_program_structure_n_content
-(
-    id                                    UUID                        NOT NULL,
-    created_at                            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    updated_at                            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                               BOOLEAN                     NOT NULL DEFAULT FALSE,
-    ep_credits_amount                     INTEGER                     NOT NULL,
-    components_credits_amount             SMALLINT                    NOT NULL,
-    student_electives_credits_amount      SMALLINT                    NOT NULL,
-    content_compliance                    TEXT                        NOT NULL,
-    individual_learning_path              TEXT                        NOT NULL,
-    student_choice_right                  TEXT                        NOT NULL,
-    student_practical_training            TEXT                        NOT NULL,
-    student_soft_skills                   TEXT                        NOT NULL,
-    relevant_professional_standard        TEXT                        NOT NULL,
-    components_scope_correlating_approach TEXT                        NOT NULL,
-    dual_form_education_structure         TEXT                        NOT NULL,
-    CONSTRAINT pk_generalquestionanswereducationalprogramstructurencontent PRIMARY KEY (id)
-);
-
 CREATE TABLE hei_links_in_edebo
 (
     id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted    BOOLEAN                     NOT NULL DEFAULT FALSE,
     website    VARCHAR(200)                NOT NULL,
     CONSTRAINT pk_hei_links_in_edebo PRIMARY KEY (id)
 );
@@ -330,7 +328,6 @@ CREATE TABLE higher_education_institution_area
     id                             UUID                        NOT NULL,
     created_at                     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                        BOOLEAN                     NOT NULL DEFAULT FALSE,
     all_rooms                      BIGINT                      NOT NULL,
     own_rooms                      BIGINT                      NOT NULL,
     other_rights_rooms             BIGINT                      NOT NULL,
@@ -347,7 +344,6 @@ CREATE TABLE higher_education_institution_information
     id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted    BOOLEAN                     NOT NULL DEFAULT FALSE,
     hei_id     UUID                        NOT NULL,
     ssu_id     UUID,
     CONSTRAINT pk_higher_education_institution_information PRIMARY KEY (id)
@@ -358,7 +354,6 @@ CREATE TABLE higher_educational_institution
     id                                  UUID                        NOT NULL,
     created_at                          TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                          TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                             BOOLEAN                     NOT NULL DEFAULT FALSE,
     hei_id                              BIGINT                      NOT NULL,
     higher_educational_institution_name VARCHAR(250)                NOT NULL,
     institution_code                    BIGINT                      NOT NULL,
@@ -372,12 +367,11 @@ CREATE TABLE human_resources
     id                   UUID                        NOT NULL,
     created_at           TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at           TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted              BOOLEAN                     NOT NULL DEFAULT FALSE,
-    competency_level     TEXT                        NOT NULL,
-    employers_engagement TEXT                        NOT NULL,
-    expert_involvement   TEXT                        NOT NULL,
-    teacher_development  TEXT                        NOT NULL,
-    teaching_excellence  TEXT                        NOT NULL,
+    competency_level     VARCHAR(1600),
+    employers_engagement VARCHAR(1600),
+    expert_involvement   VARCHAR(1600),
+    teacher_development  VARCHAR(1600),
+    teaching_excellence  VARCHAR(1600),
     CONSTRAINT pk_human_resources PRIMARY KEY (id)
 );
 
@@ -387,6 +381,7 @@ CREATE TABLE information_on_self_assessment_of_educational_program
     created_at                 TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                 TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     deleted                    BOOLEAN                     NOT NULL DEFAULT FALSE,
+    status                     VARCHAR(255)                NOT NULL DEFAULT 'PROGRESS',
     general_information_id     UUID                        NOT NULL,
     general_question_answer_id UUID                        NOT NULL,
     tables_annex_id            UUID                        NOT NULL,
@@ -398,7 +393,6 @@ CREATE TABLE language
     id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted    BOOLEAN                     NOT NULL DEFAULT FALSE,
     name       VARCHAR(50)                 NOT NULL,
     short_name VARCHAR(250)                NOT NULL,
     CONSTRAINT pk_language PRIMARY KEY (id)
@@ -409,37 +403,22 @@ CREATE TABLE op_development_perspectives
     id                 UUID                        NOT NULL,
     created_at         TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at         TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted            BOOLEAN                     NOT NULL DEFAULT FALSE,
-    strong_weak_points TEXT                        NOT NULL,
-    future_development TEXT                        NOT NULL,
+    strong_weak_points VARCHAR(3000),
+    future_development VARCHAR(1600),
     CONSTRAINT pk_op_development_perspectives PRIMARY KEY (id)
 );
 
 CREATE TABLE program_educational_components_information
 (
     id                            UUID                        NOT NULL,
+	deleted                       BOOLEAN                     NOT NULL DEFAULT FALSE,
     created_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                       BOOLEAN                     NOT NULL DEFAULT FALSE,
     component_name                VARCHAR(255)                NOT NULL,
-    component_type                VARCHAR(255)                NOT NULL,
-    syllabus                      VARCHAR(255),
+    component_type                SMALLINT                    NOT NULL,
     education_program_document_id UUID                        NOT NULL,
     special_equipment_info        TEXT                        NOT NULL,
     CONSTRAINT pk_program_educational_components_information PRIMARY KEY (id)
-);
-
-CREATE TABLE program_learning_outcome_correspondence_matrix
-(
-    id                       UUID                        NOT NULL,
-    created_at               TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    updated_at               TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                  BOOLEAN                     NOT NULL DEFAULT FALSE,
-    name                     TEXT                        NOT NULL,
-    teaching_method          VARCHAR(1000)               NOT NULL,
-    assessment_form          VARCHAR(200)                NOT NULL,
-    educational_component_id UUID                        NOT NULL,
-    CONSTRAINT pk_program_learning_outcome_correspondence_matrix PRIMARY KEY (id)
 );
 
 CREATE TABLE quality_assurance
@@ -447,17 +426,16 @@ CREATE TABLE quality_assurance
     id                                             UUID                        NOT NULL,
     created_at                                     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                                     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                                        BOOLEAN                     NOT NULL DEFAULT FALSE,
-    regulatory_document                            TEXT                        NOT NULL,
-    education_program_review                       TEXT                        NOT NULL,
-    involvement_of_students                        TEXT                        NOT NULL,
-    student_self_government                        TEXT                        NOT NULL,
-    involvement_of_employers                       TEXT                        NOT NULL,
-    alumni_employment                              TEXT                        NOT NULL,
-    quality_issues                                 TEXT                        NOT NULL,
-    educational_program_improvement                TEXT                        NOT NULL,
-    academic_community_members_engaging            TEXT                        NOT NULL,
-    structural_units_responsibilities_distribution TEXT                        NOT NULL,
+    regulatory_document                            VARCHAR(1600),
+    education_program_review                       VARCHAR(3000),
+    involvement_of_students                        VARCHAR(1600),
+    student_self_government                        VARCHAR(1600),
+    involvement_of_employers                       VARCHAR(1600),
+    alumni_employment                              VARCHAR(1600),
+    quality_issues                                 VARCHAR(3000),
+    educational_program_improvement                VARCHAR(3000),
+    academic_community_members_engaging            VARCHAR(1600),
+    structural_units_responsibilities_distribution VARCHAR(1600),
     CONSTRAINT pk_quality_assurance PRIMARY KEY (id)
 );
 
@@ -466,7 +444,6 @@ CREATE TABLE self_assessment_educational_program_restricted_info
     id                           UUID                        NOT NULL,
     created_at                   TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                   TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                      BOOLEAN                     NOT NULL DEFAULT FALSE,
     info_description             TEXT                        NOT NULL,
     info_access_restriction_type TEXT                        NOT NULL,
     restricted_info_description  TEXT                        NOT NULL,
@@ -479,7 +456,6 @@ CREATE TABLE separate_structural_unit
     id                            UUID                        NOT NULL,
     created_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                       BOOLEAN                     NOT NULL DEFAULT FALSE,
     ssu_id                        BIGINT                      NOT NULL,
     separate_structural_unit_name VARCHAR(250)                NOT NULL,
     ssu_code                      BIGINT                      NOT NULL,
@@ -493,7 +469,6 @@ CREATE TABLE specialty
     id             UUID                        NOT NULL,
     created_at     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted        BOOLEAN                     NOT NULL DEFAULT FALSE,
     specialty_code INTEGER                     NOT NULL,
     specialty      VARCHAR(250)                NOT NULL,
     CONSTRAINT pk_specialty PRIMARY KEY (id)
@@ -504,7 +479,6 @@ CREATE TABLE student
     id              UUID                        NOT NULL,
     created_at      TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at      TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted         BOOLEAN                     NOT NULL DEFAULT FALSE,
     birthdate       TIMESTAMP WITHOUT TIME ZONE,
     phone_number    VARCHAR(15)                 NOT NULL,
     address         VARCHAR(255)                NOT NULL,
@@ -515,12 +489,21 @@ CREATE TABLE student
     CONSTRAINT pk_student PRIMARY KEY (id)
 );
 
+CREATE TABLE study_result
+(
+    id             UUID                        NOT NULL,
+    created_at     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    updated_at     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    name           TEXT                        NOT NULL,
+    is_corresponds BOOLEAN                     NOT NULL,
+    CONSTRAINT pk_study_result PRIMARY KEY (id)
+);
+
 CREATE TABLE subdivision
 (
     id                     UUID                        NOT NULL,
     created_at             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at             TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted                BOOLEAN                     NOT NULL DEFAULT FALSE,
     responsible_department VARCHAR(255)                NOT NULL,
     CONSTRAINT pk_subdivision PRIMARY KEY (id)
 );
@@ -530,7 +513,6 @@ CREATE TABLE table_annex
     id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted    BOOLEAN                     NOT NULL DEFAULT FALSE,
     CONSTRAINT pk_table_annex PRIMARY KEY (id)
 );
 
@@ -541,11 +523,11 @@ CREATE TABLE table_annex_program_educational_components_informations
     CONSTRAINT pk_table_annex_programeducationalcomponentsinformations PRIMARY KEY (program_educational_components_informations_id, table_annex_id)
 );
 
-CREATE TABLE table_annex_program_learning_outcome_correspondence_matrixes
+CREATE TABLE table_annex_study_result
 (
-    program_learning_outcome_correspondence_matrixes_id UUID NOT NULL,
-    table_annex_id                                      UUID NOT NULL,
-    CONSTRAINT pk_table_annex_programlearningoutcomecorrespondencematrixes PRIMARY KEY (program_learning_outcome_correspondence_matrixes_id, table_annex_id)
+    study_result_id UUID NOT NULL,
+    table_annex_id  UUID NOT NULL,
+    CONSTRAINT pk_table_annex_study_result PRIMARY KEY (study_result_id, table_annex_id)
 );
 
 CREATE TABLE table_annex_teacher_summary_informations
@@ -557,37 +539,29 @@ CREATE TABLE table_annex_teacher_summary_informations
 
 CREATE TABLE teacher
 (
-    id           UUID                        NOT NULL,
-    created_at   TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    updated_at   TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted      BOOLEAN                     NOT NULL DEFAULT FALSE,
-    birthdate    TIMESTAMP WITHOUT TIME ZONE,
-    phone_number VARCHAR(15)                 NOT NULL,
-    address      VARCHAR(255)                NOT NULL,
-    teacher_id   VARCHAR(15)                 NOT NULL,
-    hire_date    TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    user_id      UUID                        NOT NULL,
+    id                    UUID                        NOT NULL,
+    created_at            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    updated_at            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    birthdate             TIMESTAMP WITHOUT TIME ZONE,
+    phone_number          VARCHAR(15)                 NOT NULL,
+    address               VARCHAR(255)                NOT NULL,
+    teacher_id            VARCHAR(15)                 NOT NULL,
+    hire_date             TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    teacher_qualification TEXT,
+    teacher_position      VARCHAR(255),
+    teacher_experience    INTEGER,
+    rationale             TEXT,
+    user_id               UUID                        NOT NULL,
+    subdivision_id        UUID,
     CONSTRAINT pk_teacher PRIMARY KEY (id)
-);
-
-CREATE TABLE teacher_subdivisions
-(
-    subdivisions_id UUID NOT NULL,
-    teacher_id      UUID NOT NULL,
-    CONSTRAINT pk_teacher_subdivisions PRIMARY KEY (subdivisions_id, teacher_id)
 );
 
 CREATE TABLE teacher_summary_information
 (
-    id                    UUID                        NOT NULL,
-    created_at            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    updated_at            TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted               BOOLEAN                     NOT NULL DEFAULT FALSE,
-    teacher_qualification TEXT                        NOT NULL,
-    teacher_experience    INTEGER                     NOT NULL,
-    rationale             TEXT                        NOT NULL,
-    subdivision_id        UUID                        NOT NULL,
-    teacher_full_name_id  UUID                        NOT NULL,
+    id         UUID                        NOT NULL,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    teacher_id UUID                        NOT NULL,
     CONSTRAINT pk_teacher_summary_information PRIMARY KEY (id)
 );
 
@@ -604,7 +578,6 @@ CREATE TABLE public."user"
     id           UUID                        NOT NULL,
     created_at   TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at   TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
-    deleted      BOOLEAN                     NOT NULL DEFAULT FALSE,
     password     VARCHAR(128)                NOT NULL,
     last_login   TIMESTAMP WITHOUT TIME ZONE,
     is_superuser BOOLEAN                     NOT NULL,
@@ -630,11 +603,11 @@ CREATE TABLE public.user_auth_permissions
     CONSTRAINT pk_user_authpermissions PRIMARY KEY (auth_permissions_id, user_id)
 );
 
-CREATE INDEX auth_group_name_a6ea08ec_like ON auth_group (name);
+CREATE UNIQUE INDEX auth_group_name_key ON auth_group (name);
 
 CREATE UNIQUE INDEX auth_permission_codename_01ab375a_uniq ON auth_permission (codename);
 
-CREATE INDEX student_student_id_53c349bf_like ON student (student_id);
+CREATE UNIQUE INDEX student_student_id_key ON student (student_id);
 
 CREATE INDEX teacher_teacher_id_d3af3ce2_like ON teacher (teacher_id);
 
@@ -655,6 +628,12 @@ ALTER TABLE education_program_accreditation_information
 
 CREATE INDEX education_program_accredit_guarantee_full_name_id_f721fbaf ON education_program_accreditation_information (guarantee_full_name_id);
 
+ALTER TABLE education_component_correspondence
+    ADD CONSTRAINT FK_EDUCATION_COMPONENT_CORRESPONDENCE_ON_EDUCATIONAL_COMPONENT FOREIGN KEY (educational_component_id) REFERENCES program_educational_components_information (id);
+
+ALTER TABLE education_component_correspondence
+    ADD CONSTRAINT FK_EDUCATION_COMPONENT_CORRESPONDENCE_ON_STUDY_RESULT FOREIGN KEY (study_result_id) REFERENCES study_result (id);
+
 ALTER TABLE education_program_accreditation_information
     ADD CONSTRAINT FK_EDUCATION_PROGRAM_ACCREDITATION_INFORMATION_ON_SPECIALTY FOREIGN KEY (specialty_id) REFERENCES specialty (id);
 
@@ -664,9 +643,6 @@ ALTER TABLE education_program_accreditation_information
     ADD CONSTRAINT FK_EDUCATION_PROGRAM_ACCREDITATION_INFORMATION_ON_SUBDIVISION FOREIGN KEY (subdivision_id) REFERENCES subdivision (id);
 
 CREATE INDEX education_program_accredit_subdivision_id_18eebbfe ON education_program_accreditation_information (subdivision_id);
-
-ALTER TABLE education_program_document
-    ADD CONSTRAINT FK_EDUCATION_PROGRAM_DOCUMENT_ON_GENERAL_INFORMATION FOREIGN KEY (general_information_id) REFERENCES general_information (id);
 
 ALTER TABLE education_statistics
     ADD CONSTRAINT FK_EDUCATION_STATISTICS_ON_GENERAL_INFORMATION FOREIGN KEY (general_information_id) REFERENCES general_information (id);
@@ -707,7 +683,7 @@ ALTER TABLE general_question_answer
 CREATE INDEX general_question_answer_educational_program_learni_97f7172e ON general_question_answer (educational_program_learning_and_teaching_id);
 
 ALTER TABLE general_question_answer
-    ADD CONSTRAINT FK_GENERALQUESTIONANSWER_ON_EDUCATIONALPROGRAMSTRUCTUREANDCONTE FOREIGN KEY (educational_program_structure_and_content_id) REFERENCES general_question_answer_educational_program_structure_n_content (id);
+    ADD CONSTRAINT FK_GENERALQUESTIONANSWER_ON_EDUCATIONALPROGRAMSTRUCTUREANDCONTE FOREIGN KEY (educational_program_structure_and_content_id) REFERENCES educational_program_structure_n_content (id);
 
 CREATE INDEX general_question_answer_educational_program_struct_2f47bf23 ON general_question_answer (educational_program_structure_and_content_id);
 
@@ -789,11 +765,6 @@ CREATE INDEX information_on_self_assess_general_question_answer_id_6feae976 ON i
 ALTER TABLE program_educational_components_information
     ADD CONSTRAINT FK_PROGRAMEDUCATIONALCOMPONENTSINFO_ON_EDUCATIONPROGRAMDOCUMENT FOREIGN KEY (education_program_document_id) REFERENCES education_program_document (id);
 
-ALTER TABLE program_learning_outcome_correspondence_matrix
-    ADD CONSTRAINT FK_PROGRAMLEARNINGOUTCOMECORRESPONDENCE_ON_EDUCATIONALCOMPONENT FOREIGN KEY (educational_component_id) REFERENCES program_educational_components_information (id);
-
-CREATE INDEX program_learning_outcome_c_educational_component_id_0475d371 ON program_learning_outcome_correspondence_matrix (educational_component_id);
-
 ALTER TABLE separate_structural_unit
     ADD CONSTRAINT FK_SEPARATE_STRUCTURAL_UNIT_ON_HEAD_FULL_NAME FOREIGN KEY (head_full_name_id) REFERENCES teacher (id);
 
@@ -805,19 +776,17 @@ ALTER TABLE student
 CREATE UNIQUE INDEX student_user_id_key ON student (user_id);
 
 ALTER TABLE teacher
+    ADD CONSTRAINT FK_TEACHER_ON_SUBDIVISION FOREIGN KEY (subdivision_id) REFERENCES subdivision (id);
+
+ALTER TABLE teacher
     ADD CONSTRAINT FK_TEACHER_ON_USER FOREIGN KEY (user_id) REFERENCES public."user" (id);
 
 CREATE UNIQUE INDEX teacher_user_id_key ON teacher (user_id);
 
 ALTER TABLE teacher_summary_information
-    ADD CONSTRAINT FK_TEACHER_SUMMARY_INFORMATION_ON_SUBDIVISION FOREIGN KEY (subdivision_id) REFERENCES subdivision (id);
+    ADD CONSTRAINT FK_TEACHER_SUMMARY_INFORMATION_ON_TEACHER FOREIGN KEY (teacher_id) REFERENCES teacher (id);
 
-CREATE INDEX teacher_summary_information_subdivision_id_80909189 ON teacher_summary_information (subdivision_id);
-
-ALTER TABLE teacher_summary_information
-    ADD CONSTRAINT FK_TEACHER_SUMMARY_INFORMATION_ON_TEACHER_FULL_NAME FOREIGN KEY (teacher_full_name_id) REFERENCES teacher (id);
-
-CREATE INDEX teacher_summary_information_teacher_full_name_id_6fd5f70f ON teacher_summary_information (teacher_full_name_id);
+CREATE INDEX teacher_summary_information_teacher_id_6fd5f70f ON teacher_summary_information (teacher_id);
 
 ALTER TABLE auth_group_auth_permissions
     ADD CONSTRAINT fk_autgroautper_on_auth_group FOREIGN KEY (auth_group_id) REFERENCES auth_group (id);
@@ -843,29 +812,29 @@ ALTER TABLE general_information_education_programs
 ALTER TABLE general_information_education_programs
     ADD CONSTRAINT fk_geninfedupro_on_general_information FOREIGN KEY (general_information_id) REFERENCES general_information (id);
 
+ALTER TABLE general_information_education_program_documents
+    ADD CONSTRAINT fk_geninfeduprodoc_on_education_program_document FOREIGN KEY (education_program_documents_id) REFERENCES education_program_document (id);
+
+ALTER TABLE general_information_education_program_documents
+    ADD CONSTRAINT fk_geninfeduprodoc_on_general_information FOREIGN KEY (general_information_id) REFERENCES general_information (id);
+
 ALTER TABLE table_annex_program_educational_components_informations
     ADD CONSTRAINT fk_tabannproeducominf_on_programeducationalcomponentsinformatio FOREIGN KEY (program_educational_components_informations_id) REFERENCES program_educational_components_information (id);
 
 ALTER TABLE table_annex_program_educational_components_informations
     ADD CONSTRAINT fk_tabannproeducominf_on_table_annex FOREIGN KEY (table_annex_id) REFERENCES table_annex (id);
 
-ALTER TABLE table_annex_program_learning_outcome_correspondence_matrixes
-    ADD CONSTRAINT fk_tabannproleaoutcormat_on_programlearningoutcomecorrespondenc FOREIGN KEY (program_learning_outcome_correspondence_matrixes_id) REFERENCES program_learning_outcome_correspondence_matrix (id);
+ALTER TABLE table_annex_study_result
+    ADD CONSTRAINT fk_tabannstures_on_study_result FOREIGN KEY (study_result_id) REFERENCES study_result (id);
 
-ALTER TABLE table_annex_program_learning_outcome_correspondence_matrixes
-    ADD CONSTRAINT fk_tabannproleaoutcormat_on_table_annex FOREIGN KEY (table_annex_id) REFERENCES table_annex (id);
+ALTER TABLE table_annex_study_result
+    ADD CONSTRAINT fk_tabannstures_on_table_annex FOREIGN KEY (table_annex_id) REFERENCES table_annex (id);
 
 ALTER TABLE table_annex_teacher_summary_informations
     ADD CONSTRAINT fk_tabannteasuminf_on_table_annex FOREIGN KEY (table_annex_id) REFERENCES table_annex (id);
 
 ALTER TABLE table_annex_teacher_summary_informations
     ADD CONSTRAINT fk_tabannteasuminf_on_teacher_summary_information FOREIGN KEY (teacher_summary_informations_id) REFERENCES teacher_summary_information (id);
-
-ALTER TABLE teacher_subdivisions
-    ADD CONSTRAINT fk_teasub_on_subdivision FOREIGN KEY (subdivisions_id) REFERENCES subdivision (id);
-
-ALTER TABLE teacher_subdivisions
-    ADD CONSTRAINT fk_teasub_on_teacher FOREIGN KEY (teacher_id) REFERENCES teacher (id);
 
 ALTER TABLE teacher_summary_information_educational_components_informations
     ADD CONSTRAINT fk_teasuminfeducominf_on_programeducationalcomponentsinformatio FOREIGN KEY (program_educational_components_informations_id) REFERENCES program_educational_components_information (id);

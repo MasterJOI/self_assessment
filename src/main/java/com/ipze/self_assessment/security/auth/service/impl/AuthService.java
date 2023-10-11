@@ -1,15 +1,15 @@
 package com.ipze.self_assessment.security.auth.service.impl;
 
 import com.ipze.self_assessment.exceptions.custom.UserAlreadyExistException;
-import com.ipze.self_assessment.model.dto.auth.AuthRequest;
-import com.ipze.self_assessment.model.dto.auth.RegistrationRequest;
-import com.ipze.self_assessment.model.dto.user.AuthResponse;
+import com.ipze.self_assessment.security.auth.dto.AuthRequest;
+import com.ipze.self_assessment.security.auth.dto.RegistrationRequest;
+import com.ipze.self_assessment.security.auth.dto.AuthResponse;
 import com.ipze.self_assessment.model.entity.User;
-import com.ipze.self_assessment.repo.UserRepository;
+import com.ipze.self_assessment.domains.user.repo.UserRepository;
 import com.ipze.self_assessment.security.auth.service.SecurityContextService;
 import com.ipze.self_assessment.security.auth.service.TokenHandler;
-import com.ipze.self_assessment.service.UserService;
-import com.ipze.self_assessment.util.ApiResponse;
+import com.ipze.self_assessment.domains.user.UserService;
+import com.ipze.self_assessment.model.dto.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

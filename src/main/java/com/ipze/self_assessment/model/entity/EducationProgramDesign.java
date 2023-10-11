@@ -3,6 +3,7 @@ package com.ipze.self_assessment.model.entity;
 import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "education_program_design")
 public class EducationProgramDesign extends BaseAuditableEntity {
 
@@ -76,5 +78,4 @@ public class EducationProgramDesign extends BaseAuditableEntity {
 
 	@OneToMany(mappedBy = "educationalProgramDesign")
 	private Set<GeneralQuestionAnswer> generalQuestionAnswers = new LinkedHashSet<>();
-
 }

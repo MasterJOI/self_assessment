@@ -1,15 +1,13 @@
 package com.ipze.self_assessment.model.entity;
 
 import com.ipze.self_assessment.model.BaseAuditableEntity;
-import com.ipze.self_assessment.model.dto.enums.StudyCourseYear;
+import com.ipze.self_assessment.model.enums.StudyCourseYear;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -24,7 +22,7 @@ public class EducationStatistic extends BaseAuditableEntity {
 
 	@NotNull
 	@Column(name = "study_course_year", nullable = false)
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private StudyCourseYear studyCourseYear;
 
 	@Size(max = 11)

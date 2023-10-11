@@ -27,15 +27,12 @@ public class GeneralInformation extends BaseAuditableEntity {
     @JoinColumn(name = "education_program_accreditation_information_id", nullable = false)
     private EducationProgramAccreditationInformation educationProgramAccreditationInformation;
 
-	@OneToMany(mappedBy = "educationProgramDocument")
-	private Set<EducationProgramDocument> educationProgramDocuments = new LinkedHashSet<>();
-
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "education_program_general_information_id", nullable = false)
     private EducationProgramGeneralInformation educationProgramGeneralInformation;
 
-	@OneToMany(mappedBy = "educationStatistics")
+	@OneToMany(mappedBy = "generalInformation")
 	private Set<EducationStatistic> educationStatistics = new LinkedHashSet<>();
 
     @NotNull
@@ -66,5 +63,11 @@ public class GeneralInformation extends BaseAuditableEntity {
 		joinColumns = @JoinColumn(name = "generalInformation_id"),
 		inverseJoinColumns = @JoinColumn(name = "educationPrograms_id"))
 	private Set<EducationProgram> otherEducationPrograms = new LinkedHashSet<>();
+
+	@ManyToMany
+	@JoinTable(name = "general_information_educationProgramDocuments",
+		joinColumns = @JoinColumn(name = "generalInformation_id"),
+		inverseJoinColumns = @JoinColumn(name = "educationProgramDocuments_id"))
+	private Set<EducationProgramDocument> educationProgramDocuments = new LinkedHashSet<>();
 
 }

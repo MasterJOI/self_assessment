@@ -1,6 +1,7 @@
 package com.ipze.self_assessment.model.entity;
 
 import com.ipze.self_assessment.model.BaseAuditableEntity;
+import com.ipze.self_assessment.model.enums.EducationProgramStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,14 @@ import javax.validation.constraints.NotNull;
         @Index(name = "information_on_self_assess_tables_annex_id_1b3c1ad5", columnList = "tables_annex_id")
 })
 public class InformationOnSelfAssessmentOfEducationalProgram extends BaseAuditableEntity {
+
+	@Column(name = "deleted", nullable = false)
+	private boolean deleted;
+
+	@NotNull
+	@Column(name = "status")
+	@Enumerated(EnumType.STRING)
+	private EducationProgramStatus status = EducationProgramStatus.PROGRESS;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
