@@ -1,19 +1,40 @@
 package com.ipze.self_assessment.domains.selfAssessment;
 
 import com.ipze.self_assessment.domains.educationalComponent.dto.ProgramEducationalComponentDto;
+import com.ipze.self_assessment.domains.selfAssessment.dto.general.*;
 import com.ipze.self_assessment.domains.selfAssessment.dto.sections.*;
-import com.ipze.self_assessment.domains.selfAssessment.dto.tables.StudyResultsMatrix.EducationComponentCorrespondenceDto;
-import com.ipze.self_assessment.domains.selfAssessment.dto.tables.StudyResultsMatrix.StudyResultDto;
+import com.ipze.self_assessment.domains.studyResult.dto.EducationComponentCorrespondenceDto;
+import com.ipze.self_assessment.domains.studyResult.dto.StudyResultDto;
 import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherInformationDto;
 import com.ipze.self_assessment.model.entity.*;
+import com.ipze.self_assessment.model.enums.StudyCourseYear;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
 import java.util.Map;
 
 @Mapper
 public interface SelfAssessmentInfoMapper {
 	SelfAssessmentInfoMapper MAPPER = Mappers.getMapper(SelfAssessmentInfoMapper.class);
+
+	//general
+
+	@Mapping(target = "specialty", ignore = true)
+	@Mapping(target = "fieldOfStudy", ignore = true)
+	@Mapping(target = "duration", ignore = true)
+	@Mapping(target = "educationProgramForms", ignore = true)
+	EducationProgramAccreditationInformationDto educationProgramAccreditationInformationToDto(EducationProgramAccreditationInformation information);
+
+	default Integer map(StudyCourseYear studyCourseYear) {
+		return studyCourseYear.ordinal() + 1;
+	}
+	EducationStatisticDto educationStatisticToDto(EducationStatistic educationStatistic);
+	HigherEducationInstitutionAreaDto higherEducationInstitutionAreaToDto(HigherEducationInstitutionArea higherEducationInstitutionArea);
+
+	HigherEducationalInstitutionDto higherEducationalInstitutionToDto(HigherEducationalInstitution higherEducationalInstitution);
+	SeparateStructuralUnitDto separateStructuralUnitToDto(SeparateStructuralUnit separateStructuralUnit);
+	SelfAssessmentEducationalProgramRestrictedInfoDto selfAssessmentEducationalProgramRestrictedInfoToDto(SelfAssessmentEducationalProgramRestrictedInfo restrictedInfo);
 
 	//1
 	EducationProgramDesignDto educationProgramDesignToDto(EducationProgramDesign programDesign);
@@ -109,8 +130,6 @@ public interface SelfAssessmentInfoMapper {
 	@Mapping(target = "subdivision", ignore = true)
 	@Mapping(target = "disciplines", ignore = true)
 	TeacherInformationDto teacherToDto(Teacher teacher);
-
-	StudyResultDto studyResultToDto(StudyResult studyResult);
 
 	EducationComponentCorrespondenceDto educationComponentCorrespondenceToDto(EducationComponentCorrespondence componentCorrespondence);
 

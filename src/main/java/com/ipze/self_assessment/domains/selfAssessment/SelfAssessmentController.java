@@ -1,9 +1,10 @@
 package com.ipze.self_assessment.domains.selfAssessment;
 
 import com.ipze.self_assessment.domains.educationProgramDocument.dto.DocumentToDownload;
-import com.ipze.self_assessment.domains.selfAssessment.dto.AccreditationCaseDto;
+import com.ipze.self_assessment.domains.selfAssessment.dto.accreditationCase.AccreditationCaseDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.SelfAssessmentInfoDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.SelfAssessmentInfoRequestBody;
+import com.ipze.self_assessment.domains.selfAssessment.dto.accreditationCase.AccreditationCaseRequestBodyDto;
 import com.ipze.self_assessment.model.dto.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -30,6 +31,11 @@ public class SelfAssessmentController {
 	@GetMapping("/{programId}")
 	public SelfAssessmentInfoDto getSelfAssessmentInfo(@PathVariable Long programId) {
 		return selfAssessmentService.getSelfAssessmentInfo(programId);
+	}
+
+	@PostMapping("/new")
+	public AccreditationCaseDto createAccreditationCase(@RequestBody AccreditationCaseRequestBodyDto body) {
+		return selfAssessmentService.createAccreditationCase(body);
 	}
 
 	@PutMapping("/{id}")

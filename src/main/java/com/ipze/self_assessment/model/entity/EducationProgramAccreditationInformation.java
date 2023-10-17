@@ -1,7 +1,6 @@
 package com.ipze.self_assessment.model.entity;
 
 import com.ipze.self_assessment.model.BaseAuditableEntity;
-import com.ipze.self_assessment.model.enums.GrantsProfessionalQualification;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +16,6 @@ import java.util.Set;
 @Table(name = "education_program_accreditation_information", indexes = {
 	@Index(name = "education_program_accredit_education_program_id_c213effa", columnList = "education_program_id"),
 	@Index(name = "education_program_accredit_field_of_study_id_af2c4c0b", columnList = "field_of_study_id"),
-	@Index(name = "education_program_accredit_guarantee_full_name_id_f721fbaf", columnList = "guarantee_full_name_id"),
 	@Index(name = "education_program_accredit_specialty_id_9c56be99", columnList = "specialty_id"),
 	@Index(name = "education_program_accredit_subdivision_id_18eebbfe", columnList = "subdivision_id")
 })
@@ -64,21 +62,11 @@ public class EducationProgramAccreditationInformation extends BaseAuditableEntit
 
 	@NotNull
 	@Column(name = "grants_professional_qualification", nullable = false)
-	@Enumerated(EnumType.STRING)
-	private GrantsProfessionalQualification grantsProfessionalQualification;
+	private Boolean grantsProfessionalQualification;
 
 	@Size(max = 255)
 	@Column(name = "professional_qualification")
 	private String professionalQualification;
-
-	@NotNull
-	@Column(name = "guarantee_id", nullable = false)
-	private Long guaranteeId;
-
-	@Size(max = 255)
-	@NotNull
-	@Column(name = "guarantee_position", nullable = false)
-	private String guaranteePosition;
 
 	@Size(max = 254)
 	@NotNull
@@ -106,8 +94,8 @@ public class EducationProgramAccreditationInformation extends BaseAuditableEntit
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "guarantee_full_name_id", nullable = false)
-	private Teacher guaranteeFullName;
+	@JoinColumn(name = "guarantee_id", nullable = false)
+	private Teacher guarantee;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

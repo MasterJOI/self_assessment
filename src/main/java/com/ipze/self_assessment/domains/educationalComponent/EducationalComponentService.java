@@ -1,6 +1,5 @@
 package com.ipze.self_assessment.domains.educationalComponent;
 
-import com.ipze.self_assessment.domains.educationProgramDocument.EducationProgramDocumentRepository;
 import com.ipze.self_assessment.domains.educationProgramDocument.EducationProgramDocumentService;
 import com.ipze.self_assessment.domains.educationProgramDocument.dto.DocumentToDownload;
 import com.ipze.self_assessment.domains.educationalComponent.dto.ProgramEducationalComponentDto;
@@ -34,7 +33,6 @@ import java.util.UUID;
 public class EducationalComponentService {
 
 	private final EducationalComponentRepository educationalComponentRepository;
-	private final EducationProgramDocumentRepository programDocumentRepository;
 	private final SelfAssessmentRepository selfAssessmentRepository;
 	private final TableAnnexRepository tableAnnexRepository;
 	private final EducationProgramDocumentService documentService;
@@ -93,7 +91,7 @@ public class EducationalComponentService {
 		educationComponentInfo.setEducationProgramDocument(document);
 
 		var entity = educationalComponentRepository.save(educationComponentInfo);
-		tableAnnex.getProgramEducationalComponentsInformations().add(educationComponentInfo);
+		tableAnnex.getProgramEducationalComponentsInformations().add(entity);
 
 		tableAnnexRepository.save(tableAnnex);
 
@@ -104,14 +102,7 @@ public class EducationalComponentService {
 	public DocumentToDownload download(UUID id) {
 		final EducationProgramDocument document = educationalComponentRepository.findById(id)
 			.orElseThrow(() -> new NoSuchEntityException("Файл з таким id не знайдено")).getEducationProgramDocument();
-		try {
-			final File file = new File(document.getPath());
-			final InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
-			return new DocumentToDownload(resource, file.length(), file.getName());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Файл не знайдено в файловій системі");
-		}
+		return documentService.download(document.getPath());
 	}
 
 	public ApiResponse deleteComponentInformation(UUID id) {

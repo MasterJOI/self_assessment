@@ -52,7 +52,7 @@ public class UserService {
 				student.setPhoneNumber(registrationRequest.getPhoneNumber());
 				student.setAddress(registrationRequest.getAddress());
 				student.setStudentId(s.getStudentId());
-				setStudentTypeFromInteger(student, s.getStudentType());
+				student.setStudentType(StudentType.valueOf(s.getStudentType()));
 				student.setEnrollmentDate(s.getEnrollmentDate());
 				studentRepository.save(student);
 			}
@@ -84,17 +84,6 @@ public class UserService {
 		teacherInformationDto.setName(user.getName());
 		teacherInformationDto.setSubdivision(user.getTeacher().getSubdivision().getResponsibleDepartment());
 		return teacherInformationDto;
-	}
-
-	public void setStudentTypeFromInteger(Student student, Integer studentTypeValue) {
-		StudentType studentType = switch (studentTypeValue) {
-			case 1 -> StudentType.BACHELOR;
-			case 2 -> StudentType.MASTER;
-			case 3 -> StudentType.DOCTORATE;
-			default ->
-				throw new IllegalArgumentException("Непідтримуване значення для studentType: " + studentTypeValue);
-		};
-		student.setStudentType(studentType);
 	}
 
 }

@@ -12,6 +12,7 @@ public class ProgramEducationalComponentDto {
 	private Integer componentType;
 	private String documentName;
 	private String documentPath;
+	private String documentHash;
 	private String specialEquipmentInfo;
 
 	public static ProgramEducationalComponentDto fromEntity(ProgramEducationalComponentsInformation information) {
@@ -21,6 +22,7 @@ public class ProgramEducationalComponentDto {
 			.componentType(information.getComponentType().ordinal())
 			.documentName(information.getEducationProgramDocument().getName())
 			.documentPath(information.getEducationProgramDocument().getPath())
+			.documentHash(information.getEducationProgramDocument().getHash())
 			.specialEquipmentInfo(information.getSpecialEquipmentInfo()).build();
 	}
 }

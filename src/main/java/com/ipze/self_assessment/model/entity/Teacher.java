@@ -60,7 +60,7 @@ public class Teacher extends BaseAuditableEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "guaranteeFullName")
+    @OneToMany(mappedBy = "guarantee")
     private Set<EducationProgramAccreditationInformation> educationProgramAccreditationInformations = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "headFullName")

@@ -1,15 +1,18 @@
 package com.ipze.self_assessment.domains.selfAssessment;
 
+import com.ipze.self_assessment.domains.educationProgramDocument.EducationProgramDocumentService;
 import com.ipze.self_assessment.domains.educationProgramDocument.dto.DocumentToDownload;
 import com.ipze.self_assessment.domains.educationalComponent.dto.ProgramEducationalComponentDto;
 import com.ipze.self_assessment.domains.educationalComponent.dto.ProgramEducationalComponentsInformationDto;
-import com.ipze.self_assessment.domains.selfAssessment.dto.AccreditationCaseDto;
+import com.ipze.self_assessment.domains.selfAssessment.dto.accreditationCase.AccreditationCaseDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.SelfAssessmentInfoDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.SelfAssessmentInfoRequestBody;
+import com.ipze.self_assessment.domains.selfAssessment.dto.accreditationCase.AccreditationCaseRequestBodyDto;
+import com.ipze.self_assessment.domains.selfAssessment.dto.general.GeneralInformationDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.sections.*;
-import com.ipze.self_assessment.domains.selfAssessment.dto.tables.StudyResultsMatrix.EducationComponentCorrespondenceDto;
-import com.ipze.self_assessment.domains.selfAssessment.dto.tables.StudyResultsMatrix.StudyResultDto;
-import com.ipze.self_assessment.domains.selfAssessment.dto.tables.StudyResultsMatrix.StudyResultsMatrixDto;
+import com.ipze.self_assessment.domains.studyResult.dto.EducationComponentCorrespondenceDto;
+import com.ipze.self_assessment.domains.studyResult.dto.StudyResultDto;
+import com.ipze.self_assessment.domains.studyResult.dto.StudyResultsMatrixDto;
 import com.ipze.self_assessment.domains.teacherInformation.dto.Discipline;
 import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherInformationDto;
 import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherSummaryInformationDto;
@@ -32,10 +35,18 @@ import java.util.stream.Collectors;
 public class SelfAssessmentService {
 
 	private final SelfAssessmentRepository selfAssessmentRepository;
+	private final EducationProgramDocumentService educationProgramDocumentService;
 
 	public List<AccreditationCaseDto> getAllSelfAssessmentInfo(Integer from, Integer count) {
 		var pageable = PageRequest.of(from / count, count);
 		return selfAssessmentRepository.getAllSelfAssessmentInfo(pageable).stream().map(this::mapCase).collect(Collectors.toList());
+	}
+
+	public AccreditationCaseDto createAccreditationCase(AccreditationCaseRequestBodyDto body) {
+		var selfAssessment = new InformationOnSelfAssessmentOfEducationalProgram();
+
+		var generalInformation = new GeneralInformation();
+		return null;
 	}
 
 	public AccreditationCaseDto mapCase(InformationOnSelfAssessmentOfEducationalProgram selfAssessmentInfo) {
@@ -57,6 +68,9 @@ public class SelfAssessmentService {
 			.orElseThrow(() -> new IdNotFoundException("Запис з id : " + programId + " не знайдено."));
 
 		var generalQuestionAnswer = selfAssessmentInfo.getGeneralQuestionAnswer();
+
+		//general
+		var generalInformation = GeneralInformationDto.fromEntity(selfAssessmentInfo.getGeneralInformation());
 
 		//1
 		var programDesignDto = SelfAssessmentInfoMapper.MAPPER.educationProgramDesignToDto(
@@ -131,11 +145,12 @@ public class SelfAssessmentService {
 		var studyResultsMatrixDto = new StudyResultsMatrixDto(
 			selfAssessmentInfo.getTablesAnnex()
 				.getStudyResults()
-				.stream().map(this::mapStudyResult).collect(Collectors.toList()));
+				.stream().map(StudyResultDto::fromEntity).collect(Collectors.toList()));
 
 		var selfAssessmentInfoDto = new SelfAssessmentInfoDto();
 
 		selfAssessmentInfoDto.setId(selfAssessmentInfo.getId().toString());
+		selfAssessmentInfoDto.setGeneralInformation(generalInformation);
 		selfAssessmentInfoDto.setProgramDesign(programDesignDto);
 		selfAssessmentInfoDto.setStructureAndContent(structureAndContentDto);
 		selfAssessmentInfoDto.setProgramAccess(programAccessDto);
@@ -153,23 +168,6 @@ public class SelfAssessmentService {
 		selfAssessmentInfoDto.setStudyResultsMatrix(studyResultsMatrixDto);
 
 		return selfAssessmentInfoDto;
-	}
-
-	public StudyResultDto mapStudyResult(StudyResult studyResult) {
-		var studyResultDto = SelfAssessmentInfoMapper.MAPPER.studyResultToDto(studyResult);
-		var componentCorrespondences = studyResult.getEducationComponentCorrespondences()
-			.stream()
-			.map(correspondence -> {
-				Discipline discipline = new Discipline(
-					correspondence.getEducationalComponent().getId().toString(),
-					correspondence.getEducationalComponent().getComponentName());
-				EducationComponentCorrespondenceDto dto = SelfAssessmentInfoMapper.MAPPER.educationComponentCorrespondenceToDto(correspondence);
-				dto.setDiscipline(discipline);
-				return dto;
-			}).toList();
-
-		studyResultDto.setComponentCorrespondences(componentCorrespondences);
-		return studyResultDto;
 	}
 
 	public ResponseEntity<ApiResponse> editSelfAssessmentInfo(UUID id, SelfAssessmentInfoRequestBody requestBody) {
@@ -316,9 +314,8 @@ public class SelfAssessmentService {
 	}
 
 	public DocumentToDownload generate(Long programId) {
-		var selfAssessmentInfo = selfAssessmentRepository.getSelfAssessmentInfoByProgramId(programId)
-			.orElseThrow(() -> new IdNotFoundException("Запис з id : " + programId + " не знайдено."));
+		SelfAssessmentInfoDto info = getSelfAssessmentInfo(programId);
 
-
+		return educationProgramDocumentService.generateSelfAssessmentDocument(info);
 	}
 }

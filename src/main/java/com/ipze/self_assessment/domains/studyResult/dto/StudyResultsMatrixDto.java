@@ -1,4 +1,4 @@
-package com.ipze.self_assessment.domains.selfAssessment.dto.tables.StudyResultsMatrix;
+package com.ipze.self_assessment.domains.studyResult.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
