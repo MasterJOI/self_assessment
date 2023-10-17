@@ -29,4 +29,8 @@ public class StudyResult extends BaseAuditableEntity {
 	@OneToMany(mappedBy = "studyResult", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<EducationComponentCorrespondence> educationComponentCorrespondences = new LinkedHashSet<>();
 
+	public void addItem(EducationComponentCorrespondence correspondence) {
+		educationComponentCorrespondences.add(correspondence);
+		correspondence.setStudyResult(this);
+	}
 }

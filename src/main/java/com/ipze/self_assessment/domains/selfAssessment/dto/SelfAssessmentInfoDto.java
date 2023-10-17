@@ -1,14 +1,16 @@
 package com.ipze.self_assessment.domains.selfAssessment.dto;
 
 import com.ipze.self_assessment.domains.educationalComponent.dto.ProgramEducationalComponentsInformationDto;
+import com.ipze.self_assessment.domains.selfAssessment.dto.general.GeneralInformationDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.sections.*;
-import com.ipze.self_assessment.domains.selfAssessment.dto.tables.StudyResultsMatrix.StudyResultsMatrixDto;
+import com.ipze.self_assessment.domains.studyResult.dto.StudyResultsMatrixDto;
 import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherSummaryInformationDto;
 import lombok.Data;
 
 @Data
 public class SelfAssessmentInfoDto {
 	private String id;
+	private GeneralInformationDto generalInformation;
 	private EducationProgramDesignDto programDesign;
 	private EducationalProgramStructureAndContentDto structureAndContent;
 	private EducationalProgramAccessDto programAccess;

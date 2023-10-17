@@ -1,4 +1,4 @@
-package com.ipze.self_assessment.domains.selfAssessment.dto;
+package com.ipze.self_assessment.domains.selfAssessment.dto.accreditationCase;
 
 import lombok.Data;
 

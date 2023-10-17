@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Page</title>
+	<style>
+		body {
+			text-indent: -0.5pt;
+			line-height: 91%;
+			font-family: Calibri;
+			font-size: 9.5pt
+		}
+
+		h1, h2, p {
+			margin: 0pt 0pt 0.2pt 0.5pt
+		}
+
+		li, table {
+			margin-top: 0pt;
+			margin-bottom: 0.2pt
+		}
+
+		h1 {
+			margin-right: 0.7pt;
+			margin-left: 0.5pt;
+			margin-bottom: 20.7pt;
+			text-indent: -0.5pt;
+			text-align: center;
+			page-break-inside: avoid;
+			page-break-after: avoid;
+			line-height: 110%;
+			font-size: 9.5pt;
+			font-weight: bold;
+			color: #000000
+		}
+
+		h2 {
+			margin-right: 0.7pt;
+			margin-left: 0.5pt;
+			margin-bottom: 5pt;
+			text-indent: -0.5pt;
+			page-break-inside: avoid;
+			page-break-after: avoid;
+			line-height: 110%;
+			font-size: 9.5pt;
+			font-weight: bold;
+			color: #000000
+		}
+
+		span  {
+			font-size: 9.5pt;
+			font-weight: bold;
+			color: #000000
+		}
+
+		.centered {
+			text-align: center;
+		}
+
+		.page-break {
+			page-break-before: always;
+		}
+
+		.bordered {
+			width: 100%;
+		}
+
+		table, th, td {
+			vertical-align: top;
+		}
+
+		.bordered,
+		.bordered th,
+		.bordered td {
+			border: 1px solid;
+			border-collapse: collapse;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<p><strong>&nbsp;</strong></p>
+<p class="centered"><strong>ВІДОМОСТІ</strong></p>
+<p class="centered">про самооцінювання освітньої програми</p>
+<p><strong>&nbsp;</strong></p>
+<table width="513">
+	<tbody>
+	<tr>
+		<td width="162">
+			<p>Заклад вищої освіти</p>
+		</td>
+		<td width="351">
+			<p><strong th:text="${hei.higherEducationalInstitutionName}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="162">
+			<p>Освітня програма</p>
+		</td>
+		<td width="351">
+			<p><strong th:text="${programInfo.educationProgramId + ' ' + programInfo.educationProgramName}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="162">
+			<p>Рівень вищої освіти</p>
+		</td>
+		<td width="351">
+			<p><strong th:text="${programInfo.cycle}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="162">
+			<p>Спеціальність</p>
+		</td>
+		<td width="351">
+			<p><strong th:text="${programInfo.specialtyCode + ' ' + programInfo.specialty}"></strong></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<p><strong>&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p>Відомості про самооцінювання є частиною акредитаційної справи, поданої до Національного агентства із забезпечення якості вищої освіти для акредитації зазначеної вище освітньої програми. Відповідальність за підготовку і зміст відомостей несе заклад вищої освіти, який подає програму на акредитацію.</p>
+<p>Детальніше про мету і порядок проведення акредитації можна дізнатися на вебсайті Національного агентства &ndash; https://naqa.gov.ua/</p>
+<p><em>&nbsp;</em></p>
+<p><em>Використані скорочення:</em></p>
+<table width="511">
+	<tbody>
+	<tr>
+		<td width="94">
+			<p><strong>ID</strong> <strong>&nbsp;</strong></p>
+		</td>
+		<td width="416">
+			<p>ідентифікатор</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="94">
+			<p><strong>ВСП</strong></p>
+		</td>
+		<td width="416">
+			<p>відокремлений структурний підрозділ</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="94">
+			<p><strong>ЄДЕБО</strong></p>
+		</td>
+		<td width="416">
+			<p>Єдина державна електронна база з питань освіти</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="94">
+			<p><strong>ЄКТС</strong></p>
+		</td>
+		<td width="416">
+			<p>Європейська кредитна трансферно-накопичувальна система</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="94">
+			<p><strong>ЗВО</strong></p>
+		</td>
+		<td width="416">
+			<p>заклад вищої освіти</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="94">
+			<p><strong>ОП</strong></p>
+		</td>
+		<td width="416">
+			<p>освітня програма</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="94">
+			<p><strong>&nbsp;</strong></p>
+		</td>
+		<td width="416">
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h1>Загальні відомості</h1>
+<p><strong>&nbsp;</strong></p>
+<ol>
+	<li><strong>Інформація про ЗВО (ВСП ЗВО)</strong></li>
+</ol>
+<p>&nbsp;</p>
+<table>
+	<tbody>
+	<tr>
+		<td>
+			<p>Реєстраційний номер ЗВО у ЄДЕБО</p>
+		</td>
+		<td>
+			<p><strong th:text="${hei.heiId}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Повна назва ЗВО</p>
+		</td>
+		<td>
+			<p><strong th:text="${hei.higherEducationalInstitutionName}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Ідентифікаційний код ЗВО</p>
+		</td>
+		<td>
+			<p><strong th:text="${hei.institutionCode}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ПІБ керівника ЗВО</p>
+		</td>
+		<td>
+			<p><strong th:text="${hei.headFullName}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Посилання на офіційний веб-сайт ЗВО</p>
+		</td>
+		<td>
+			<p><strong th:text="${hei.website}"></strong></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+
+<ol start="2">
+	<li><strong>Посилання на інформацію про ЗВО (ВСП ЗВО) у Реєстрі суб’єктів освітньої діяльності ЄДЕБО</strong></li>
+</ol>
+
+<p>&nbsp;</p>
+<p th:text="${website}"></p>
+<p>&nbsp;</p>
+<ol start="3">
+	<li><strong>Загальна інформація про ОП, яка подається на акредитацію</strong></li>
+</ol>
+<p>&nbsp;</p>
+<table width="559">
+	<tbody>
+	<tr>
+		<td width="198">
+			<p>ID освітньої програми в ЄДЕБО</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.educationProgramId}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Назва ОП</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.educationProgramName}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Галузь знань</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.fieldOfStudyCode + ' ' + programInfo.fieldOfStudy}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Спеціальність</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.specialtyCode + ' ' + programInfo.specialty}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Спеціалізація (за наявності)</p>
+		</td>
+		<td width="361" th:if="${programInfo.specialization != null}">
+			<p><strong th:text="${programInfo.specialization}"></strong></p>
+		</td>
+		<td width="361" th:if="${programInfo.specialization == null}">
+			<p><em>відсутня</em></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Рівень вищої освіти</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.cycle}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Тип освітньої програми</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.programType}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Вступ на освітню програму здійснюється на основі ступеня (рівня)</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.admissionDegree}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Структурний підрозділ (кафедра або інший підрозділ), відповідальний за реалізацію ОП</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.subdivisionName}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Інші навчальні структурні підрозділи (кафедра або інші підрозділи), залучені до реалізації ОП</p>
+		</td>
+		<td width="361" th:if="${programInfo.otherSubdivisions.size() > 0}">
+			<p><strong th:text="${programInfo.otherSubdivisions}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Місце (адреса) провадження освітньої діяльності за ОП</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${programInfo.location}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Освітня програма передбачає присвоєння професійної кваліфікації</p>
+		</td>
+		<td width="361" th:if="${programInfo.grantsProfessionalQualification}">
+			<p><em>передбачає</em></p>
+		</td>
+		<td width="361" th:if="${!programInfo.grantsProfessionalQualification}">
+			<p><em>не передбачає</em></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Професійна кваліфікація, яка присвоюється за ОП (за наявності)</p>
+		</td>
+		<td width="361" th:if="${programInfo.professionalQualification != null}">
+			<p><strong th:text="${programInfo.professionalQualification}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Мова (мови) викладання</p>
+		</td>
+		<td width="361">
+			<p>
+				<span th:each="lang, iterStat : ${programInfo.languages}" th:text="${!iterStat.last} ? ${lang} + ', ': ${lang}"></span>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>ID гаранта ОП у ЄДЕБО</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${guarantee.teacherId}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>ПІБ гаранта ОП</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${guarantee.name}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Посада гаранта ОП</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${guarantee.teacherPosition}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Корпоративна електронна адреса гаранта ОП</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${guarantee.guaranteeEmail}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Контактний телефон гаранта ОП</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${guarantee.guaranteeEmail}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="198">
+			<p>Додатковий телефон</p>
+		</td>
+		<td width="361">
+			<p><strong th:text="${guarantee.additionalPhone}"></strong></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<div class="page-break"></div>
+
+<table class="bordered">
+	<tr>
+		<th>
+			<p>Форми здобуття освіти на ОП</p>
+		</th>
+		<th>
+			<p>Термін навчання</p>
+		</th>
+	</tr>
+	<tr th:each="i, iterStat : ${#numbers.sequence(0, #lists.size(programInfo.duration) - 1)}">
+		<td th:text="${programInfo.educationProgramForms[i]}"></td>
+		<td th:text="${programInfo.duration[i]}"></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+
+<ol start="4">
+	<li><strong>Загальні відомості про ОП, історію її розроблення та впровадження </strong></li>
+</ol>
+
+<p th:text="${historyAndDevelopment}"></p>
+
+<ol start="5">
+	<li><strong>Інформація про контингент здобувачів вищої освіти на ОП станом на 1 жовтня поточного навчального року та набір на ОП</strong></li>
+</ol>
+<p>&nbsp;</p>
+
+<table class="bordered">
+	<tr>
+		<td rowspan="2">
+			<p>Рік</p>
+			<p>навчанн я</p>
+		</td>
+		<td rowspan="2">
+			<p>Навчальний рік, у якому</p>
+			<p>відбувся набір</p>
+			<p>здобувачів</p>
+			<p>відповідного року навчання</p>
+		</td>
+		<td rowspan="2">
+			<p>Обсяг набору на</p>
+			<p>ОП у відповідно му</p>
+			<p>навчально му році</p>
+		</td>
+		<td colspan="3">
+			<p>Контингент студентів на відповідному році навчання</p>
+			<p>станом на 1 жовтня поточного навчального року</p>
+		</td>
+		<td colspan="3">
+			<p>У тому числі іноземців</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ОД</p>
+		</td>
+		<td>
+			<p>ОВ</p>
+		</td>
+		<td>
+			<p>З</p>
+		</td>
+		<td>
+			<p>ОД</p>
+		</td>
+		<td>
+			<p>ОВ</p>
+		</td>
+		<td>
+			<p>З</p>
+		</td>
+	</tr>
+	<tr th:each="stat : ${educationStatistic}">
+		<td th:text="${stat.studyCourseYear + ' ' +'курс'}"></td>
+		<td th:text="${stat.academicYear}"></td>
+		<td th:text="${stat.enrollment}"></td>
+		<td th:text="${stat.fullTime}"></td>
+		<td th:text="${stat.evening}"></td>
+		<td th:text="${stat.partTime}"></td>
+		<td th:text="${stat.foreignFullTime}"></td>
+		<td th:text="${stat.foreignEvening}"></td>
+		<td th:text="${stat.foreignPartTime}"></td>
+	</tr>
+</table>
+
+<p>&nbsp;</p>
+<p><em>Умовні позначення: </em>&nbsp;ОД &ndash; очна денна; ОВ &ndash; очна вечірня; З &ndash; заочна; Дс &ndash; дистанційна; М &ndash; мережева; Дл &ndash; дуальна.</p>
+<p>&nbsp;</p>
+<ol start="6">
+	<li><strong>Інформація про інші ОП ЗВО за відповідною спеціальністю</strong></li>
+</ol>
+<p>&nbsp;</p>
+<table class="bordered">
+	<tbody>
+	<tr>
+		<td>
+			<p><strong>Рівень вищої освіти</strong></p>
+		</td>
+		<td>
+			<p><strong>Інформація про освітні програми</strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>початковий рівень (короткий цикл)</p>
+		</td>
+		<td>
+			<p><em>програми відсутні</em></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>перший (бакалаврський) рівень</p>
+		</td>
+		<td>
+			<p th:each="program : ${otherPrograms.bakalavr}"><strong th:text="${program}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>другий (магістерський) рівень</p>
+		</td>
+		<td>
+			<p th:each="program : ${otherPrograms.magistr}"><strong th:text="${program}"></strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>третій (освітньо-науковий/освітньо-творчий) рівень</p>
+		</td>
+		<td>
+			<p th:each="program : ${otherPrograms.philosophy}"><strong th:text="${program}"></strong></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+<ol start="7">
+	<li><strong>Інформація про площі приміщень ЗВО станом на момент подання відомостей про самооцінювання, кв. м.</strong></li>
+</ol>
+<p><strong>&nbsp;</strong></p>
+<table class="bordered">
+	<tbody>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td>
+			<p><strong>Загальна площа</strong></p>
+		</td>
+		<td>
+			<p><strong>Навчальна площа</strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Усі приміщення ЗВО</p>
+		</td>
+		<td>
+			<p th:text="${area.allRooms}"></p>
+		</td>
+		<td>
+			<p th:text="${area.educationalAllRooms}"></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Власні приміщення ЗВО (на праві власності, господарського відання або оперативного управління)</p>
+		</td>
+		<td>
+			<p th:text="${area.ownRooms}"></p>
+		</td>
+		<td>
+			<p th:text="${area.educationalOwnRooms}"></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Приміщення, які використовуються на іншому праві, аніж право власності, господарського відання або оперативного управління (оренда, безоплатне користування тощо)</p>
+		</td>
+		<td>
+			<p th:text="${area.otherRightsRooms}"></p>
+		</td>
+		<td>
+			<p th:text="${area.educationalOtherRightsRooms}"></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Приміщення, здані в оренду</p>
+		</td>
+		<td>
+			<p th:text="${area.rentedRooms}"></p>
+		</td>
+		<td>
+			<p th:text="${area.educationalRentedRooms}"></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+<p><em>Примітка. </em>&nbsp;Для ЗВО із ВСП інформація зазначається:</p>
+<p>&nbsp;щодо ОП, яка реалізується у базовому ЗВО &ndash; без урахування приміщень ВСП;&nbsp; щодо ОП, яка реалізується у ВСП &ndash; лише щодо приміщень даного ВСП.</p>
+<p>&nbsp;</p>
+
+<ol start="8">
+	<li><strong>Документи щодо ОП</strong></li>
+</ol>
+<p>&nbsp;</p>
+<table class="bordered">
+	<tbody>
+	<tr>
+		<td>
+			<p><strong>Документ</strong></p>
+		</td>
+		<td>
+			<p><strong>Назва файла</strong></p>
+		</td>
+		<td>
+			<p><strong>MD5-</strong> <strong>хеш файла</strong></p>
+		</td>
+	</tr>
+	<tr th:each="document : ${documents}">
+		<td>
+			<p th:text="${document.type}"></p>
+		</td>
+		<td>
+			<p><em th:text="${document.name}"></em></p>
+		</td>
+		<td>
+			<p th:text="${document.hash}"></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h1>1. Проектування та цілі освітньої програми</h1>
+
+<h2>Якими є цілі ОП? У чому полягають особливості (унікальність) цієї програми?</h2>
+<p th:text="${programDesign.goals}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, із посиланням на конкретні документи ЗВО, що цілі ОП відповідають місії та стратегії ЗВО</h2>
+<p th:text="${programDesign.uniqueness}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином інтереси та пропозиції таких груп заінтересованих сторін (стейкхолдерів) були враховані під час формулювання цілей та програмних результатів навчання ОП:</h2>
+<ul>
+	<li><strong>здобувачі вищої освіти та випускники програми</strong></li>
+</ul>
+<p th:text="${programDesign.stakeholderStudent}"></p>
+
+<ul>
+	<li><strong>роботодавці</strong></li>
+</ul>
+<p th:text="${programDesign.stakeholderEmployer}"></p>
+
+<ul>
+	<li><strong>академічна спільнота</strong></li>
+</ul>
+<p th:text="${programDesign.stakeholderAcademic}"></p>
+
+<ul>
+	<li><strong>інші стейкхолдери</strong></li>
+</ul>
+<p th:text="${programDesign.stakeholderOther}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, яким чином цілі та програмні результати навчання ОП відбивають тенденції розвитку спеціальності та ринку праці</h2>
+<p th:text="${programDesign.marketTrends}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, яким чином під час формулювання цілей та програмних результатів навчання ОП було враховано галузевий та регіональний контекст</h2>
+<p th:text="${programDesign.industryAndRegionalContext}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, яким чином під час формулювання цілей та програмних результатів навчання ОП було враховано досвід аналогічних вітчизняних та іноземних програм</h2>
+<p th:text="${programDesign.domesticAndForeignProgramsExperience}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, яким чином ОП дозволяє досягти результатів навчання, визначених стандартом вищої освіти за відповідною спеціальністю та рівнем вищої освіти</h2>
+<p th:text="${programDesign.learningExperienceAchieve}"></p>
+<p>&nbsp;</p>
+
+<h2>Якщо стандарт вищої освіти за відповідною спеціальністю та рівнем вищої освіти відсутній, поясніть, яким чином визначені ОП програмні результати навчання відповідають вимогам Національної рамки кваліфікацій для відповідного кваліфікаційного рівня?
+</h2>
+<p th:text="${programDesign.nationalQualificationsLevel}"></p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>2. Структура та зміст освітньої програми</h1>
+
+<h2>Яким є обсяг ОП (у кредитах ЄКТС)?</h2>
+<p th:text="${structureAndContent.epCreditsAmount}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким є обсяг освітніх компонентів (у кредитах ЄКТС), спрямованих на формування компетентностей, визначених стандартом вищої освіти за відповідною спеціальністю та рівнем вищої освіти (за наявності)?</h2>
+<p th:text="${structureAndContent.componentsCreditsAmount}"></p>
+<p>&nbsp;</p>
+
+<h2>Який обсяг (у кредитах ЄКТС) відводиться на дисципліни за вибором здобувачів вищої освіти?</h2>
+<p th:text="${structureAndContent.studentElectivesCreditsAmount}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, що зміст ОП відповідає предметній області заявленої для неї спеціальності (спеціальностям, якщо освітня програма є міждисциплінарною)?</h2>
+<p th:text="${structureAndContent.contentCompliance}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином здобувачам вищої освіти забезпечена можливість формування індивідуальної освітньої траєкторії?</h2>
+<p th:text="${structureAndContent.individualLearningPath}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином здобувачі вищої освіти можуть реалізувати своє право на вибір навчальних дисциплін?</h2>
+<p th:text="${structureAndContent.studentChoiceRight}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином ОП та навчальний план передбачають практичну підготовку здобувачів вищої освіти, яка дозволяє здобути компетентності, необхідні для подальшої професійної діяльності</h2>
+<p th:text="${structureAndContent.studentPracticalTraining}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, що ОП дозволяє забезпечити набуття здобувачами вищої освіти соціальних навичок (soft skills) упродовж періоду навчання, які відповідають цілям та результатам навчання ОП результатам навчання ОП</h2>
+<p th:text="${structureAndContent.studentSoftSkills}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином зміст ОП ураховує вимоги відповідного професійного стандарту?</h2>
+<p th:text="${structureAndContent.relevantProfessionalStandard}"></p>
+<p>&nbsp;</p>
+
+<h2>Який підхід використовує ЗВО для співвіднесення обсягу окремих освітніх компонентів ОП (у кредитах ЄКТС) із фактичним навантаженням здобувачів вищої освіти (включно із самостійною роботою)?</h2>
+<p th:text="${structureAndContent.componentsScopeCorrelatingApproach}"></p>
+<p>&nbsp;</p>
+
+<h2>Якщо за ОП здійснюється підготовка здобувачів вищої освіти за дуальною формою освіти, продемонструйте, яким чином структура освітньої програми та навчальний план зумовлюються завданнями та особливостями цієї форми здобуття освіти</h2>
+<p th:text="${structureAndContent.dualFormEducationStructure}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>3. Доступ до освітньої програми та визнання результатів навчання</h1>
+
+<h2>Наведіть посилання на веб-сторінку, яка містить інформацію про правила прийому на навчання та вимоги до вступників ОП</h2>
+<p th:text="${programAccess.admissionRulesLink}"></p>
+<p>&nbsp;</p>
+
+<h2>Поясніть, як правила прийому на навчання та вимоги до вступників ураховують особливості ОП?</h2>
+<p th:text="${programAccess.admissionRequirements}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким документом ЗВО регулюється питання визнання результатів навчання, отриманих в інших ЗВО? Яким чином забезпечується його доступність для учасників освітнього процесу?</h2>
+<p th:text="${programAccess.recognitionOfEducationResultsAccessibility}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть на конкретних прикладах практику застосування вказаних правил на відповідній ОП (якщо такі були)?</h2>
+<p th:text="${programAccess.admissionRequirementsApplyingRulesPractice}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким документом ЗВО регулюється питання визнання результатів навчання, отриманих у неформальній освіті? Яким чином забезпечується його доступність для учасників освітнього процесу?</h2>
+<p th:text="${programAccess.recognitionOfEducationResultsDoc}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть на конкретних прикладах практику застосування вказаних правил на відповідній ОП (якщо такі були)</h2>
+<p th:text="${programAccess.educationResultsDocApplyingRulesPractice}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>4. Навчання і викладання за освітньою програмою</h1>
+
+<h2>Продемонструйте, яким чином форми та методи навчання і викладання на ОП сприяють досягненню програмних результатів навчання? Наведіть посилання на відповідні документи</h2>
+<p th:text="${learningAndTeaching.learningAndTeachingMethods}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, яким чином форми і методи навчання і викладання відповідають вимогам студентоцентрованого підходу? Яким є рівень задоволеності здобувачів вищої освіти методами навчання і викладання відповідно до результатів опитувань?</h2>
+<p th:text="${learningAndTeaching.studentCenteredApproach}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, яким чином забезпечується відповідність методів навчання і викладання на ОП принципам академічної свободи</h2>
+<p th:text="${learningAndTeaching.academicFreedom}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином і у які строки учасникам освітнього процесу надається інформація щодо цілей, змісту та очікуваних результатів навчання, порядку та критеріїв оцінювання у межах окремих освітніх компонентів *</h2>
+<p th:text="${learningAndTeaching.learningOutcomes}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином відбувається поєднання навчання і досліджень під час реалізації ОП</h2>
+<p th:text="${learningAndTeaching.learningAndResearch}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, із посиланням на конкретні приклади, яким чином викладачі оновлюють зміст навчальних дисциплін на основі наукових досягнень і сучасних практик у відповідній галузі</h2>
+<p th:text="${learningAndTeaching.curriculumUpdate}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином навчання, викладання та наукові дослідження у межах ОП пов’язані із інтернаціоналізацією діяльності ЗВО</h2>
+<p th:text="${learningAndTeaching.internationalization}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>5. Контрольні заходи, оцінювання здобувачів вищої освіти та академічна доброчесність</h1>
+
+<h2>Опишіть, яким чином форми контрольних заходів у межах навчальних дисциплін ОП дозволяють перевірити досягнення програмних результатів навчання?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.description}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином забезпечуються чіткість та зрозумілість форм контрольних заходів та критеріїв оцінювання навчальних досягнень здобувачів вищої освіти?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.clarityCriteria}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином і у які строки інформація про форми контрольних заходів та критерії оцінювання доводяться до здобувачів вищої освіти?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.informationProvision}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином форми атестації здобувачів вищої освіти відповідають вимогам стандарту вищої освіти (за наявності)?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.complianceRequirements}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким документом ЗВО регулюється процедура проведення контрольних заходів? Яким чином забезпечується його доступність для учасників освітнього процесу?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.accessibilityCertificationProcedure}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином ці процедури забезпечують об’єктивність екзаменаторів? Якими є процедури запобігання та врегулювання конфлікту інтересів? Наведіть приклади застосування відповідних процедур на ОП</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.objectivityProcedures}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином процедури ЗВО урегульовують порядок повторного проходження контрольних заходів? Наведіть приклади застосування відповідних правил на ОП</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.repeatingControlMeasuresProcedures}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином процедури ЗВО урегульовують порядок оскарження процедури та результатів проведення контрольних заходів? Наведіть приклади застосування відповідних правил на ОП</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.appealProcedureAndResultsOfControlMeasures}"></p>
+<p>&nbsp;</p>
+
+<h2>Які документи ЗВО містять політику, стандарти і процедури дотримання академічної доброчесності?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.policiesAndStandardsDocuments}"></p>
+<p>&nbsp;</p>
+
+<h2>Які технологічні рішення використовуються на ОП як інструменти протидії порушенням академічної доброчесності?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.combatingViolationsOfAcademicIntegritySolutions}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином ЗВО популяризує академічну доброчесність серед здобувачів вищої освіти ОП?</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.promotingAcademicIntegrity}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином ЗВО реагує на порушення академічної доброчесності? Наведіть приклади відповідних ситуацій щодо здобувачів вищої освіти відповідної ОП</h2>
+<p th:text="${controlMeasuresAndAcademicIntegrity.respondingToViolationsOfAcademicIntegrity}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>6. Людські ресурси</h1>
+
+<h2>Яким чином під час конкурсного добору викладачів ОП забезпечується необхідний рівень їх професіоналізму?</h2>
+<p th:text="${humanResource.competencyLevel}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, із посиланням на конкретні приклади, яким чином ЗВО залучає роботодавців до організації та реалізації освітнього процесу</h2>
+<p th:text="${humanResource.employersEngagement}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, із посиланням на конкретні приклади, яким чином ЗВО залучає до аудиторних занять на ОП професіоналів-практиків, експертів галузі, представників роботодавців</h2>
+<p th:text="${humanResource.expertInvolvement}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином ЗВО сприяє професійному розвиткові викладачів ОП? Наведіть конкретні приклади такого сприяння</h2>
+<p th:text="${humanResource.teacherDevelopment}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, що ЗВО стимулює розвиток викладацької майстерності</h2>
+<p th:text="${humanResource.teachingExcellence}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>7. Освітнє середовище та матеріальні ресурси</h1>
+
+<h2>Продемонструйте, яким чином фінансові та матеріально-технічні ресурси (бібліотека, інша інфраструктура, обладнання тощо), а також навчально-методичне забезпечення ОП забезпечують досягнення визначених ОП цілей та програмних результатів навчання?</h2>
+<p th:text="${educationalEnvironmentAndMaterialResource.financialResources}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, яким чином освітнє середовище, створене у ЗВО, дозволяє задовольнити потреби та інтереси здобувачів вищої освіти ОП? Які заходи вживаються ЗВО задля виявлення і врахування цих потреб та інтересів?</h2>
+<p th:text="${educationalEnvironmentAndMaterialResource.educationalEnvironment}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином ЗВО забезпечує безпечність освітнього середовища для життя та здоров’я здобувачів вищої освіти (включаючи психічне здоров’я)?</h2>
+<p th:text="${educationalEnvironmentAndMaterialResource.safetyMeasures}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть механізми освітньої, організаційної, інформаційної, консультативної та соціальної підтримки здобувачів вищої освіти? Яким є рівень задоволеності здобувачів вищої освіти цією підтримкою відповідно до результатів опитувань?</h2>
+<p th:text="${educationalEnvironmentAndMaterialResource.supportServices}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином ЗВО створює достатні умови для реалізації права на освіту особами з особливими освітніми потребами? Наведіть посилання на конкретні приклади створення таких умов на ОП (якщо такі були)</h2>
+<p th:text="${educationalEnvironmentAndMaterialResource.specialNeedsPeopleEducation}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином у ЗВО визначено політику та процедури врегулювання конфліктних ситуацій (включаючи пов’язаних із сексуальними домаганнями, дискримінацією та корупцією)? Яким чином забезпечується їх доступність політики та процедур врегулювання для учасників освітнього процесу? Якою є практика їх застосування під час реалізації ОП?</h2>
+<p th:text="${educationalEnvironmentAndMaterialResource.policyAndProceduresForConflictResolution}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>8. Внутрішнє забезпечення якості освітньої програми</h1>
+
+<h2>Яким документом ЗВО регулюються процедури розроблення, затвердження, моніторингу та періодичного перегляду ОП? Наведіть посилання на цей документ, оприлюднений у відкритому доступі в мережі Інтернет</h2>
+<p th:text="${qualityAssurance.regulatoryDocument}"></p>
+
+<h2>Опишіть, яким чином та з якою періодичністю відбувається перегляд ОП? Які зміни були внесені до ОП за результатами останнього перегляду, чим вони були обґрунтовані?</h2>
+<p th:text="${qualityAssurance.educationProgramReview}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, із посиланням на конкретні приклади, як здобувачі вищої освіти залучені до процесу періодичного перегляду ОП та інших процедур забезпечення її якості, а їх позиція береться до уваги під час перегляду ОП</h2>
+<p th:text="${qualityAssurance.involvementOfStudents}"></p>
+<p>&nbsp;</p>
+
+<h2>Яким чином студентське самоврядування бере участь у процедурах внутрішнього забезпечення якості ОП</h2>
+<p th:text="${qualityAssurance.studentSelfGovernment}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, із посиланням на конкретні приклади, як роботодавці безпосередньо або через свої об’єднання залучені до процесу періодичного перегляду ОП та інших процедур забезпечення її якості</h2>
+<p th:text="${qualityAssurance.involvementOfEmployers}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть практику збирання та врахування інформації щодо кар’єрного шляху та траєкторій працевлаштування випускників ОП</h2>
+<p th:text="${qualityAssurance.alumniEmployment}"></p>
+<p>&nbsp;</p>
+
+<h2>Які недоліки в ОП та/або освітній діяльності з реалізації ОП були виявлені у ході здійснення процедур внутрішнього забезпечення якості за час її реалізації? Яким чином система забезпечення якості ЗВО відреагувала на ці недоліки?</h2>
+<p th:text="${qualityAssurance.qualityIssues}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, що результати зовнішнього забезпечення якості вищої освіти беруться до уваги під час удосконалення ОП. Яким чином зауваження та пропозиції з останньої акредитації та акредитацій інших ОП були ураховані під час удосконалення цієї ОП?</h2>
+<p th:text="${qualityAssurance.educationalProgramImprovement}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином учасники академічної спільноти змістовно залучені до процедур внутрішнього забезпечення якості ОП?</h2>
+<p th:text="${qualityAssurance.academicCommunityMembersEngaging}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть розподіл відповідальності між різними структурними підрозділами ЗВО у контексті здійснення процесів і процедур внутрішнього забезпечення якості освіти</h2>
+<p th:text="${qualityAssurance.structuralUnitsResponsibilitiesDistribution}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>9. Прозорість і публічність</h1>
+
+<h2>Якими документами ЗВО регулюється права та обов’язки усіх учасників освітнього процесу? Яким чином забезпечується їх доступність для учасників освітнього процесу?</h2>
+<p th:text="${transparencyAndPublicity.regulatoryDocuments}"></p>
+<p>&nbsp;</p>
+
+<h2>Наведіть посилання на веб-сторінку, яка містить інформацію про оприлюднення на офіційному вебсайті ЗВО відповідного проекту з метою отримання зауважень та пропозиції заінтересованих сторін (стейкхолдерів). Адреса веб-сторінки</h2>
+<p th:text="${transparencyAndPublicity.stakeholderFeedbackLink}"></p>
+<p>&nbsp;</p>
+
+<h2>Наведіть посилання на оприлюднену у відкритому доступі в мережі Інтернет інформацію про освітню програму (включаючи її цілі, очікувані результати навчання та компоненти)</h2>
+<p th:text="${transparencyAndPublicity.educationalProgramLink}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>10. Навчання через дослідження</h1>
+
+<h2>Продемонструйте, що зміст освітньо-наукової програми відповідає науковим інтересам аспірантів (ад’юнктів)</h2>
+<p th:text="${educationalProgram.description}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином зміст освітньо-наукової програми забезпечує повноцінну підготовку здобувачів вищої освіти до дослідницької діяльності за спеціальністю та/або галуззю</h2>
+<p th:text="${educationalProgram.researchPreparation}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть, яким чином зміст освітньо-наукової програми забезпечує повноцінну підготовку здобувачів вищої освіти до викладацької діяльності у закладах вищої освіти за спеціальністю та/або галуззю</h2>
+<p th:text="${educationalProgram.teachingPreparation}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте дотичність тем наукових досліджень аспірантів (ад’юнктів) напрямам досліджень наукових керівників</h2>
+<p th:text="${educationalProgram.supervisorRelevance}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть з посиланням на конкретні приклади, як ЗВО організаційно та матеріально забезпечує в межах освітньо-наукової програми можливості для проведення і апробації результатів наукових досліджень аспірантів (ад’юнктів)</h2>
+<p th:text="${educationalProgram.researchSupport}"></p>
+<p>&nbsp;</p>
+
+<h2>Проаналізуйте, як ЗВО забезпечує можливості для долучення аспірантів (ад’юнктів) до міжнародної академічної спільноти за спеціальністю, наведіть конкретні проекти та заходи</h2>
+<p th:text="${educationalProgram.internationalParticipation}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть участь наукових керівників аспірантів у дослідницьких проектах, результати яких регулярно публікуються та/або практично впроваджуються</h2>
+<p th:text="${educationalProgram.researchProjectsSupervisorsParticipation}"></p>
+<p>&nbsp;</p>
+
+<h2>Опишіть чинні практики дотримання академічної доброчесності у науковій діяльності наукових керівників та аспірантів (ад’юнктів)</h2>
+<p th:text="${educationalProgram.academicIntegrityPractices}"></p>
+<p>&nbsp;</p>
+
+<h2>Продемонструйте, що ЗВО вживає заходів для виключення можливості здійснення наукового керівництва особами, які вчинили порушення академічної доброчесності</h2>
+<p th:text="${educationalProgram.academicIntegrityPreventingViolations}"></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h1>11. Перспективи подальшого розвитку ОП</h1>
+
+<h2>Якими загалом є сильні та слабкі сторони ОП?</h2>
+<p th:text="${developmentPerspective.strongWeakPoints}"></p>
+<p>&nbsp;</p>
+
+<h2>Якими є перспективи розвитку ОП упродовж найближчих 3 років? Які конкретні заходи ЗВО планує здійснити задля реалізації цих перспектив?</h2>
+<p th:text="${developmentPerspective.futureDevelopment}"></p>
+<p>&nbsp;</p>
+
+<h1>Запевнення</h1>
+<p>&nbsp;</p>
+<p>Запевняємо, що уся інформація, наведена у відомостях та доданих до них матеріалах, є достовірною.</p>
+<p>Гарантуємо, що ЗВО за запитом експертної групи надасть будь-які документи та додаткову інформацію, яка стосується освітньої програми та/або освітньої діяльності за цією освітньою програмою.</p>
+<p>Надаємо згоду на опрацювання та оприлюднення цих відомостей про самооцінювання та усіх доданих до них матеріалів у повному обсязі у відкритому доступі.</p>
+<p>&nbsp;</p>
+<p>Додатки:</p>
+<p><em>Таблиця 1. </em>&nbsp;Інформація про обов’язкові освітні компоненти ОП</p>
+<p><em>Таблиця 2. </em>&nbsp;Зведена інформація про викладачів ОП</p>
+<p><em>Таблиця 3. </em>&nbsp;Матриця відповідності програмних результатів навчання, освітніх компонентів, методів навчання та оцінювання</p>
+<p>&nbsp;</p>
+<p class="centered">***</p>
+<p>Шляхом підписання цього документа запевняю, що я належним чином уповноважений на здійснення такої дії від імені закладу вищої освіти та за потреби надам документ, який посвідчує ці повноваження.</p>
+<p>&nbsp;</p>
+<p><em>Документ підписаний кваліфікованим електронним підписом/кваліфікованою електронною печаткою.</em></p>
+<p>&nbsp;</p>
+<p><u>Інформація про КЕП</u></p>
+<!--<p><strong>ПІБ: Бугров Володимир Анатолійович </strong>Дата: 12.02.2020 р.</p>-->
+
+<div class="page-break"></div>
+
+<p><strong>Таблиця 1. </strong>Інформація про обов&rsquo;язкові освітні компоненти ОП</p>
+<p>&nbsp;</p>
+<table class="bordered">
+	<tbody>
+	<tr>
+		<td rowspan="2">
+			<p><strong>Назва освітнього компонента</strong></p>
+		</td>
+		<td rowspan="2">
+			<p><strong>Вид компонента </strong></p>
+		</td>
+		<td colspan="2">
+			<p><strong>Силабус або інші навчально-методичні матеріали</strong></p>
+		</td>
+		<td>
+			<p><strong>Якщо освітній компонент потребує спеціального матеріально-технічного та/або інформаційного забезпечення, наведіть відомості щодо нього*</strong></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><strong>Назва файла</strong></p>
+		</td>
+		<td>
+			<p><strong>Хеш файла</strong></p>
+		</td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+
+	<tr th:each="component : ${educationalComponents}">
+		<td>
+			<p th:text="${component.componentName}"></p>
+		</td>
+		<td>
+			<p th:text="${documentTypeValues[component.componentType].value}"></p>
+		</td>
+		<td>
+			<p><em th:text="${component.documentName}"></em></p>
+		</td>
+		<td>
+			<p style="word-break: break-all;" th:text="${component.documentHash}"></p>
+		</td>
+		<td>
+			<p><em th:text="${component.specialEquipmentInfo}"></em></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+<p>* наводяться відомості, як мінімум, щодо наявності відповідного матеріально-технічного забезпечення, його достатності для реалізації ОП; для обладнання/устаткування &ndash; також кількість, рік введення в експлуатацію, рік останнього ремонту; для програмного забезпечення &ndash; також кількість ліцензій та версія програмного забезпечення</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p><strong>Таблиця 2. </strong>Зведена інформація про викладачів ОП</p>
+<p>&nbsp;</p>
+<table class="bordered">
+	<tbody>
+	<tr>
+		<td>
+			<p><strong>ID викладача</strong></p>
+		</td>
+		<td>
+			<p><strong>ПІБ</strong></p>
+		</td>
+		<td>
+			<p><strong>Посада</strong></p>
+		</td>
+		<td>
+			<p><strong>Структурний підрозділ</strong></p>
+		</td>
+		<td>
+			<p><strong>Кваліфікація викладача</strong></p>
+		</td>
+		<td>
+			<p><strong>Стаж</strong></p>
+		</td>
+		<td>
+			<p><strong>Навчальні дисципліни, що їх викладає викладач на ОП </strong></p>
+		</td>
+		<td>
+			<p><strong>Обґрунтування</strong></p>
+		</td>
+	</tr>
+	<tr th:each="teacher : ${teachers}">
+		<td>
+			<p th:text="${teacher.teacherId}"></p>
+		</td>
+		<td>
+			<p th:text="${teacher.name}"></p>
+		</td>
+		<td>
+			<p th:text="${teacher.teacherPosition}"></p>
+		</td>
+		<td>
+			<p th:text="${teacher.subdivision}"></p>
+		</td>
+		<td>
+			<p th:text="${teacher.teacherQualification}"></p>
+		</td>
+		<td>
+			<p th:text="${teacher.teacherExperience}"></p>
+		</td>
+		<td>
+			<p th:each="discipline, iterStat : ${teacher.disciplines}" th:text="${!iterStat.last} ? ${discipline.name} + ', ': ${discipline.name}"></p>
+		</td>
+		<td>
+			<p th:text="${teacher.rationale}"></p>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p><strong>Таблиця 3. </strong>Матриця відповідності програмних результатів навчання, освітніх компонентів, методів навчання та оцінювання</p>
+<p>&nbsp;</p>
+<table class="bordered">
+		<th>
+			<p>Програмні результати навчання ОП</p>
+		</th>
+		<th>
+			<p>ПРН відповідає результату навчання, визначеному стандартом вищої освіти (або охоплює його)</p>
+		</th>
+		<th>
+			<p>Обов’язкові освітні компоненти, що забезпечують ПРН</p>
+		</th>
+		<th>
+			<p>Методи навчання</p>
+		</th>
+		<th>
+			<p>Форми та методи оцінювання</p>
+		</th>
+	<tbody th:each="studyResult : ${studyResults}">
+	<tr>
+		<td th:rowspan="${studyResult.componentCorrespondences.size()}"
+			th:text="${studyResult.name}"></td>
+		<td th:rowspan="${studyResult.componentCorrespondences.size()}">
+			<input type="checkbox" th:checked="${studyResult.isCorresponds}">
+		</td>
+		<td th:text="${studyResult.componentCorrespondences[0].discipline.name}"></td>
+		<td th:text="${studyResult.componentCorrespondences[0].teachingMethod}"></td>
+		<td th:text="${studyResult.componentCorrespondences[0].assessmentForm}"></td>
+	</tr>
+	<tr th:each="correspondence : ${studyResult.componentCorrespondences}" th:if="${!#strings.equals(studyResult.componentCorrespondences[0], correspondence)}">
+		<td th:text="${correspondence.discipline.name}"></td>
+		<td th:text="${correspondence.teachingMethod}"></td>
+		<td th:text="${correspondence.assessmentForm}"></td>
+	</tr>
+	</tbody>
+</table>
+</body>
+</html>

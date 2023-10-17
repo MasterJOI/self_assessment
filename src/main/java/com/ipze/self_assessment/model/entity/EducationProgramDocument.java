@@ -29,6 +29,9 @@ public class EducationProgramDocument extends BaseAuditableEntity {
     @Column(name = "path")
     private String path;
 
+	@Column(name = "hash")
+	private String hash;
+
 	@OneToMany(mappedBy = "educationProgramDocument")
 	private Set<ProgramEducationalComponentsInformation> educationalComponentsInformations = new LinkedHashSet<>();
 

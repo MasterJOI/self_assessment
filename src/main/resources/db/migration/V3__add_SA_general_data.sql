@@ -47,17 +47,16 @@ VALUES ('b6c68abb-c09b-4d8d-a280-9fc84a7f2b3a', 'Кафедра програмн
 INSERT INTO education_program_accreditation_information (id, specialty_licensing_info,
 														 cycle, program_type, admission_degree, duration,
 														 education_program_forms, location,
-														 grants_professional_qualification, guarantee_id,
-														 guarantee_position, guarantee_email, guarantee_phone, additional_phone,
+														 grants_professional_qualification, guarantee_email, guarantee_phone, additional_phone,
 														 education_program_id, field_of_study_id,
-														 guarantee_full_name_id, specialty_id, subdivision_id)
+														 guarantee_id, specialty_id, subdivision_id)
 VALUES ('6d6fb063-8675-4f11-8521-e03c0e438bc6', 'Сертифікат про акредитацію освітньої програми - 5436 ,дійсний до 01.07.2027',
 		'Доктор філософії', 'Освітньо-наукова', 'Магістр (ОКР «спеціаліст»)', '4 р. 0 м.,4 р. 0 м.,4 р. 0 м.', 'заочна,очна вечірня,очна денна',
 		'03056 Київ,
 вулиця Політехнічна, 14а, корпус №14;
 вулиця Політехнічна, 41, корпус №18;
 вулиця Політехнічна, 6, корпус №5;
-проспект Перемоги, 37 к , корпус № 7.', 'UNKNOWN', 184552, 'Декан', 'dychka@pzks.fpm.kpi.ua', '+38(044)-204-81-15', '+38(044)-204-91-13',
+проспект Перемоги, 37 к , корпус № 7.', false, 'dychka@pzks.fpm.kpi.ua', '+38(044)-204-81-15', '+38(044)-204-91-13',
 		'9f1902c4-f2f0-4c9e-81b2-d10b164860c9', '24b29589-5db8-4918-a872-784e5495e6e9',
 		'fe017aa6-9d3d-4ecc-865f-9d097cb7577a', '4959d5fb-95af-4356-b626-8ebdd1b186f0',
 		'b6c68abb-c09b-4d8d-a280-9fc84a7f2b3a');
@@ -119,13 +118,23 @@ VALUES ('18fc0570-d87a-4026-aff3-19265ca30dca', '0c1ad6fd-c1d3-4ace-bcef-34251a1
 	   ('37fb74aa-5adb-11ee-8c99-0242ac120002', '0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 3, '2017', 4, 5, 0, 2, 0, 0, 0);
 
 /*Поля для завантаження загальних документів*/
-INSERT INTO education_program_document (id, type, name)
-VALUES ('a79134d5-f54e-4d5c-9299-5d081a5ce10c', 'CURRICULUM','121_NP_IPZ_2020.pdf'),
-	   ('e8f95e52-5aea-11ee-8c99-0242ac120002', 'EDUCATION_PROGRAM','121_ONPD_IPZ_2020.pdf'),
-	   ('ed47482a-5aea-11ee-8c99-0242ac120002', 'REVIEW','Рецензія PhD НАН.pdf');
+INSERT INTO education_program_document (id, type, name, hash)
+VALUES ('a79134d5-f54e-4d5c-9299-5d081a5ce10c', 'CURRICULUM','121_NP_IPZ_2020.pdf', '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8='),
+	   ('e8f95e52-5aea-11ee-8c99-0242ac120002', 'EDUCATION_PROGRAM','121_ONPD_IPZ_2020.pdf', '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8='),
+	   ('ed47482a-5aea-11ee-8c99-0242ac120002', 'REVIEW','Рецензія PhD НАН.pdf', '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8=');
 
 /*Додати документи до загальної інформації*/
 INSERT INTO general_information_education_program_documents (general_information_id, education_program_documents_id)
 VALUES ('0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'a79134d5-f54e-4d5c-9299-5d081a5ce10c'),
 	   ('0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'e8f95e52-5aea-11ee-8c99-0242ac120002'),
 	   ('0c1ad6fd-c1d3-4ace-bcef-34251a12dcd8', 'ed47482a-5aea-11ee-8c99-0242ac120002');
+
+/*Мови викладання*/
+INSERT INTO language (id, name, short_name)
+VALUES ('5e2fe72c-44f2-408f-b4a2-5b8132c86a67', 'Українська', 'укр.'),
+	   ('b507088d-5b8d-4a84-b519-532af135ee43', 'Англійська', 'англ.');
+
+/*Додати мови викладання до загальної інформації*/
+INSERT INTO education_program_accreditation_information_languages (education_program_accreditation_information_id, languages_id)
+VALUES ('6d6fb063-8675-4f11-8521-e03c0e438bc6', '5e2fe72c-44f2-408f-b4a2-5b8132c86a67'),
+	   ('6d6fb063-8675-4f11-8521-e03c0e438bc6', 'b507088d-5b8d-4a84-b519-532af135ee43');

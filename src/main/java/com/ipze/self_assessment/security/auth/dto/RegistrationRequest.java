@@ -66,7 +66,7 @@ public class RegistrationRequest {
         private Date enrollmentDate;
 
         @NullOrNotBlank
-        private Integer studentType;
+        private String studentType;
 
         @NullOrNotBlank
         private String studentId;

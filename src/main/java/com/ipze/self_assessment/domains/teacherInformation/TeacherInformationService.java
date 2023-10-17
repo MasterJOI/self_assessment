@@ -14,7 +14,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -64,25 +67,20 @@ public class TeacherInformationService {
 
 	public ApiResponse deleteTeacherInformation(UUID id) {
 
-		Optional<TeacherSummaryInformation> teacherSummaryInformationOptional = teacherInformationRepository.findById(id);
+		var teacherSummaryInformation = teacherInformationRepository.findById(id).orElseThrow(
+			() -> new IdNotFoundException("Інформацію про викладача з id : " + id + " не знайдено.")
+		);
 
-		if (teacherSummaryInformationOptional.isPresent()) {
-			TeacherSummaryInformation teacherSummaryInformation = teacherSummaryInformationOptional.get();
+		Set<TableAnnex> tableAnnexes = teacherSummaryInformation.getTableAnnexes();
 
-			Set<TableAnnex> tableAnnexes = teacherSummaryInformation.getTableAnnexes();
-
-			for (TableAnnex tableAnnex : tableAnnexes) {
-				tableAnnex.getTeacherSummaryInformations().remove(teacherSummaryInformation);
-			}
-
-			teacherSummaryInformation.setTableAnnexes(new LinkedHashSet<>());
-			teacherInformationRepository.save(teacherSummaryInformation);
-
-			teacherInformationRepository.deleteById(id);
-
-			return new ApiResponse(id, "Інформацію про викладача видалено");
-		} else {
-			return new ApiResponse(id, "Інформацію про викладача не знайдено");
+		for (TableAnnex tableAnnex : tableAnnexes) {
+			tableAnnex.getTeacherSummaryInformations().remove(teacherSummaryInformation);
 		}
+
+		teacherSummaryInformation.setTableAnnexes(new LinkedHashSet<>());
+		teacherInformationRepository.save(teacherSummaryInformation);
+		teacherInformationRepository.deleteById(id);
+
+		return new ApiResponse(id, "Інформацію про викладача видалено");
 	}
 }

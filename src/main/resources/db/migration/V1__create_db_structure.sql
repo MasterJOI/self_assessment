@@ -81,16 +81,14 @@ CREATE TABLE education_program_accreditation_information
     duration                          VARCHAR(255)                NOT NULL,
     education_program_forms           VARCHAR(255)                NOT NULL,
     location                          VARCHAR(255)                NOT NULL,
-    grants_professional_qualification VARCHAR(255)                NOT NULL,
+    grants_professional_qualification BOOLEAN                     NOT NULL,
     professional_qualification        VARCHAR(255),
-    guarantee_id                      BIGINT                      NOT NULL,
-    guarantee_position                VARCHAR(255)                NOT NULL,
     guarantee_email                   VARCHAR(254)                NOT NULL,
     guarantee_phone                   VARCHAR(20)                 NOT NULL,
     additional_phone                  VARCHAR(20),
     education_program_id              UUID                        NOT NULL,
     field_of_study_id                 UUID                        NOT NULL,
-    guarantee_full_name_id            UUID                        NOT NULL,
+    guarantee_id                      UUID                        NOT NULL,
     specialty_id                      UUID                        NOT NULL,
     subdivision_id                    UUID                        NOT NULL,
     CONSTRAINT pk_education_program_accreditation_information PRIMARY KEY (id)
@@ -137,6 +135,7 @@ CREATE TABLE education_program_document
     type       VARCHAR(255)                NOT NULL,
     name       VARCHAR(255)                NOT NULL,
     path       VARCHAR(255),
+    hash       VARCHAR(255),
     CONSTRAINT pk_education_program_document PRIMARY KEY (id)
 );
 
@@ -411,9 +410,9 @@ CREATE TABLE op_development_perspectives
 CREATE TABLE program_educational_components_information
 (
     id                            UUID                        NOT NULL,
-	deleted                       BOOLEAN                     NOT NULL DEFAULT FALSE,
     created_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at                    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    deleted                       BOOLEAN                     NOT NULL DEFAULT FALSE,
     component_name                VARCHAR(255)                NOT NULL,
     component_type                SMALLINT                    NOT NULL,
     education_program_document_id UUID                        NOT NULL,
@@ -623,16 +622,14 @@ ALTER TABLE education_program_accreditation_information
 
 CREATE INDEX education_program_accredit_field_of_study_id_af2c4c0b ON education_program_accreditation_information (field_of_study_id);
 
-ALTER TABLE education_program_accreditation_information
-    ADD CONSTRAINT FK_EDUCATIONPROGRAMACCREDITATIONINFORMATIO_ON_GUARANTEEFULLNAME FOREIGN KEY (guarantee_full_name_id) REFERENCES teacher (id);
-
-CREATE INDEX education_program_accredit_guarantee_full_name_id_f721fbaf ON education_program_accreditation_information (guarantee_full_name_id);
-
 ALTER TABLE education_component_correspondence
     ADD CONSTRAINT FK_EDUCATION_COMPONENT_CORRESPONDENCE_ON_EDUCATIONAL_COMPONENT FOREIGN KEY (educational_component_id) REFERENCES program_educational_components_information (id);
 
 ALTER TABLE education_component_correspondence
     ADD CONSTRAINT FK_EDUCATION_COMPONENT_CORRESPONDENCE_ON_STUDY_RESULT FOREIGN KEY (study_result_id) REFERENCES study_result (id);
+
+ALTER TABLE education_program_accreditation_information
+    ADD CONSTRAINT FK_EDUCATION_PROGRAM_ACCREDITATION_INFORMATION_ON_GUARANTEE FOREIGN KEY (guarantee_id) REFERENCES teacher (id);
 
 ALTER TABLE education_program_accreditation_information
     ADD CONSTRAINT FK_EDUCATION_PROGRAM_ACCREDITATION_INFORMATION_ON_SPECIALTY FOREIGN KEY (specialty_id) REFERENCES specialty (id);
