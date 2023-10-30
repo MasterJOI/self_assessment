@@ -8,9 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -20,36 +17,28 @@ import java.util.Set;
 @Table(name = "higher_education_institution_area")
 public class HigherEducationInstitutionArea extends BaseAuditableEntity {
 
-	@NotNull
-	@Column(name = "all_rooms", nullable = false)
+	@Column(name = "all_rooms")
 	private Long allRooms;
 
-	@NotNull
-	@Column(name = "own_rooms", nullable = false)
+	@Column(name = "own_rooms")
 	private Long ownRooms;
 
-	@NotNull
-	@Column(name = "other_rights_rooms", nullable = false)
+	@Column(name = "other_rights_rooms")
 	private Long otherRightsRooms;
 
-	@NotNull
-	@Column(name = "rented_rooms", nullable = false)
+	@Column(name = "rented_rooms")
 	private Long rentedRooms;
 
-	@NotNull
-	@Column(name = "educational_all_rooms", nullable = false)
+	@Column(name = "educational_all_rooms")
 	private Long educationalAllRooms;
 
-	@NotNull
-	@Column(name = "educational_own_rooms", nullable = false)
+	@Column(name = "educational_own_rooms")
 	private Long educationalOwnRooms;
 
-	@NotNull
-	@Column(name = "educational_other_rights_rooms", nullable = false)
+	@Column(name = "educational_other_rights_rooms")
 	private Long educationalOtherRightsRooms;
 
-	@NotNull
-	@Column(name = "educational_rented_rooms", nullable = false)
+	@Column(name = "educational_rented_rooms")
 	private Long educationalRentedRooms;
 
 	@OneToMany(mappedBy = "higherEducationInstitutionArea")

@@ -1,5 +1,7 @@
 package com.ipze.self_assessment.domains.selfAssessment.dto.general;
 
+import com.ipze.self_assessment.domains.language.dto.LanguageDto;
+import com.ipze.self_assessment.domains.subdivision.dto.SubdivisionDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +20,7 @@ public class EducationProgramAccreditationInformationDto {
 	private String location;
 	private Boolean grantsProfessionalQualification;
 	private String professionalQualification;
+	private String partnerHei;
 	private GuaranteeDto guarantee;
 	private Long educationProgramId;
 	private String educationProgramName;
@@ -25,7 +28,9 @@ public class EducationProgramAccreditationInformationDto {
 	private String fieldOfStudy;
 	private Integer specialtyCode;
 	private String specialty;
+	private String subdivisionId;
 	private String subdivisionName;
-	private List<String> languages;
-	private List<String> otherSubdivisions;
+	private List<LanguageDto> languages;
+	private List<SubdivisionDto> otherSubdivisions;
+	private String historyAndDevelopment;
 }

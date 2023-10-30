@@ -16,18 +16,25 @@ import java.util.Set;
 @Entity
 @Table(name = "teacher", indexes = {
         @Index(name = "teacher_teacher_id_key", columnList = "teacher_id", unique = true),
-        @Index(name = "teacher_user_id_key", columnList = "user_id", unique = true),
-        @Index(name = "teacher_teacher_id_d3af3ce2_like", columnList = "teacher_id")
+        @Index(name = "teacher_user_id_key", columnList = "user_id", unique = true)
 })
 public class Teacher extends BaseAuditableEntity {
 
     @Column(name = "birthdate")
     private Date birthdate;
 
-    @Size(max = 15)
+    @Size(max = 20)
     @NotNull
-    @Column(name = "phone_number", nullable = false, length = 15)
+    @Column(name = "phone_number", nullable = false, length = 20)
     private String phoneNumber;
+
+	@Size(max = 20)
+	@Column(name = "additional_phone_number", length = 20)
+	private String additionalPhoneNumber;
+
+	@Size(max = 254)
+	@Column(name = "corporate_email", length = 254)
+	private String corporateEmail;
 
     @Size(max = 255)
     @NotNull
@@ -62,9 +69,6 @@ public class Teacher extends BaseAuditableEntity {
 
     @OneToMany(mappedBy = "guarantee")
     private Set<EducationProgramAccreditationInformation> educationProgramAccreditationInformations = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "headFullName")
-    private Set<HigherEducationalInstitution> higherEducationalInstitutions = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "headFullName")
     private Set<SeparateStructuralUnit> separateStructuralUnits = new LinkedHashSet<>();

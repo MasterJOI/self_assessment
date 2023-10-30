@@ -66,7 +66,7 @@ public class RegistrationRequest {
         private Date enrollmentDate;
 
         @NullOrNotBlank
-        private String studentType;
+        private String cycle;
 
         @NullOrNotBlank
         private String studentId;
@@ -82,7 +82,7 @@ public class RegistrationRequest {
         @JsonFormat(pattern = "yyyy-MM-dd")
         private Date birthDate;
 
-        private UUID subdivision;
+        private UUID subdivisionId;
 
         @JsonFormat(pattern = "yyyy-MM-dd")
         private Date hireDate;

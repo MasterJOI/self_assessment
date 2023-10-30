@@ -2,21 +2,25 @@ package com.ipze.self_assessment.domains.user;
 
 import com.ipze.self_assessment.domains.selfAssessment.SelfAssessmentInfoMapper;
 import com.ipze.self_assessment.domains.subdivision.SubdivisionRepository;
+import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherDto;
 import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherInformationDto;
 import com.ipze.self_assessment.domains.user.repo.StudentRepository;
 import com.ipze.self_assessment.domains.user.repo.TeacherRepository;
 import com.ipze.self_assessment.domains.user.repo.UserRepository;
+import com.ipze.self_assessment.exceptions.custom.IdNotFoundException;
 import com.ipze.self_assessment.model.entity.Student;
 import com.ipze.self_assessment.model.entity.Teacher;
 import com.ipze.self_assessment.model.entity.User;
-import com.ipze.self_assessment.model.enums.StudentType;
+import com.ipze.self_assessment.model.enums.Cycle;
 import com.ipze.self_assessment.security.auth.dto.RegistrationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -52,7 +56,7 @@ public class UserService {
 				student.setPhoneNumber(registrationRequest.getPhoneNumber());
 				student.setAddress(registrationRequest.getAddress());
 				student.setStudentId(s.getStudentId());
-				student.setStudentType(StudentType.valueOf(s.getStudentType()));
+				student.setCycle(Cycle.valueOf(s.getCycle()));
 				student.setEnrollmentDate(s.getEnrollmentDate());
 				studentRepository.save(student);
 			}
@@ -61,7 +65,8 @@ public class UserService {
 
 			if (teacherDto.isPresent()) {
 				var t = teacherDto.get();
-				var department = subdivisionRepository.findById(t.getSubdivision()).orElseThrow();
+				var subdivision = subdivisionRepository.findById(t.getSubdivisionId())
+					.orElseThrow(() -> new IdNotFoundException("Структурний підрозділ з id : " + t.getSubdivisionId() + " не знайдено."));
 				Teacher teacher = new Teacher();
 
 				teacher.setUser(user);
@@ -69,7 +74,7 @@ public class UserService {
 				teacher.setPhoneNumber(registrationRequest.getPhoneNumber());
 				teacher.setAddress(registrationRequest.getAddress());
 				teacher.setTeacherId(t.getTeacherId());
-				teacher.setSubdivision(department);
+				teacher.setSubdivision(subdivision);
 				teacher.setHireDate(t.getHireDate());
 
 				teacherRepository.save(teacher);
@@ -86,4 +91,7 @@ public class UserService {
 		return teacherInformationDto;
 	}
 
+	public List<TeacherDto> getTeachers() {
+		return this.teacherRepository.findAll().stream().map(TeacherDto::fromEntity).toList();
+	}
 }

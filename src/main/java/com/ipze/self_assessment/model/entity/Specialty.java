@@ -25,7 +25,11 @@ public class Specialty extends BaseAuditableEntity {
     @Column(name = "specialty", nullable = false, length = 250)
     private String specialty;
 
-    @OneToMany(mappedBy = "specialty")
-    private Set<EducationProgramAccreditationInformation> educationProgramAccreditationInformations = new LinkedHashSet<>();
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "field_of_study_id", nullable = false)
+	private FieldOfStudy fieldOfStudy;
 
+	@OneToMany(mappedBy = "specialty")
+	private Set<EducationProgram> educationPrograms = new LinkedHashSet<>();
 }

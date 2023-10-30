@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class AccreditationCaseDto {
+    private String id;
     private Long educationProgramId;
     private String cycle;
     private String specialty;

@@ -1,21 +1,20 @@
 package com.ipze.self_assessment.domains.selfAssessment.dto.general;
 
+import com.ipze.self_assessment.domains.language.dto.LanguageDto;
 import com.ipze.self_assessment.domains.selfAssessment.SelfAssessmentInfoMapper;
+import com.ipze.self_assessment.domains.subdivision.dto.SubdivisionDto;
 import com.ipze.self_assessment.model.entity.GeneralInformation;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 @Builder
 public class GeneralInformationDto {
 	private EducationProgramAccreditationInformationDto educationProgramAccreditationInformation;
-	private String historyAndDevelopment;
 	private List<EducationStatisticDto> educationStatistic;
-	private String website;
 	private HigherEducationInstitutionAreaDto higherEducationInstitutionArea;
 	private HigherEducationInstitutionInformationDto higherEducationInstitutionInformation;
 	private SelfAssessmentEducationalProgramRestrictedInfoDto selfAssessmentEducationalProgramRestrictedInfo;
@@ -29,24 +28,42 @@ public class GeneralInformationDto {
 		var educationProgramAccreditationInformation = SelfAssessmentInfoMapper.MAPPER
 			.educationProgramAccreditationInformationToDto(accreditationInfo);
 
-		educationProgramAccreditationInformation.setDuration(List.of(accreditationInfo.getDuration().split(",")));
-		educationProgramAccreditationInformation.setEducationProgramForms(List.of(accreditationInfo.getEducationProgramForms().split(",")));
+		educationProgramAccreditationInformation.setCycle(accreditationInfo.getEducationProgram().getCycle().getValue());
+		educationProgramAccreditationInformation.setProgramType(accreditationInfo.getEducationProgram().getProgramType().getValue());
+		educationProgramAccreditationInformation.setSpecialtyLicensingInfo(accreditationInfo.getEducationProgram().getSpecialtyLicensingInfo());
+		educationProgramAccreditationInformation.setSpecialization(accreditationInfo.getEducationProgram().getSpecialization());
+		educationProgramAccreditationInformation.setAdmissionDegree(accreditationInfo.getEducationProgram().getAdmissionDegree());
+		if (accreditationInfo.getDuration() != null) {
+			educationProgramAccreditationInformation.setDuration(List.of(accreditationInfo.getDuration().split(",")));
+		}
+		if (accreditationInfo.getEducationProgramForms() != null) {
+			educationProgramAccreditationInformation.setEducationProgramForms(List.of(accreditationInfo.getEducationProgramForms().split(",")));
+		}
 
-		var guarantee = GuaranteeDto.fromEntity(accreditationInfo);
+		var guarantee = GuaranteeDto.fromEntity(accreditationInfo.getGuarantee());
 		educationProgramAccreditationInformation.setGuarantee(guarantee);
 
 		educationProgramAccreditationInformation.setEducationProgramId(accreditationInfo.getEducationProgram().getEducationProgramId());
 		educationProgramAccreditationInformation.setEducationProgramName(accreditationInfo.getEducationProgram().getName());
-		educationProgramAccreditationInformation.setFieldOfStudy(accreditationInfo.getFieldOfStudy().getFieldOfStudy());
-		educationProgramAccreditationInformation.setFieldOfStudyCode(accreditationInfo.getFieldOfStudy().getFieldOfStudyCode());
-		educationProgramAccreditationInformation.setSpecialty(accreditationInfo.getSpecialty().getSpecialty());
-		educationProgramAccreditationInformation.setSpecialtyCode(accreditationInfo.getSpecialty().getSpecialtyCode());
+		educationProgramAccreditationInformation.setFieldOfStudy(accreditationInfo.getEducationProgram().getSpecialty().getFieldOfStudy().getFieldOfStudy());
+		educationProgramAccreditationInformation.setFieldOfStudyCode(accreditationInfo.getEducationProgram().getSpecialty().getFieldOfStudy().getFieldOfStudyCode());
+		educationProgramAccreditationInformation.setSpecialty(accreditationInfo.getEducationProgram().getSpecialty().getSpecialty());
+		educationProgramAccreditationInformation.setSpecialtyCode(accreditationInfo.getEducationProgram().getSpecialty().getSpecialtyCode());
 
-		educationProgramAccreditationInformation.setSubdivisionName(String.valueOf(accreditationInfo.getSubdivision().getResponsibleDepartment()));
+		if (accreditationInfo.getSubdivision() != null) {
+			educationProgramAccreditationInformation.setSubdivisionName(accreditationInfo.getSubdivision().getResponsibleDepartment());
+			educationProgramAccreditationInformation.setSubdivisionId(String.valueOf(accreditationInfo.getSubdivision().getId()));
+		}
 		educationProgramAccreditationInformation.setLanguages(accreditationInfo.getLanguages().stream()
-			.map(language -> String.valueOf(language.getName())).toList());
+			.map(language -> new LanguageDto(
+				String.valueOf(language.getId()),
+				String.valueOf(language.getName()
+			))).toList());
 		educationProgramAccreditationInformation.setOtherSubdivisions(accreditationInfo.getOtherSubdivisions().stream()
-			.map(subdivision -> String.valueOf(subdivision.getResponsibleDepartment())).toList());
+			.map(subdivision -> new SubdivisionDto(
+				String.valueOf(subdivision.getId()),
+				String.valueOf(subdivision.getResponsibleDepartment())
+			)).toList());
 
 		//educationStatistic
 		var educationStatistics = information.getEducationStatistics().stream()
@@ -58,17 +75,7 @@ public class GeneralInformationDto {
 		var higherEducationInstitutionArea = SelfAssessmentInfoMapper.MAPPER.higherEducationInstitutionAreaToDto(information.getHigherEducationInstitutionArea());
 
 		//higherEducationInstitutionInformation
-		var higherEducationInstitutionInformation = new HigherEducationInstitutionInformationDto();
-
-		var hei = SelfAssessmentInfoMapper.MAPPER.higherEducationalInstitutionToDto(information.getHigherEducationInstitutionInformation().getHei());
-		hei.setHeadFullName(information.getHigherEducationInstitutionInformation().getHei().getHeadFullName().getUser().getName());
-		var ssu = SelfAssessmentInfoMapper.MAPPER.separateStructuralUnitToDto(information.getHigherEducationInstitutionInformation().getSsu());
-		if (ssu != null) {
-			ssu.setHeadFullName(information.getHigherEducationInstitutionInformation().getSsu().getHeadFullName().getUser().getName());
-		}
-
-		higherEducationInstitutionInformation.setHei(hei);
-		higherEducationInstitutionInformation.setSsu(ssu);
+		var higherEducationInstitutionInformation = SelfAssessmentInfoMapper.MAPPER.higherEducationalInstitutionInformationToDto(information.getHigherEducationInstitutionInformation());
 
 		//selfAssessmentEducationalProgramRestrictedInfo
 		var restrictedInfo = SelfAssessmentInfoMapper.MAPPER
@@ -80,9 +87,7 @@ public class GeneralInformationDto {
 
 		return builder()
 			.educationProgramAccreditationInformation(educationProgramAccreditationInformation)
-			.historyAndDevelopment(information.getEducationProgramGeneralInformation().getHistoryAndDevelopment())
 			.educationStatistic(educationStatistics)
-			.website(information.getHeiLinksInEdebo().getWebsite())
 			.higherEducationInstitutionArea(higherEducationInstitutionArea)
 			.higherEducationInstitutionInformation(higherEducationInstitutionInformation)
 			.selfAssessmentEducationalProgramRestrictedInfo(restrictedInfo)

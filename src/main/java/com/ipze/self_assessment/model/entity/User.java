@@ -16,7 +16,6 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "user", schema = "public", indexes = {
-        @Index(name = "user_username_key", columnList = "username", unique = true),
         @Index(name = "user_username_06e46fe6_like", columnList = "username")
 })
 public class User extends BaseAuditableEntity {

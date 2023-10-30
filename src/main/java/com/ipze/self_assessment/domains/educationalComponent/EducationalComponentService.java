@@ -11,6 +11,7 @@ import com.ipze.self_assessment.exceptions.custom.NoSuchEntityException;
 import com.ipze.self_assessment.model.dto.ApiResponse;
 import com.ipze.self_assessment.model.entity.EducationProgramDocument;
 import com.ipze.self_assessment.model.entity.ProgramEducationalComponentsInformation;
+import com.ipze.self_assessment.model.enums.DocumentType;
 import com.ipze.self_assessment.model.enums.EducationComponentType;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.PropertySource;
@@ -42,7 +43,7 @@ public class EducationalComponentService {
 			.orElseThrow(() -> new IdNotFoundException("Запис з id : " + id + " не знайдено."));
 
 		educationComponentInfo.setComponentName(requestBody.getComponentName());
-		setComponentTypeFromInteger(educationComponentInfo, requestBody.getComponentType());
+		educationComponentInfo.setComponentType(EducationComponentType.valueOf(requestBody.getComponentType()));
 		educationComponentInfo.setSpecialEquipmentInfo(requestBody.getSpecialEquipmentInfo());
 
 		MultipartFile file = requestBody.getFile();
@@ -51,11 +52,11 @@ public class EducationalComponentService {
 			var entity = educationComponentInfo.getEducationProgramDocument();
 			final Path oldPath = Paths.get(entity.getPath());
 
-			var document = documentService.saveDocument(file, entity);
+			var document = documentService.saveDocument(file, entity, DocumentType.SYLLABUS);
 			educationComponentInfo.setEducationProgramDocument(document);
 
 			//delete old file
-			Files.deleteIfExists(oldPath);
+			//Files.deleteIfExists(oldPath);
 		}
 
 		var entity = educationalComponentRepository.save(educationComponentInfo);
@@ -64,30 +65,18 @@ public class EducationalComponentService {
 		return new ApiResponse(dto, "Освітній компонент збережено");
 	}
 
-	public void setComponentTypeFromInteger(ProgramEducationalComponentsInformation information, Integer componentType) {
-		EducationComponentType type = switch (componentType) {
-			case 0 -> EducationComponentType.DISCIPLINE;
-			case 1 -> EducationComponentType.PRACTICE;
-			case 2 -> EducationComponentType.FINAL_CERTIFICATION;
-			case 3 -> EducationComponentType.COURSE_PROJECT;
-			default ->
-				throw new IllegalArgumentException("Непідтримуване значення для componentType: " + componentType);
-		};
-		information.setComponentType(type);
-	}
-
 	public ApiResponse createComponentInformation(UUID selfAssessmentId, ProgramEducationalComponentRequestBodyDto requestBody) throws IOException {
 		var tableAnnex = selfAssessmentRepository.findById(selfAssessmentId)
 			.orElseThrow(() -> new IdNotFoundException("Запис з id : " + selfAssessmentId + " не знайдено.")).getTablesAnnex();
 		var educationComponentInfo = new ProgramEducationalComponentsInformation();
 
 		educationComponentInfo.setComponentName(requestBody.getComponentName());
-		setComponentTypeFromInteger(educationComponentInfo, requestBody.getComponentType());
+		educationComponentInfo.setComponentType(EducationComponentType.valueOf(requestBody.getComponentType()));
 		educationComponentInfo.setSpecialEquipmentInfo(requestBody.getSpecialEquipmentInfo());
 
 		MultipartFile file = requestBody.getFile();
 
-		var document = documentService.saveDocument(file, new EducationProgramDocument());
+		var document = documentService.saveDocument(file, new EducationProgramDocument(), DocumentType.SYLLABUS);
 		educationComponentInfo.setEducationProgramDocument(document);
 
 		var entity = educationalComponentRepository.save(educationComponentInfo);

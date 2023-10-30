@@ -30,6 +30,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.15'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework:spring-test:5.3.29'
 	implementation 'com.itextpdf:html2pdf:5.0.1'
 	implementation 'com.itextpdf:itextpdf:5.5.13.3'
 	implementation 'org.apache.poi:poi:5.2.4'

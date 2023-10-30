@@ -27,60 +27,60 @@ import java.util.Set;
 })
 public class GeneralQuestionAnswer extends BaseAuditableEntity {
 
-    @NotNull
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "educational_program_design_id", nullable = false)
+	private EducationProgramDesign educationalProgramDesign;
+
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "educational_program_structure_and_content_id", nullable = false)
+	private EducationalProgramStructureAndContent educationalProgramStructureAndContent;
+
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "educational_program_access_id", nullable = false)
+	private EducationalProgramAccess educationalProgramAccess;
+
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "educational_program_learning_and_teaching_id", nullable = false)
+	private EducationalProgramLearningAndTeaching educationalProgramLearningAndTeaching;
+
+	@NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "control_measures_and_academic_integrity_id", nullable = false)
     private ControlMeasuresAndAcademicIntegrity controlMeasuresAndAcademicIntegrity;
 
-    @NotNull
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "human_resources_id", nullable = false)
+	private HumanResource humanResources;
+
+	@NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "educational_environment_and_material_resources_id", nullable = false)
     private EducationalEnvironmentAndMaterialResource educationalEnvironmentAndMaterialResources;
 
-    @NotNull
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "quality_assurance_id", nullable = false)
+	private QualityAssurance qualityAssurance;
+
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "educational_transparency_and_publicity_id", nullable = false)
+	private EducationalTransparencyAndPublicity educationalTransparencyAndPublicity;
+
+	@NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "educational_program_id", nullable = false)
     private EducationalProgram educationalProgram;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "educational_program_access_id", nullable = false)
-    private EducationalProgramAccess educationalProgramAccess;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "educational_program_design_id", nullable = false)
-    private EducationProgramDesign educationalProgramDesign;
-
-    @NotNull
+	@NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "educational_program_development_perspectives_id", nullable = false)
     private OpDevelopmentPerspective educationalProgramDevelopmentPerspectives;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "educational_program_learning_and_teaching_id", nullable = false)
-    private EducationalProgramLearningAndTeaching educationalProgramLearningAndTeaching;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "educational_program_structure_and_content_id", nullable = false)
-    private EducationalProgramStructureAndContent educationalProgramStructureAndContent;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "educational_transparency_and_publicity_id", nullable = false)
-    private EducationalTransparencyAndPublicity educationalTransparencyAndPublicity;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "human_resources_id", nullable = false)
-    private HumanResource humanResources;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "quality_assurance_id", nullable = false)
-    private QualityAssurance qualityAssurance;
 
     @OneToMany(mappedBy = "generalQuestionAnswer")
     private Set<InformationOnSelfAssessmentOfEducationalProgram> informationOnSelfAssessmentOfEducationalPrograms = new LinkedHashSet<>();

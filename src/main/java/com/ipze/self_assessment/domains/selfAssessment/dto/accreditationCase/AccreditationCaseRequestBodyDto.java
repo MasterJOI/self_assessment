@@ -5,9 +5,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class AccreditationCaseRequestBodyDto {
-	private String cycle;
+	private String heiId;
 	private Long educationProgramId;
+	private String cycle;
 	private String name;
 	private String programType;
 	private String specialtyId;
+	private String guaranteeId;
 }

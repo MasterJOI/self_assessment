@@ -40,8 +40,4 @@ public class SeparateStructuralUnit extends BaseAuditableEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "head_full_name_id", nullable = false)
     private Teacher headFullName;
-
-    @OneToMany(mappedBy = "ssu")
-    private Set<HigherEducationInstitutionInformation> higherEducationInstitutionInformations = new LinkedHashSet<>();
-
 }

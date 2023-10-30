@@ -6,6 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class HigherEducationInstitutionInformationDto {
-	private HigherEducationalInstitutionDto hei;
-	private SeparateStructuralUnitDto ssu;
+	private Long heiId;
+	private String higherEducationalInstitutionName;
+	private Long institutionCode;
+	private String website;
+	private String headFullName;
 }
