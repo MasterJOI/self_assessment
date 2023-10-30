@@ -1,7 +1,6 @@
 package com.ipze.self_assessment.domains.selfAssessment.dto;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.ipze.self_assessment.domains.selfAssessment.dto.sections.*;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,6 +10,7 @@ import java.util.Map;
 @Getter
 @ToString
 public class SelfAssessmentInfoRequestBody {
+	private final Map<String, Object> general = new HashMap<>();
 	private final Map<String, Object> programDesign = new HashMap<>();
 	private final Map<String, Object> structureAndContent = new HashMap<>();
 	private final Map<String, Object> programAccess = new HashMap<>();
@@ -28,6 +28,7 @@ public class SelfAssessmentInfoRequestBody {
 	public void setDynamicField(String fieldName, Object value) {
 		// Додайте поле до відповідного мапи згідно з назвою поля
 		switch (fieldName) {
+			case "general" -> programDesign.putAll((Map<String, Object>) value);
 			case "programDesign" -> programDesign.putAll((Map<String, Object>) value);
 			case "structureAndContent" ->
 				structureAndContent.putAll((Map<String, Object>) value);

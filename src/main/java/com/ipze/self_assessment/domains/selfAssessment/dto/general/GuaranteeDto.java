@@ -1,6 +1,7 @@
 package com.ipze.self_assessment.domains.selfAssessment.dto.general;
 
 import com.ipze.self_assessment.model.entity.EducationProgramAccreditationInformation;
+import com.ipze.self_assessment.model.entity.Teacher;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,17 +18,16 @@ public class GuaranteeDto {
 		private String guaranteePhone;
 		private String additionalPhone;
 
-	public static GuaranteeDto fromEntity(EducationProgramAccreditationInformation information) {
-		var teacher = information.getGuarantee();
+	public static GuaranteeDto fromEntity(Teacher teacher) {
 
 		return builder()
 			.id(String.valueOf(teacher.getId()))
 			.teacherId(teacher.getTeacherId())
 			.name(teacher.getUser().getName())
 			.teacherPosition(teacher.getTeacherPosition())
-			.guaranteeEmail(information.getGuaranteeEmail())
-			.guaranteePhone(information.getGuaranteePhone())
-			.additionalPhone(information.getAdditionalPhone())
+			.guaranteeEmail(teacher.getCorporateEmail())
+			.guaranteePhone(teacher.getPhoneNumber())
+			.additionalPhone(teacher.getAdditionalPhoneNumber())
 			.build();
 	}
 }

@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum StudentType {
+public enum Cycle {
     BACHELOR("Бакалавр"),
     MASTER("Магістр"),
     DOCTORATE("Доктор філософії");

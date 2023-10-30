@@ -6,26 +6,37 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "higher_education_institution_information", indexes = {
-        @Index(name = "higher_education_institution_information_hei_id_b8abf83f", columnList = "hei_id"),
-        @Index(name = "higher_education_institution_information_ssu_id_c2d84df8", columnList = "ssu_id")
-})
+@Table(name = "higher_education_institution_information")
 public class HigherEducationInstitutionInformation extends BaseAuditableEntity {
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "hei_id", nullable = false)
-    private HigherEducationalInstitution hei;
+	@NotNull
+	@Column(name = "hei_id", nullable = false)
+	private Long heiId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ssu_id")
-    private SeparateStructuralUnit ssu;
+	@Size(max = 250)
+	@NotNull
+	@Column(name = "higher_educational_institution_name", nullable = false, length = 250)
+	private String higherEducationalInstitutionName;
+
+	@NotNull
+	@Column(name = "institution_code", nullable = false)
+	private Long institutionCode;
+
+	@Size(max = 200)
+	@NotNull
+	@Column(name = "website", nullable = false, length = 200)
+	private String website;
+
+	@NotNull
+	@Column(name = "head_full_name", nullable = false)
+	private String headFullName;
 
     @OneToMany(mappedBy = "higherEducationInstitutionInformation")
     private Set<GeneralInformation> generalInformations = new LinkedHashSet<>();

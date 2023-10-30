@@ -6,8 +6,8 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum EducationComponentType {
-	DISCIPLINE("навчальна дисципліна"),
-	PRACTICE("практика"),
+	DISCIPLINE("Навчальна дисципліна"),
+	PRACTICE("Практика"),
 	FINAL_CERTIFICATION("Підсумкова атестація"),
 	COURSE_PROJECT("Курсова робота (практика)");
 

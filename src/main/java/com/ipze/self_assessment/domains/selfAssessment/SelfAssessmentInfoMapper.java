@@ -1,10 +1,14 @@
 package com.ipze.self_assessment.domains.selfAssessment;
 
+import com.ipze.self_assessment.domains.educationProgramDocument.dto.EducationProgramDocumentRequestDto;
+import com.ipze.self_assessment.domains.educationProgramDocument.dto.EducationProgramFormDto;
+import com.ipze.self_assessment.domains.educationProgramDocument.dto.GeneralInformationRequestBodyDto;
 import com.ipze.self_assessment.domains.educationalComponent.dto.ProgramEducationalComponentDto;
+import com.ipze.self_assessment.domains.language.dto.LanguageDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.general.*;
 import com.ipze.self_assessment.domains.selfAssessment.dto.sections.*;
 import com.ipze.self_assessment.domains.studyResult.dto.EducationComponentCorrespondenceDto;
-import com.ipze.self_assessment.domains.studyResult.dto.StudyResultDto;
+import com.ipze.self_assessment.domains.subdivision.dto.SubdivisionDto;
 import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherInformationDto;
 import com.ipze.self_assessment.model.entity.*;
 import com.ipze.self_assessment.model.enums.StudyCourseYear;
@@ -13,6 +17,10 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Mapper
 public interface SelfAssessmentInfoMapper {
@@ -20,6 +28,11 @@ public interface SelfAssessmentInfoMapper {
 
 	//general
 
+	@Mapping(target = "cycle", ignore = true)
+	@Mapping(target = "specialtyLicensingInfo", ignore = true)
+	@Mapping(target = "admissionDegree", ignore = true)
+	@Mapping(target = "specialization", ignore = true)
+	@Mapping(target = "programType", ignore = true)
 	@Mapping(target = "specialty", ignore = true)
 	@Mapping(target = "fieldOfStudy", ignore = true)
 	@Mapping(target = "duration", ignore = true)
@@ -32,9 +45,63 @@ public interface SelfAssessmentInfoMapper {
 	EducationStatisticDto educationStatisticToDto(EducationStatistic educationStatistic);
 	HigherEducationInstitutionAreaDto higherEducationInstitutionAreaToDto(HigherEducationInstitutionArea higherEducationInstitutionArea);
 
-	HigherEducationalInstitutionDto higherEducationalInstitutionToDto(HigherEducationalInstitution higherEducationalInstitution);
-	SeparateStructuralUnitDto separateStructuralUnitToDto(SeparateStructuralUnit separateStructuralUnit);
+	HigherEducationInstitutionInformationDto higherEducationalInstitutionInformationToDto(HigherEducationInstitutionInformation higherEducationalInstitution);
 	SelfAssessmentEducationalProgramRestrictedInfoDto selfAssessmentEducationalProgramRestrictedInfoToDto(SelfAssessmentEducationalProgramRestrictedInfo restrictedInfo);
+
+	//general
+
+	@Mapping(target = "educationProgramDocuments", ignore = true)
+	@Mapping(target = "educationProgramForms", ignore = true)
+	@Mapping(target = "otherSubdivisionsIds", ignore = true)
+	@Mapping(target = "languagesIds", ignore = true)
+	GeneralInformationRequestBodyDto fromMap(Map<String, Object> fieldData);
+
+	@AfterMapping
+	default void mapListSubdivisionDto(Map<String, Object> source, @MappingTarget GeneralInformationRequestBodyDto target) {
+		if (source.containsKey("otherSubdivisionsIds")) {
+			List<String> subdivisionStrings = (List<String>) source.get("otherSubdivisionsIds");
+			List<UUID> uuids = convertStringListToUUIDList(subdivisionStrings);
+			target.setOtherSubdivisionsIds(uuids);
+		}
+	}
+
+	@AfterMapping
+	default void mapListLanguageDto(Map<String, Object> source, @MappingTarget GeneralInformationRequestBodyDto target) {
+		if (source.containsKey("languagesIds")) {
+			List<String> languageStrings = (List<String>) source.get("languagesIds");
+			List<UUID> uuids = convertStringListToUUIDList(languageStrings);
+			target.setLanguagesIds(uuids);
+		}
+	}
+
+	@AfterMapping
+	default void mapListEducationProgramFormDto(Map<String, Object> source, @MappingTarget GeneralInformationRequestBodyDto target) {
+		mapListToDto(source, target::setEducationProgramForms, this::mapToEducationProgramFormDto, "educationProgramForms");
+	}
+
+	@AfterMapping
+	default void mapListEducationProgramDocumentRequestDto(Map<String, Object> source, @MappingTarget GeneralInformationRequestBodyDto target) {
+		mapListToDto(source, target::setEducationProgramDocuments, this::mapToEducationProgramDocumentRequestDto, "educationProgramDocuments");
+	}
+
+	private <T> void mapListToDto(Map<String, Object> source, Consumer<List<T>> targetSetter, Function<Map<String, Object>, T> mapper, String targetFieldName) {
+		if (source.containsKey(targetFieldName)) {
+			List<Map<String, Object>> listSource = (List<Map<String, Object>>) source.get(targetFieldName);
+			List<T> listTarget = listSource.stream()
+				.map(mapper)
+				.collect(Collectors.toList());
+			targetSetter.accept(listTarget);
+		}
+	}
+
+	private List<UUID> convertStringListToUUIDList(List<String> stringList) {
+		return stringList.stream()
+			.map(UUID::fromString)
+			.collect(Collectors.toList());
+	}
+
+	EducationProgramFormDto mapToEducationProgramFormDto(Map<String, Object> source);
+	EducationProgramDocumentRequestDto mapToEducationProgramDocumentRequestDto(Map<String, Object> source);
 
 	//1
 	EducationProgramDesignDto educationProgramDesignToDto(EducationProgramDesign programDesign);

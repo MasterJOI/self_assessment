@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProgramEducationalComponentRequestBodyDto {
 	private MultipartFile file;
 	private String componentName;
-	private Integer componentType;
+	private String componentType;
 	private String documentName;
 	private String specialEquipmentInfo;
 }

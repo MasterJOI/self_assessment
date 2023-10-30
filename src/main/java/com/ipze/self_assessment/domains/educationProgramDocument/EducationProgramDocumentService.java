@@ -10,6 +10,7 @@ import com.ipze.self_assessment.domains.selfAssessment.dto.SelfAssessmentInfoDto
 import com.ipze.self_assessment.exceptions.custom.WrongOperationException;
 import com.ipze.self_assessment.model.entity.EducationProgramDocument;
 import com.ipze.self_assessment.model.enums.DocumentType;
+import com.ipze.self_assessment.model.enums.EducationComponentType;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
@@ -62,7 +63,7 @@ public class EducationProgramDocumentService {
 		this.restTemplate = restTemplate;
 	}
 
-	public EducationProgramDocument saveDocument(MultipartFile file, EducationProgramDocument document) throws IOException {
+	public EducationProgramDocument saveDocument(MultipartFile file, EducationProgramDocument document, DocumentType type) throws IOException {
 
 		final String fileName = Optional.ofNullable(file.getOriginalFilename()).orElse("");
 		final String saveFilePath = filePath + "_" + System.currentTimeMillis() + "_" + fileName;
@@ -71,7 +72,7 @@ public class EducationProgramDocumentService {
 			Files.deleteIfExists(path);
 			Files.copy(file.getInputStream(), path);
 
-			document.setType(DocumentType.SYLLABUS);
+			document.setType(type);
 			document.setName(fileName);
 			document.setPath(saveFilePath);
 
@@ -95,15 +96,22 @@ public class EducationProgramDocumentService {
 	}
 
 	public DocumentToDownload generateSelfAssessmentDocument(SelfAssessmentInfoDto info) {
-		var otherPrograms = fetchProgramsFromNaqa("https://public.naqa.gov.ua/api/Accreditation/Get?$filter=(specialityName eq '122 Комп''ютерні науки') and contains(tolower(universityName), 'національний технічний університет україни «київський політехнічний інститут імені ігоря сікорського»')");
+		var educationProgramInfo = info.getGeneralInformation().getEducationProgramAccreditationInformation();
+		Integer specialtyCode = educationProgramInfo.getSpecialtyCode();
+		String specialty = educationProgramInfo.getSpecialty();
+		String universityName = info.getGeneralInformation().getHigherEducationInstitutionInformation().getHigherEducationalInstitutionName().toLowerCase();
+
+		String apiUrl = String.format("https://public.naqa.gov.ua/api/Accreditation/Get?$filter=(specialityName eq '%s %s') and contains(tolower(universityName), '%s')",
+			specialtyCode, specialty, universityName);
+		var otherPrograms = fetchProgramsFromNaqa(apiUrl);
+
 		Context context = new Context();
 		// general
-		context.setVariable("hei", info.getGeneralInformation().getHigherEducationInstitutionInformation().getHei());
+		context.setVariable("hei", info.getGeneralInformation().getHigherEducationInstitutionInformation());
 		context.setVariable("programInfo", info.getGeneralInformation().getEducationProgramAccreditationInformation());
+		context.setVariable("program", info.getGeneralInformation().getEducationProgramAccreditationInformation());
 		context.setVariable("guarantee", info.getGeneralInformation().getEducationProgramAccreditationInformation().getGuarantee());
 		context.setVariable("otherPrograms", otherPrograms);
-		context.setVariable("website", info.getGeneralInformation().getWebsite());
-		context.setVariable("historyAndDevelopment", info.getGeneralInformation().getHistoryAndDevelopment());
 		context.setVariable("educationStatistic", info.getGeneralInformation().getEducationStatistic());
 		context.setVariable("area", info.getGeneralInformation().getHigherEducationInstitutionArea());
 		context.setVariable("documents", info.getGeneralInformation().getEducationProgramDocuments());
@@ -123,7 +131,6 @@ public class EducationProgramDocumentService {
 
 		//tables
 		context.setVariable("educationalComponents", info.getProgramEducationalComponentsInformation().getEducationalComponents());
-		context.setVariable("documentTypeValues", DocumentType.values());
 		context.setVariable("teachers", info.getTeacherSummaryInformation().getTeachers());
 		context.setVariable("studyResults", info.getStudyResultsMatrix().getStudyResults());
 

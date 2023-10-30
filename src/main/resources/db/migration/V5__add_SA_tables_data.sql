@@ -1,17 +1,21 @@
 /*----------------------Таблиця 1. Інформація про обов’язкові освітні компоненти ОП----------------------*/
 
 /*Документи освітніх компонентів (силабуси)*/
-INSERT INTO education_program_document (id, type, name, hash)
-VALUES ('cdd4a7ce-dc61-4b15-942f-c10fcbd26224', 'SYLLABUS','Syllabus_PhD_IMND-A_2020.pdf', '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8='),
-	   ('fb5caaa3-da7e-4fbd-b363-4180ccce6dce', 'SYLLABUS','Syllabus_PhD_IMND-B_2020.pdf', '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8=');
+INSERT INTO education_program_document (id, type, name, path, hash)
+VALUES ('cdd4a7ce-dc61-4b15-942f-c10fcbd26224', 'SYLLABUS', 'Syllabus_PhD_IMND-A_2020.pdf',
+        'D:\magistr\self_assessment\src\main\resources\files\Syllabus_PhD_IMND-A_2020.pdf',
+        '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8='),
+	   ('fb5caaa3-da7e-4fbd-b363-4180ccce6dce', 'SYLLABUS','Syllabus_PhD_ONOD_2020.pdf',
+	    'D:\magistr\self_assessment\src\main\resources\files\Syllabus_PhD_ONOD_2020.pdf',
+	    '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8=');
 
 /*Інформація про освітній компонент*/
 INSERT INTO program_educational_components_information (id, component_name, component_type, special_equipment_info, education_program_document_id)
 VALUES ('7325b46a-af05-4f85-82bf-4838564ec4ed', 'Іноземна мова для наукової діяльності',
-		0, 'Спеціальне матеріально-технічне та/або інформаційне забезпечення не потрібне',
+		'DISCIPLINE', 'Спеціальне матеріально-технічне та/або інформаційне забезпечення не потрібне',
 		'cdd4a7ce-dc61-4b15-942f-c10fcbd26224'),
 	   ('8ccc24ef-77dc-4960-8678-ebe2ab98d228', 'Організація науково-інноваційної діяльності',
-		0, 'Спеціальне матеріально-технічне та/або інформаційне забезпечення не потрібне',
+		'DISCIPLINE', 'Спеціальне матеріально-технічне та/або інформаційне забезпечення не потрібне',
 		'fb5caaa3-da7e-4fbd-b363-4180ccce6dce');
 
 /*----------------------Таблиця 2. Зведена інформація про викладачів----------------------*/
@@ -45,7 +49,8 @@ VALUES ('55250060-4b99-4d04-abed-d53626a89db7');
 
 /*Додати освітній компонент в таблицю*/
 INSERT INTO table_annex_program_educational_components_informations (program_educational_components_informations_id, table_annex_id)
-VALUES ('7325b46a-af05-4f85-82bf-4838564ec4ed', '55250060-4b99-4d04-abed-d53626a89db7');
+VALUES ('7325b46a-af05-4f85-82bf-4838564ec4ed', '55250060-4b99-4d04-abed-d53626a89db7'),
+	   ('8ccc24ef-77dc-4960-8678-ebe2ab98d228', '55250060-4b99-4d04-abed-d53626a89db7');
 
 /*Додати освіній компонент в зведену інформацію про викладача*/
 INSERT INTO teacher_summary_information_educational_components_informations (program_educational_components_informations_id,

@@ -4,9 +4,10 @@ import com.ipze.self_assessment.model.BaseAuditableEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,23 +17,19 @@ import java.util.Set;
 @Table(name = "self_assessment_educational_program_restricted_info")
 public class SelfAssessmentEducationalProgramRestrictedInfo extends BaseAuditableEntity {
 
-    @NotNull
-    @Column(name = "info_description", nullable = false, columnDefinition = "TEXT")
-    private String infoDescription;
+	@Column(name = "info_description", columnDefinition = "TEXT")
+	private String infoDescription;
 
-    @NotNull
-    @Column(name = "info_access_restriction_type", nullable = false, columnDefinition = "TEXT")
-    private String infoAccessRestrictionType;
+	@Column(name = "info_access_restriction_type", columnDefinition = "TEXT")
+	private String infoAccessRestrictionType;
 
-    @NotNull
-    @Column(name = "restricted_info_description", nullable = false, columnDefinition = "TEXT")
-    private String restrictedInfoDescription;
+	@Column(name = "restricted_info_description", columnDefinition = "TEXT")
+	private String restrictedInfoDescription;
 
-    @NotNull
-    @Column(name = "restricting_access_grounds", nullable = false, columnDefinition = "TEXT")
-    private String restrictingAccessGrounds;
+	@Column(name = "restricting_access_grounds", columnDefinition = "TEXT")
+	private String restrictingAccessGrounds;
 
-    @OneToMany(mappedBy = "selfAssessmentEducationalProgramRestrictedInfo")
-    private Set<GeneralInformation> generalInformations = new LinkedHashSet<>();
+	@OneToMany(mappedBy = "selfAssessmentEducationalProgramRestrictedInfo")
+	private Set<GeneralInformation> generalInformations = new LinkedHashSet<>();
 
 }

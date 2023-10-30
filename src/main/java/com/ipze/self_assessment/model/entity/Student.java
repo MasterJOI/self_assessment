@@ -1,7 +1,7 @@
 package com.ipze.self_assessment.model.entity;
 
 import com.ipze.self_assessment.model.BaseAuditableEntity;
-import com.ipze.self_assessment.model.enums.StudentType;
+import com.ipze.self_assessment.model.enums.Cycle;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,9 +22,9 @@ public class Student extends BaseAuditableEntity {
     @Column(name = "birthdate")
     private Date birthdate;
 
-    @Size(max = 15)
+    @Size(max = 20)
     @NotNull
-    @Column(name = "phone_number", nullable = false, length = 15)
+    @Column(name = "phone_number", nullable = false, length = 20)
     private String phoneNumber;
 
     @Size(max = 255)
@@ -44,7 +44,7 @@ public class Student extends BaseAuditableEntity {
     @NotNull
     @Column(name = "student_type", nullable = false)
     @Enumerated(EnumType.STRING)
-    private StudentType studentType;
+    private Cycle cycle;
 
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)

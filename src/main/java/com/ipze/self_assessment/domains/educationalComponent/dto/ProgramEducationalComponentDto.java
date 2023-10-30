@@ -9,7 +9,7 @@ import lombok.Data;
 public class ProgramEducationalComponentDto {
 	private String id;
 	private String componentName;
-	private Integer componentType;
+	private String componentType;
 	private String documentName;
 	private String documentPath;
 	private String documentHash;
@@ -19,7 +19,7 @@ public class ProgramEducationalComponentDto {
 		return builder()
 			.id(String.valueOf(information.getId()))
 			.componentName(information.getComponentName())
-			.componentType(information.getComponentType().ordinal())
+			.componentType(information.getComponentType().name())
 			.documentName(information.getEducationProgramDocument().getName())
 			.documentPath(information.getEducationProgramDocument().getPath())
 			.documentHash(information.getEducationProgramDocument().getHash())

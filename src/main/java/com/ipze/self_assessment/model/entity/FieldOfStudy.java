@@ -26,6 +26,6 @@ public class FieldOfStudy extends BaseAuditableEntity {
     private String fieldOfStudy;
 
     @OneToMany(mappedBy = "fieldOfStudy")
-    private Set<EducationProgramAccreditationInformation> educationProgramAccreditationInformations = new LinkedHashSet<>();
+    private Set<Specialty> specialties = new LinkedHashSet<>();
 
 }

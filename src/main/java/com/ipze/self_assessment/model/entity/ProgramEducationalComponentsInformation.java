@@ -27,7 +27,7 @@ public class ProgramEducationalComponentsInformation extends BaseAuditableEntity
 
 	@NotNull
 	@Column(name = "component_type", nullable = false)
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private EducationComponentType componentType;
 
 	@NotNull

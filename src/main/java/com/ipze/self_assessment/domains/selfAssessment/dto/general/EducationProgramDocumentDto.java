@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class EducationProgramDocumentDto {
+	private String id;
 	private String type;
 	private String name;
 	private String path;
@@ -16,6 +17,7 @@ public class EducationProgramDocumentDto {
 
 	public static EducationProgramDocumentDto fromEntity(EducationProgramDocument document) {
 		return builder()
+			.id(document.getId().toString())
 			.type(document.getType().getValue())
 			.name(document.getName())
 			.path(document.getPath())
