@@ -12,7 +12,6 @@ import com.ipze.self_assessment.model.entity.EducationComponentCorrespondence;
 import com.ipze.self_assessment.model.entity.StudyResult;
 import com.ipze.self_assessment.model.entity.TableAnnex;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
@@ -23,7 +22,6 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-@PropertySource("classpath:storage.properties")
 public class StudyResultService {
 
 	private final StudyResultRepository studyResultRepository;

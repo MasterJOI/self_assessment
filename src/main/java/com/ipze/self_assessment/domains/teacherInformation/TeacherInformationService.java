@@ -11,7 +11,6 @@ import com.ipze.self_assessment.model.dto.ApiResponse;
 import com.ipze.self_assessment.model.entity.TableAnnex;
 import com.ipze.self_assessment.model.entity.TeacherSummaryInformation;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -21,7 +20,6 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-@PropertySource("classpath:storage.properties")
 public class TeacherInformationService {
 
 	private final TeacherInformationRepository teacherInformationRepository;

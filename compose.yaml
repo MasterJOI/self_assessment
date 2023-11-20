@@ -12,15 +12,18 @@ services:
             - postgres
         environment:
             SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
-            RDS_HOSTNAME: postgres
+            CLIENT_HOST: ${CLIENT_HOST}
+            RDS_HOSTNAME: ${RDS_HOSTNAME}
+            RDS_USERNAME: ${RDS_USERNAME}
             RDS_PORT: 5432
             RDS_DB_NAME: ${RDS_DB_NAME}
-            RDS_USERNAME: ${RDS_USERNAME}
             RDS_PASSWORD: ${RDS_PASSWORD}
+            JWT_SECRET: ${JWT_SECRET}
+            FILE_PATH: ${FILE_PATH}
         networks:
             - sa-network
         volumes:
-            - "filePath:/opt/files/"
+            - "filePath:${FILE_PATH}"
     postgres:
         container_name: postgres
         image: 'postgres:latest'
@@ -28,12 +31,12 @@ services:
             - "5432:5432"
         restart: always
         environment:
-            POSTGRES_USER: postgres
-            PGDATA: /var/lib/postgresql/data/pgdat
-            POSTGRES_DB: self_assessment_educational_programs_storage
+            POSTGRES_USER: ${RDS_HOSTNAME}
+            PGDATA: /var/lib/postgresql/data/pgdata
+            POSTGRES_DB: ${RDS_DB_NAME}
             POSTGRES_PASSWORD: ${RDS_PASSWORD}
         volumes:
-            - /var/hub-back/postgresql/data:/var/lib/postgresql/data/pgdat
+            - /var/sa-backend/postgresql/data:/var/lib/postgresql/data/pgdata
         networks:
             - sa-network
 # Volumes

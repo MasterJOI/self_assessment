@@ -14,23 +14,16 @@ import com.ipze.self_assessment.model.entity.ProgramEducationalComponentsInforma
 import com.ipze.self_assessment.model.enums.DocumentType;
 import com.ipze.self_assessment.model.enums.EducationComponentType;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-@PropertySource("classpath:storage.properties")
 public class EducationalComponentService {
 
 	private final EducationalComponentRepository educationalComponentRepository;

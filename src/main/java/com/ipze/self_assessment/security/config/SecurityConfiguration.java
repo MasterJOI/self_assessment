@@ -32,7 +32,7 @@ import java.util.Collections;
 @EnableGlobalMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Value("http://localhost:4200")
+    @Value("${cors.allowedOrigins}")
     private String[] corsAllowedOrigins;
     private final UserDetailsService userDetailsService;
     private final StatelessAuthenticationFilter statelessAuthenticationFilter;
