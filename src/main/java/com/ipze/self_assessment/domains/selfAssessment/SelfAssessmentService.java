@@ -57,7 +57,6 @@ import org.springframework.data.domain.Page;
 
 @Service
 @AllArgsConstructor
-@Transactional
 public class SelfAssessmentService {
 
 	private final SelfAssessmentRepository selfAssessmentRepository;

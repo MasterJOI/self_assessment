@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-@Transactional
 public class UserService {
 
 	private final UserRepository userRepository;
