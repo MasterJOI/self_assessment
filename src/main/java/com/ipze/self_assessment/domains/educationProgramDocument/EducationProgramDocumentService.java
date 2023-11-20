@@ -10,8 +10,11 @@ import com.ipze.self_assessment.domains.selfAssessment.dto.SelfAssessmentInfoDto
 import com.ipze.self_assessment.exceptions.custom.WrongOperationException;
 import com.ipze.self_assessment.model.entity.EducationProgramDocument;
 import com.ipze.self_assessment.model.enums.DocumentType;
-import com.ipze.self_assessment.model.enums.EducationComponentType;
+import com.itextpdf.html2pdf.ConverterProperties;
+import com.itextpdf.html2pdf.HtmlConverter;
+import com.itextpdf.html2pdf.resolver.font.DefaultFontProvider;
 import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
@@ -20,6 +23,7 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,13 +31,9 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.context.Context;
-import com.itextpdf.html2pdf.ConverterProperties;
-import com.itextpdf.html2pdf.HtmlConverter;
-import com.itextpdf.html2pdf.resolver.font.DefaultFontProvider;
-import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.pdf.PdfWriter;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import java.io.*;
@@ -42,12 +42,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-import org.springframework.web.client.RestTemplate;
-
 @Service
 public class EducationProgramDocumentService {
 
-	@Value("${file.path}")
+	@Value("${path.file}")
 	private String filePath;
 
 	private final EducationProgramDocumentRepository programDocumentRepository;
@@ -170,7 +168,7 @@ public class EducationProgramDocumentService {
 
 			return download(saveFilePath);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
