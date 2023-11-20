@@ -1,7 +1,6 @@
 package com.ipze.self_assessment.domains.selfAssessment.dto.accreditationCase;
 
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class AccreditationCaseRequestBodyDto {
