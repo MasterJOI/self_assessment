@@ -61,7 +61,13 @@ tasks.named('test') {
 }
 
 flyway {
-	url = 'jdbc:postgresql://' + System.getenv('RDS_HOSTNAME') + ':' + System.getenv('RDS_PORT') + '/' + System.getenv('RDS_DB_NAME')
-	user = System.getenv('RDS_USERNAME')
-	password = System.getenv('RDS_PASSWORD')
+	def databaseHost = System.getenv('RDS_HOSTNAME') ?: 'localhost'
+	def databasePort = System.getenv('DATABASE_PORT') ?: '5432'
+	def databaseName = System.getenv('RDS_DB_NAME') ?: 'self_assessment_educational_programs_storage'
+	def databaseUser = System.getenv('RDS_USERNAME') ?: 'postgres'
+	def databasePassword = System.getenv('RDS_PASSWORD') ?: 'debug'
+
+	url = 'jdbc:postgresql://' + databaseHost + ':' + databasePort + '/' + databaseName
+	user = databaseUser
+	password = databasePassword
 }

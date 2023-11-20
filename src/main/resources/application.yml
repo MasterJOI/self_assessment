@@ -1,6 +1,6 @@
 jwt:
-    secret: ${JWT_SECRET}
+    secret: ${JWT_SECRET:U2V@$&%JJKLNFEJKANFJKAE0}
 
 path:
-    file: ${FILE_PATH:/opt/files/}
+    file: ${FILE_PATH:D:\\magistr\\self_assessment\\src\\main\\resources\\files\\}
 

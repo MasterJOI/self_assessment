@@ -26,7 +26,7 @@ services:
             - "filePath:${FILE_PATH}"
     postgres:
         container_name: postgres
-        image: 'postgres:latest'
+        image: 'postgres:15.4-alpine'
         ports:
             - "5432:5432"
         restart: always
