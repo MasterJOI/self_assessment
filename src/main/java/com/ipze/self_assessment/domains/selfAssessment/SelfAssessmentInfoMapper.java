@@ -4,11 +4,9 @@ import com.ipze.self_assessment.domains.educationProgramDocument.dto.EducationPr
 import com.ipze.self_assessment.domains.educationProgramDocument.dto.EducationProgramFormDto;
 import com.ipze.self_assessment.domains.educationProgramDocument.dto.GeneralInformationRequestBodyDto;
 import com.ipze.self_assessment.domains.educationalComponent.dto.ProgramEducationalComponentDto;
-import com.ipze.self_assessment.domains.language.dto.LanguageDto;
 import com.ipze.self_assessment.domains.selfAssessment.dto.general.*;
 import com.ipze.self_assessment.domains.selfAssessment.dto.sections.*;
 import com.ipze.self_assessment.domains.studyResult.dto.EducationComponentCorrespondenceDto;
-import com.ipze.self_assessment.domains.subdivision.dto.SubdivisionDto;
 import com.ipze.self_assessment.domains.teacherInformation.dto.TeacherInformationDto;
 import com.ipze.self_assessment.model.entity.*;
 import com.ipze.self_assessment.model.enums.StudyCourseYear;
@@ -42,10 +40,13 @@ public interface SelfAssessmentInfoMapper {
 	default Integer map(StudyCourseYear studyCourseYear) {
 		return studyCourseYear.ordinal() + 1;
 	}
+
 	EducationStatisticDto educationStatisticToDto(EducationStatistic educationStatistic);
+
 	HigherEducationInstitutionAreaDto higherEducationInstitutionAreaToDto(HigherEducationInstitutionArea higherEducationInstitutionArea);
 
 	HigherEducationInstitutionInformationDto higherEducationalInstitutionInformationToDto(HigherEducationInstitutionInformation higherEducationalInstitution);
+
 	SelfAssessmentEducationalProgramRestrictedInfoDto selfAssessmentEducationalProgramRestrictedInfoToDto(SelfAssessmentEducationalProgramRestrictedInfo restrictedInfo);
 
 	//general
@@ -101,6 +102,7 @@ public interface SelfAssessmentInfoMapper {
 	}
 
 	EducationProgramFormDto mapToEducationProgramFormDto(Map<String, Object> source);
+
 	EducationProgramDocumentRequestDto mapToEducationProgramDocumentRequestDto(Map<String, Object> source);
 
 	//1

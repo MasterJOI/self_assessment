@@ -23,7 +23,7 @@ services:
         networks:
             - sa-network
         volumes:
-            - "filePath:${FILE_PATH}"
+            - "filePath:/opt/files/"
     postgres:
         container_name: postgres
         image: 'postgres:15.4-alpine'
