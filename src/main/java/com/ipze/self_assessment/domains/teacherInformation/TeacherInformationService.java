@@ -33,6 +33,10 @@ public class TeacherInformationService {
 			.orElseThrow(() -> new IdNotFoundException("Запис з id : " + id + " не знайдено."));
 
 		var components = new HashSet<>(educationalComponentRepository.findAllById(requestBody.getDisciplinesIDs()));
+		teacherSummaryInformation.setTeacherQualification(requestBody.getTeacherQualification());
+		teacherSummaryInformation.setTeacherExperience(requestBody.getTeacherExperience());
+		teacherSummaryInformation.setRationale(requestBody.getRationale());
+
 		teacherSummaryInformation.setProgramEducationalComponentsInformations(components);
 
 		var entity = teacherInformationRepository.save(teacherSummaryInformation);
@@ -49,9 +53,11 @@ public class TeacherInformationService {
 
 		var teacher = teacherRepository.getByTeacherId(requestBody.getTeacherId())
 			.orElseThrow(() -> new IdNotFoundException("Викладача з id : " + requestBody.getTeacherId() + " не знайдено."));
-		;
 
 		teacherSummaryInformation.setTeacher(teacher);
+		teacherSummaryInformation.setTeacherQualification(requestBody.getTeacherQualification());
+		teacherSummaryInformation.setTeacherExperience(requestBody.getTeacherExperience());
+		teacherSummaryInformation.setRationale(requestBody.getRationale());
 		teacherSummaryInformation.setProgramEducationalComponentsInformations(components);
 
 		var entity = teacherInformationRepository.save(teacherSummaryInformation);

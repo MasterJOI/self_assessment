@@ -516,10 +516,7 @@ CREATE TABLE teacher
     address                 VARCHAR(255)                NOT NULL,
     teacher_id              VARCHAR(15)                 NOT NULL,
     hire_date               TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    teacher_qualification   TEXT,
     teacher_position        VARCHAR(255),
-    teacher_experience      INTEGER,
-    rationale               TEXT,
     user_id                 UUID                        NOT NULL,
     subdivision_id          UUID,
     CONSTRAINT pk_teacher PRIMARY KEY (id)
@@ -531,6 +528,9 @@ CREATE TABLE teacher_summary_information
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     teacher_id UUID                        NOT NULL,
+	teacher_qualification   TEXT,
+	teacher_experience      INTEGER,
+	rationale               TEXT,
     CONSTRAINT pk_teacher_summary_information PRIMARY KEY (id)
 );
 

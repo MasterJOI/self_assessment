@@ -24,6 +24,24 @@ services:
             - sa-network
         volumes:
             - "filePath:/opt/files/"
+    analyzer-masters:
+        container_name: analyzer-masters
+        image: analyzer-masters:0.0.1
+        build:
+            context: ../analyzer-masters
+            dockerfile: Dockerfile
+        ports:
+            - "${ANALYZER_PORT}:8080"
+        restart: always
+        environment:
+            SCOPUS_SECRET_KEY: ${SCOPUS_SECRET_KEY}
+            SCOPUS_SECRET_TOKEN: ${SCOPUS_SECRET_TOKEN}
+            GROBID_HOME: ${GROBID_HOME}
+            CLIENT_HOST: ${CLIENT_HOST}
+        networks:
+            - sa-network
+        volumes:
+            - grobidHome:/grobid/grobid-home
     postgres:
         container_name: postgres
         image: 'postgres:15.4-alpine'
@@ -49,5 +67,12 @@ volumes:
         driver_opts:
             type: none
             device: $FILE_PATH
+            o: bind
+        external: false
+    grobidHome:
+        driver: local
+        driver_opts:
+            type: none
+            device: $GROBID_HOME
             o: bind
         external: false

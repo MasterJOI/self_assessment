@@ -22,6 +22,15 @@ public class TeacherSummaryInformation extends BaseAuditableEntity {
 	@JoinColumn(name = "teacher_id", nullable = false)
 	private Teacher teacher;
 
+	@Column(name = "teacher_qualification", columnDefinition = "TEXT")
+	private String teacherQualification;
+
+	@Column(name = "teacher_experience")
+	private Integer teacherExperience;
+
+	@Column(name = "rationale", columnDefinition = "TEXT")
+	private String rationale;
+
 	@ManyToMany(mappedBy = "teacherSummaryInformations")
 	private Set<TableAnnex> tableAnnexes = new LinkedHashSet<>();
 

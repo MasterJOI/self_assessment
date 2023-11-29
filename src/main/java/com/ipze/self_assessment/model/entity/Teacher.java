@@ -50,17 +50,8 @@ public class Teacher extends BaseAuditableEntity {
     @Column(name = "hire_date", nullable = false)
     private Date hireDate;
 
-	@Column(name = "teacher_qualification", columnDefinition = "TEXT")
-	private String teacherQualification;
-
 	@Column(name = "teacher_position")
 	private String teacherPosition;
-
-	@Column(name = "teacher_experience")
-	private Integer teacherExperience;
-
-	@Column(name = "rationale", columnDefinition = "TEXT")
-	private String rationale;
 
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)

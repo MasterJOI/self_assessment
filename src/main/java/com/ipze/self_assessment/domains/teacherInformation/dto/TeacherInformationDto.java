@@ -31,10 +31,10 @@ public class TeacherInformationDto {
 			.name(teacher.getUser().getName())
 			.teacherPosition(teacher.getTeacherPosition())
 			.subdivision(teacher.getSubdivision().getResponsibleDepartment())
-			.teacherQualification(teacher.getTeacherQualification())
-			.teacherExperience(teacher.getTeacherExperience())
+			.teacherQualification(information.getTeacherQualification())
+			.teacherExperience(information.getTeacherExperience())
 			.disciplines(disciplines)
-			.rationale(teacher.getRationale())
+			.rationale(information.getRationale())
 			.build();
 	}
 }
