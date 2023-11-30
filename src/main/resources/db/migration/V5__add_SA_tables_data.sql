@@ -3,10 +3,10 @@
 /*Документи освітніх компонентів (силабуси)*/
 INSERT INTO education_program_document (id, type, name, path, hash)
 VALUES ('cdd4a7ce-dc61-4b15-942f-c10fcbd26224', 'SYLLABUS', 'Syllabus_PhD_IMND-A_2020.pdf',
-        'D:\magistr\self_assessment\src\main\resources\files\Syllabus_PhD_IMND-A_2020.pdf',
+        '/opt/files/Syllabus_PhD_IMND-A_2020.pdf',
         '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8='),
 	   ('fb5caaa3-da7e-4fbd-b363-4180ccce6dce', 'SYLLABUS','Syllabus_PhD_ONOD_2020.pdf',
-	    'D:\magistr\self_assessment\src\main\resources\files\Syllabus_PhD_ONOD_2020.pdf',
+	    '/opt/files/Syllabus_PhD_ONOD_2020.pdf',
 	    '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8=');
 
 /*Інформація про освітній компонент*/

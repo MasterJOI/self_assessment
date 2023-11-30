@@ -85,7 +85,7 @@ public class UserService {
 
 	public TeacherInformationDto searchTeacherByFullName(String fullName) {
 		var user = this.userRepository.findByName(fullName)
-			.orElseThrow(() -> new UsernameNotFoundException("Викладача з таким ім'ям не знайдено."));
+			.orElseThrow(() -> new UsernameNotFoundException("Викладача з таким ім'ям не знайдено в системі."));
 		var teacherInformationDto = SelfAssessmentInfoMapper.MAPPER.teacherToDto(user.getTeacher());
 		teacherInformationDto.setName(user.getName());
 		teacherInformationDto.setSubdivision(user.getTeacher().getSubdivision().getResponsibleDepartment());

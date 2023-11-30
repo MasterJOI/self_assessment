@@ -111,13 +111,13 @@ VALUES ('18fc0570-d87a-4026-aff3-19265ca30dca', '0c1ad6fd-c1d3-4ace-bcef-34251a1
 INSERT INTO education_program_document (id, type, name, hash, path)
 VALUES ('a79134d5-f54e-4d5c-9299-5d081a5ce10c', 'CURRICULUM','121_NP_IPZ_2020.pdf',
         '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8=',
-        'D:\magistr\self_assessment\src\main\resources\files\121_NP_IPZ_2020.pdf'),
+        '/opt/files/121_NP_IPZ_2020.pdf'),
 	   ('e8f95e52-5aea-11ee-8c99-0242ac120002', 'EDUCATION_PROGRAM','121_ONPD_IPZ_2020.pdf',
 	    '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8=',
-	    'D:\magistr\self_assessment\src\main\resources\files\121_ONPD_IPZ_2020.pdf'),
+	    '/opt/files/121_ONPD_IPZ_2020.pdf'),
 	   ('f921d4eb-d330-4c53-9a25-99cc161b855b', 'REVIEW','Рецензія PhD НАН.pdf',
 	    '+xTa9I3EF5vxwG/XOb8V35bcVYU9ecxakffnGWiXM+8=',
-	    'D:\magistr\self_assessment\src\main\resources\files\Рецензія PhD НАН.pdf');
+	    '/opt/files/Рецензія PhD НАН.pdf');
 
 /*Додати документи до загальної інформації*/
 INSERT INTO general_information_education_program_documents (general_information_id, education_program_documents_id)
